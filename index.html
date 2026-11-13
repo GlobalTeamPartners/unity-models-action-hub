@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Models × Global Plus | Global Action Hub & Expansion HQ (RU / EN)</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hub.css">
+</head>
+<body>
+
+<!-- Top Utility Bar with Language Switcher -->
+<div class="top-utility-bar">
+    <div class="top-left-nav">
+        <a href="index.html" class="top-logo-link">
+            <img src="images/logo.png" alt="Unity Models" onerror="this.onerror=null;this.src='https://unityspirit.github.io/unity-models-platform/images/logo.png'">
+            <span data-i18n="brand_name">Unity Models × Global Plus</span>
+        </a>
+    </div>
+    <div class="top-right-controls">
+        <a href="https://t.me/unitymodelsbot" target="_blank" class="nav-back-pill" data-i18n="bot_btn">🤖 @unitymodelsbot</a>
+        <div class="lang-switcher" aria-label="Language Switcher">
+            <button class="lang-btn active" data-lang="ru" onclick="HubI18n.setLang('ru')">🇷🇺 RU</button>
+            <button class="lang-btn" data-lang="en" onclick="HubI18n.setLang('en')">🇬🇧 EN</button>
+        </div>
+    </div>
+</div>
+
+<!-- Hero Header -->
+<header class="hero-header">
+    <div class="brand-pill">
+        <span class="dot"></span>
+        <span data-i18n="hero_pill">GLOBAL PLUS × UNITY MODELS 2026</span>
+    </div>
+    <h1 data-i18n-html="hero_h1">Штаб Экспансии: Москва → Дубай <span class="cross">&times;</span> <span class="highlight">Глобальный Хаб Действий</span></h1>
+    <p class="subtitle" data-i18n="hero_sub">Операционная система для основателя, представителя «Глобал Плюс» в Москве и международных представителей по всему миру: выход моделей из РФ в Стамбул, Азию, Дубай и мировые столицы, PR-продвижение, скрипты и экономика букинга.</p>
+    <div class="badge-cluster">
+        <div class="partner-badge" data-i18n="badge_moscow">👑 Представительство в Москве: Глобал Плюс (Global Plus)</div>
+        <div class="tech-badge" data-i18n="badge_tech">🤖 Платформа & ИИ-Скаутинг: Oscar AI • Global Team Partners</div>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- Fast Actions Bar -->
+    <div class="fast-actions-bar">
+        <div class="fast-actions-title">
+            <span data-i18n="fast_title">⚡ Быстрый запуск и ключевые модули:</span>
+        </div>
+        <div class="fast-actions-links">
+            <a href="office.html" class="fast-btn emerald" data-i18n="fast_office">🖥️ Терминал Представителя &rarr;</a>
+            <a href="playbook.html" class="fast-btn gold" data-i18n="fast_playbook">🌍 Плейбук ТОП-Агентств &rarr;</a>
+            <a href="scripts.html" class="fast-btn crimson" data-i18n="fast_scripts">💬 Скрипты, PR & Возражения &rarr;</a>
+            <a href="markets.html" class="fast-btn" data-i18n="fast_markets">🗺️ Матрица 14 Стран &rarr;</a>
+            <a href="onepager.html" class="fast-btn" data-i18n="fast_pager">📄 Меморандум А4 (PDF) &rarr;</a>
+            <a href="calculator.html" class="fast-btn" data-i18n="fast_calc">💰 Калькулятор Сплитов &rarr;</a>
+            <a href="https://globalteamgroup.github.io/unity-models-platform/" target="_blank" class="fast-btn" data-i18n="live_ru">🌐 Платформа RU &nearr;</a>
+            <a href="https://unityspirit.github.io/unity-models-platform/" target="_blank" class="fast-btn" data-i18n="live_en">🌐 Platform EN &nearr;</a>
+        </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-num">$7B+</div>
+            <div class="stat-label" data-i18n="stat_1">Глобальный рынок моделинга</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num" data-i18n="stat_2_val">Окт–Апр</div>
+            <div class="stat-label" data-i18n="stat_2">Пик сезона в Дубае (+ Рамадан)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">AED 2,500+</div>
+            <div class="stat-label" data-i18n="stat_3">Дневная ставка модели в Дубае</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num" data-i18n="stat_4_val">0 ₽ / $0</div>
+            <div class="stat-label" data-i18n="stat_4">Хартия «Без предоплат с моделей»</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">10–20%</div>
+            <div class="stat-label" data-i18n="stat_5">Комиссия материнского агентства</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num" data-i18n="stat_6_val">4 этапа</div>
+            <div class="stat-label" data-i18n="stat_6">РФ → Стамбул/Азия → Дубай → Мир</div>
+        </div>
+    </div>
+
+    <!-- Section 1: Core Modules -->
+    <h2 class="section-heading" data-i18n="sec1_heading">Стратегические Модули &amp; Действия для Москвы и Мира</h2>
+
+    <div class="grid-core">
+
+        <div class="hub-card" style="--card-accent: var(--emerald); border-color: rgba(16, 185, 129, 0.35);">
+            <div>
+                <span class="card-icon">🖥️</span>
+                <h3 class="card-title">
+                    <span data-i18n="c1_title">Терминал Представителя &amp; Задачи</span>
+                    <span class="badge-emerald" data-i18n="c1_badge">РАБОЧЕЕ МЕСТО</span>
+                </h3>
+                <p class="card-desc" data-i18n="c1_desc">Четкое разделение действий: что делаете вы (технологии, Дубай, глобальные контракты), что делает представитель «Глобал Плюс» в Москве (скаутинг, школы, фотографы, PR-встречи) и как работают страновые представители за рубежом. Интерактивные чек-листы с сохранением.</p>
+            </div>
+            <a href="office.html" class="btn-card" style="background: rgba(16, 185, 129, 0.14); border-color: var(--emerald); color: #6EE7B7;">
+                <span data-i18n="c1_btn">Открыть Рабочий Терминал &rarr;</span>
+            </a>
+        </div>
+
+        <div class="hub-card" style="--card-accent: var(--gold); border-color: rgba(197, 160, 89, 0.35);">
+            <div>
+                <span class="card-icon">👑</span>
+                <h3 class="card-title">
+                    <span data-i18n="c2_title">Плейбук ТОП-Агентств: РФ → Дубай → Мир</span>
+                    <span class="badge-gold" data-i18n="c2_badge">КЕЙСЫ 2026</span>
+                </h3>
+                <p class="card-desc" data-i18n="c2_desc">Практика IMG (#WLYG), Elite World Group, DNA, Avant Moscow, Grace и Lumpen. Почему шенген 2025–2026 закрыл быстрые вылеты в Париж и как вести моделей через Стамбул и Азию в Дубай: визы, UAE Advertiser Permit, нейтральные банки и AI Digital Twins.</p>
+            </div>
+            <a href="playbook.html" class="btn-card" style="background: rgba(197, 160, 89, 0.14); border-color: var(--gold); color: var(--gold-light);">
+                <span data-i18n="c2_btn">Изучить Плейбук Экспансии &rarr;</span>
+            </a>
+        </div>
+
+        <div class="hub-card" style="--card-accent: var(--red); border-color: rgba(211, 47, 47, 0.35);">
+            <div>
+                <span class="card-icon">💬</span>
+                <h3 class="card-title">
+                    <span data-i18n="c3_title">Боевые Скрипты, PR &amp; Офферы</span>
+                    <span class="badge-hot" data-i18n="c3_badge">В 1 КЛИК</span>
+                </h3>
+                <p class="card-desc" data-i18n="c3_desc">Готовые двуязычные сообщения для Telegram, WhatsApp и email: рекрутинг моделей в РФ (без предоплат), заход к хост-агентствам в Дубае (Bareface/MMG-уровень), продажа пакетных съемок брендам, поиск представителей в странах мира и пресс-релиз для СМИ.</p>
+            </div>
+            <a href="scripts.html" class="btn-card" style="background: rgba(211, 47, 47, 0.14); border-color: var(--red); color: #FCA5A5;">
+                <span data-i18n="c3_btn">Открыть Скрипты и PR-Киты &rarr;</span>
+            </a>
+        </div>
+
+        <div class="hub-card" style="--card-accent: var(--blue);">
+            <div>
+                <span class="card-icon">🗺️</span>
+                <h3 class="card-title">
+                    <span data-i18n="c4_title">Матрица 14 Стран &amp; Представителей</span>
+                    <span class="badge-gold" data-i18n="c4_badge">ГЛОБАЛЬНЫЙ ПИАР</span>
+                </h3>
+                <p class="card-desc" data-i18n="c4_desc">Интерактивная карта рынков: Москва, СПб, Дубай, Абу-Даби, Стамбул, Шанхай/Гуанчжоу, Сеул, Токио, Бангкок, Алматы, Милан, Париж, Лондон, Нью-Йорк. Визовый коридор для паспорта РФ, клиенты, ставки и приоритет найма представителей.</p>
+            </div>
+            <a href="markets.html" class="btn-card">
+                <span data-i18n="c4_btn">Открыть Матрицу Рынков &rarr;</span>
+            </a>
+        </div>
+
+        <div class="hub-card" style="--card-accent: var(--purple);">
+            <div>
+                <span class="card-icon">📄</span>
+                <h3 class="card-title">
+                    <span data-i18n="c5_title">Партнерский 1-Pager (А4 / PDF)</span>
+                    <span class="badge-emerald" data-i18n="c5_badge">В РУКИ / PDF</span>
+                </h3>
+                <p class="card-desc" data-i18n="c5_desc">Чистый одностраничный меморандум формата А4 под печать и отправку в PDF на русском или английском: суть Unity Models × Global Plus, гарантия 0 ₽ предоплат, выгоды для моделей, фотостудий, хост-агентств Дубая и страновых партнеров.</p>
+            </div>
+            <a href="onepager.html" class="btn-card">
+                <span data-i18n="c5_btn">Открыть Меморандум А4 &rarr;</span>
+            </a>
+        </div>
+
+        <div class="hub-card" style="--card-accent: var(--amber);">
+            <div>
+                <span class="card-icon">💰</span>
+                <h3 class="card-title">
+                    <span data-i18n="c6_title">Финмодель &amp; Комиссии Представителей</span>
+                    <span class="badge-gold" data-i18n="c6_badge">ROI МОДЕЛЬ</span>
+                </h3>
+                <p class="card-desc" data-i18n="c6_desc">Подробный калькулятор сплитов: Mother Agency (10–20%), сплит с дубайским/азиатским партнером, доля представителя в Москве и стране присутствия, а также маржа от пакетного продакшена (Swipecast Pro модель) и AI Digital Twins.</p>
+            </div>
+            <a href="calculator.html" class="btn-card">
+                <span data-i18n="c6_btn">Открыть Полную Финмодель &rarr;</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Section 2: Live Platform Ecosystem -->
+    <h2 class="section-heading" data-i18n="sec2_heading">Живые Цифровые Продукты &amp; Витрины Unity Models</h2>
+
+    <div class="demo-grid">
+        <div class="demo-card">
+            <div class="demo-content">
+                <div class="demo-title" data-i18n="d1_title">🇷🇺 Официальный сайт Unity Models (RU)</div>
+                <div class="demo-subtitle" data-i18n="d1_desc">Русскоязычная витрина агентства с описанием Oscar AI, дивизионами и лентой живых кастингов из Supabase.</div>
+                <a href="https://globalteamgroup.github.io/unity-models-platform/" target="_blank" class="demo-link">
+                    <span data-i18n="d_open">Открыть сайт &nearr;</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <div class="demo-content">
+                <div class="demo-title" data-i18n="d2_title">🇬🇧 Global Website Unity Models (EN)</div>
+                <div class="demo-subtitle" data-i18n="d2_desc">Международный сайт для брендов Дубая, Европы, Азии и США с презентацией AI-платформы и контактами.</div>
+                <a href="https://unityspirit.github.io/unity-models-platform/" target="_blank" class="demo-link">
+                    <span data-i18n="d_open">Открыть сайт &nearr;</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <div class="demo-content">
+                <div class="demo-title" data-i18n="d3_title">👤 Talent Hub (Кабинет Модели)</div>
+                <div class="demo-subtitle" data-i18n="d3_desc">Загрузка 4K-портфолио в облако, статус доступности и текущий город модели для быстрого подбора под съемки.</div>
+                <a href="https://globalteamgroup.github.io/unity-models-platform/hub.html" target="_blank" class="demo-link emerald">
+                    <span data-i18n="d3_btn">Открыть Talent Hub &nearr;</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <div class="demo-content">
+                <div class="demo-title" data-i18n="d4_title">🎬 Director Portal (Для Кастинг-Директоров)</div>
+                <div class="demo-subtitle" data-i18n="d4_desc">Публикация кастингов из любой страны с мгновенным сохранением в базу и отображением на главной странице.</div>
+                <a href="https://unityspirit.github.io/unity-models-platform/directors.html" target="_blank" class="demo-link">
+                    <span data-i18n="d4_btn">Открыть Director Portal &nearr;</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <div class="demo-content">
+                <div class="demo-title" data-i18n="d5_title">🤖 Oscar AI (@unitymodelsbot)</div>
+                <div class="demo-subtitle" data-i18n="d5_desc">Telegram-бот: мультиязычный разбор параметров по тексту/фото, пошаговая анкета и подбор кастингов по странам.</div>
+                <a href="https://t.me/unitymodelsbot" target="_blank" class="demo-link emerald">
+                    <span data-i18n="d5_btn">Запустить бота &nearr;</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <div class="demo-content">
+                <div class="demo-title" data-i18n="d6_title">📣 Глобальный PR &amp; Пакет Представителя</div>
+                <div class="demo-subtitle" data-i18n="d6_desc">Англоязычная ссылка для рассылки в агентства Дубая, Стамбула, Сеула и СМИ — переключает весь хаб на EN.</div>
+                <a href="index.html?lang=en" class="demo-link">
+                    <span data-i18n="d6_btn">Открыть EN-версию для мира &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Express Calculator -->
+    <div class="calc-box">
+        <div class="calc-header">
+            <div>
+                <h3 data-i18n="calc_title">⚡ Экспресс-Калькулятор Агентства &amp; Доли Представителя</h3>
+                <p data-i18n="calc_sub">Рассчитайте оборот и прибыль связки «Москва (Глобал Плюс) → Дубай / Мир» при масштабировании ростера моделей.</p>
+            </div>
+            <div class="currency-switch">
+                <button class="cur-btn active" data-cur="USD" onclick="setCurrency('USD')">USD ($)</button>
+                <button class="cur-btn" data-cur="AED" onclick="setCurrency('AED')">AED (د.إ)</button>
+                <button class="cur-btn" data-cur="RUB" onclick="setCurrency('RUB')">RUB (₽)</button>
+            </div>
+        </div>
+
+        <div class="calc-controls">
+            <div class="calc-input-group">
+                <label data-i18n="calc_l1">Активных моделей на букинге в месяц:</label>
+                <input type="range" class="calc-slider" id="cModels" min="5" max="100" step="5" value="20" oninput="updateExpressCalc()">
+                <div class="calc-val-display" id="cModelsVal">20</div>
+            </div>
+            <div class="calc-input-group">
+                <label data-i18n="calc_l2">Средняя ставка за съемочный день (USD база):</label>
+                <input type="range" class="calc-slider" id="cRate" min="300" max="2500" step="50" value="700" oninput="updateExpressCalc()">
+                <div class="calc-val-display" id="cRateVal">$700</div>
+            </div>
+            <div class="calc-input-group">
+                <label data-i18n="calc_l3">Съемок на 1 модель в месяц:</label>
+                <input type="range" class="calc-slider" id="cBookings" min="1" max="10" step="1" value="3" oninput="updateExpressCalc()">
+                <div class="calc-val-display" id="cBookingsVal">3</div>
+            </div>
+            <div class="calc-input-group">
+                <label data-i18n="calc_l4">Ваша комиссия агентства (% от gross):</label>
+                <input type="range" class="calc-slider" id="cAgencyPct" min="10" max="30" step="1" value="20" oninput="updateExpressCalc()">
+                <div class="calc-val-display" id="cAgencyPctVal">20%</div>
+            </div>
+            <div class="calc-input-group">
+                <label data-i18n="calc_l5">Доля представителя (% от комиссии агентства):</label>
+                <input type="range" class="calc-slider" id="cRepPct" min="10" max="40" step="5" value="25" oninput="updateExpressCalc()">
+                <div class="calc-val-display" id="cRepPctVal">25%</div>
+            </div>
+        </div>
+
+        <div class="calc-results">
+            <div>
+                <div class="res-item-title" data-i18n="res_gross">Валовый оборот (GMV / мес)</div>
+                <div class="res-item-val gold" id="rGross">$42,000</div>
+            </div>
+            <div>
+                <div class="res-item-title" data-i18n="res_agency">Комиссия агентства / мес</div>
+                <div class="res-item-val" id="rAgency">$8,400</div>
+            </div>
+            <div>
+                <div class="res-item-title" data-i18n="res_rep">Доход представителя / мес</div>
+                <div class="res-item-val gold" id="rRep">$2,100</div>
+            </div>
+            <div>
+                <div class="res-item-title" data-i18n="res_models">Выплата моделям (pool / мес)</div>
+                <div class="res-item-val" id="rModels">$33,600</div>
+            </div>
+            <div>
+                <div class="res-item-title" data-i18n="res_season">Потенциал сезона Дубая (7 мес)</div>
+                <div class="res-item-val gold" id="rSeason">$294,000</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: 90-Day Expansion Timeline -->
+    <h2 class="section-heading" data-i18n="sec4_heading">Дорожная Карта Запуска за 90 Дней (Москва → Дубай → Мир)</h2>
+    <div class="timeline-grid">
+        <div class="timeline-card">
+            <div class="timeline-day" data-i18n="t1_day">Дни 1–7</div>
+            <div class="timeline-step" data-i18n="t1_step">Хартия и Распределение Ролей</div>
+            <div class="timeline-desc" data-i18n="t1_desc">Фиксация стандарта «0 ₽ предоплат с моделей», разделение зон: Москва (скаутинг/PR/студии) и Вы (IT/ОАЭ/сделки).</div>
+        </div>
+        <div class="timeline-card">
+            <div class="timeline-day" data-i18n="t2_day">Дни 8–21</div>
+            <div class="timeline-step" data-i18n="t2_step">Цифровой Скаутинг &amp; Полароиды</div>
+            <div class="timeline-desc" data-i18n="t2_desc">Сбор 30–50 свежих лиц через школы танцев, вузы и Telegram по стандарту 4 чистых полароида + видео проходки.</div>
+        </div>
+        <div class="timeline-card">
+            <div class="timeline-day" data-i18n="t3_day">Дни 22–45</div>
+            <div class="timeline-step" data-i18n="t3_step">Трамплин: Стамбул &amp; Азия</div>
+            <div class="timeline-desc" data-i18n="t3_desc">Быстрые публикации и коммерческий опыт в Турции и Азии (по рабочим контрактам), пока готовятся документы в ОАЭ.</div>
+        </div>
+        <div class="timeline-card">
+            <div class="timeline-day" data-i18n="t4_day">Дни 46–60</div>
+            <div class="timeline-step" data-i18n="t4_step">Выход в Дубай (B2B + Compliance)</div>
+            <div class="timeline-desc" data-i18n="t4_desc">Рассылка пакетных бордов партнерам в ОАЭ, настройка UAE Advertiser Permits, фриланс-виз и банковских счетов ОАЭ/СНГ.</div>
+        </div>
+        <div class="timeline-card">
+            <div class="timeline-day" data-i18n="t5_day">Дни 61–75</div>
+            <div class="timeline-step" data-i18n="t5_step">Сеть Представителей &amp; Мировой PR</div>
+            <div class="timeline-desc" data-i18n="t5_desc">Подключение партнеров в ОАЭ, Турции, Корее и Европе через EN-версию этого хаба; PR-кейсы в модных медиа.</div>
+        </div>
+        <div class="timeline-card">
+            <div class="timeline-day" data-i18n="t6_day">Дни 76–90</div>
+            <div class="timeline-step" data-i18n="t6_step">Продакшн-Пакеты &amp; AI Twins</div>
+            <div class="timeline-desc" data-i18n="t6_desc">Запуск съемок «под ключ» для e-commerce Дубая и лицензирование цифровых двойников моделей с роялти.</div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p data-i18n="footer_copy">© 2026 Unity Models × Глобал Плюс (Global Team Partners). Международный штаб развития, PR и координации представителей.</p>
+    <p style="margin-top: 8px; opacity: 0.78;" data-i18n="footer_sub">Глобальные коридоры экспансии: Москва • Санкт-Петербург • Стамбул • Шанхай • Сеул • Токио • Бангкок • Дубай • Париж • Милан.</p>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+const INDEX_DICT = {
+    ru: {
+        hero_pill: 'GLOBAL PLUS × UNITY MODELS 2026',
+        hero_h1: 'Штаб Экспансии: Москва → Дубай <span class="cross">&times;</span> <span class="highlight">Глобальный Хаб Действий</span>',
+        hero_sub: 'Операционная система для основателя, представителя «Глобал Плюс» в Москве и международных представителей по всему миру: выход моделей из РФ в Стамбул, Азию, Дубай и мировые столицы, PR-продвижение, скрипты и экономика букинга.',
+        badge_moscow: '👑 Представительство в Москве: Глобал Плюс (Global Plus)',
+        badge_tech: '🤖 Платформа & ИИ-Скаутинг: Oscar AI • Global Team Partners',
+        fast_title: '⚡ Быстрый запуск и ключевые модули:',
+        fast_office: '🖥️ Терминал Представителя →',
+        fast_playbook: '🌍 Плейбук ТОП-Агентств →',
+        fast_scripts: '💬 Скрипты, PR & Возражения →',
+        fast_markets: '🗺️ Матрица 14 Стран →',
+        fast_pager: '📄 Меморандум А4 (PDF) →',
+        fast_calc: '💰 Калькулятор Сплитов →',
+        stat_1: 'Глобальный рынок моделинга',
+        stat_2_val: 'Окт–Апр',
+        stat_2: 'Пик сезона в Дубае (+ Рамадан)',
+        stat_3: 'Дневная ставка модели в Дубае',
+        stat_4_val: '0 ₽ / $0',
+        stat_4: 'Хартия «Без предоплат с моделей»',
+        stat_5: 'Комиссия материнского агентства',
+        stat_6_val: '4 этапа',
+        stat_6: 'РФ → Стамбул/Азия → Дубай → Мир',
+        sec1_heading: 'Стратегические Модули & Действия для Москвы и Мира',
+        c1_title: 'Терминал Представителя & Задачи',
+        c1_badge: 'РАБОЧЕЕ МЕСТО',
+        c1_desc: 'Четкое разделение действий: что делаете вы (технологии, Дубай, глобальные контракты), что делает представитель «Глобал Плюс» в Москве (скаутинг, школы, фотографы, PR-встречи) и как работают страновые представители за рубежом. Интерактивные чек-листы с сохранением.',
+        c1_btn: 'Открыть Рабочий Терминал →',
+        c2_title: 'Плейбук ТОП-Агентств: РФ → Дубай → Мир',
+        c2_badge: 'КЕЙСЫ 2026',
+        c2_desc: 'Практика IMG (#WLYG), Elite World Group, DNA, Avant Moscow, Grace и Lumpen. Почему шенген 2025–2026 закрыл быстрые вылеты в Париж и как вести моделей через Стамбул и Азию в Дубай: визы, UAE Advertiser Permit, нейтральные банки и AI Digital Twins.',
+        c2_btn: 'Изучить Плейбук Экспансии →',
+        c3_title: 'Боевые Скрипты, PR & Офферы',
+        c3_badge: 'В 1 КЛИК',
+        c3_desc: 'Готовые двуязычные сообщения для Telegram, WhatsApp и email: рекрутинг моделей в РФ (без предоплат), заход к хост-агентствам в Дубае (Bareface/MMG-уровень), продажа пакетных съемок брендам, поиск представителей в странах мира и пресс-релиз для СМИ.',
+        c3_btn: 'Открыть Скрипты и PR-Киты →',
+        c4_title: 'Матрица 14 Стран & Представителей',
+        c4_badge: 'ГЛОБАЛЬНЫЙ ПИАР',
+        c4_desc: 'Интерактивная карта рынков: Москва, СПб, Дубай, Абу-Даби, Стамбул, Шанхай/Гуанчжоу, Сеул, Токио, Бангкок, Алматы, Милан, Париж, Лондон, Нью-Йорк. Визовый коридор для паспорта РФ, клиенты, ставки и приоритет найма представителей.',
+        c4_btn: 'Открыть Матрицу Рынков →',
+        c5_title: 'Партнерский 1-Pager (А4 / PDF)',
+        c5_badge: 'В РУКИ / PDF',
+        c5_desc: 'Чистый одностраничный меморандум формата А4 под печать и отправку в PDF на русском или английском: суть Unity Models × Global Plus, гарантия 0 ₽ предоплат, выгоды для моделей, фотостудий, хост-агентств Дубая и страновых партнеров.',
+        c5_btn: 'Открыть Меморандум А4 →',
+        c6_title: 'Финмодель & Комиссии Представителей',
+        c6_badge: 'ROI МОДЕЛЬ',
+        c6_desc: 'Подробный калькулятор сплитов: Mother Agency (10–20%), сплит с дубайским/азиатским партнером, доля представителя в Москве и стране присутствия, а также маржа от пакетного продакшена (Swipecast Pro модель) и AI Digital Twins.',
+        c6_btn: 'Открыть Полную Финмодель →',
+        sec2_heading: 'Живые Цифровые Продукты & Витрины Unity Models',
+        d1_title: '🇷🇺 Официальный сайт Unity Models (RU)',
+        d1_desc: 'Русскоязычная витрина агентства с описанием Oscar AI, дивизионами и лентой живых кастингов из Supabase.',
+        d2_title: '🇬🇧 Global Website Unity Models (EN)',
+        d2_desc: 'Международный сайт для брендов Дубая, Европы, Азии и США с презентацией AI-платформы и контактами.',
+        d3_title: '👤 Talent Hub (Кабинет Модели)',
+        d3_desc: 'Загрузка 4K-портфолио в облако, статус доступности и текущий город модели для быстрого подбора под съемки.',
+        d4_title: '🎬 Director Portal (Для Кастинг-Директоров)',
+        d4_desc: 'Публикация кастингов из любой страны с мгновенным сохранением в базу и отображением на главной странице.',
+        d5_title: '🤖 Oscar AI (@unitymodelsbot)',
+        d5_desc: 'Telegram-бот: мультиязычный разбор параметров по тексту/фото, пошаговая анкета и подбор кастингов по странам.',
+        d6_title: '📣 Глобальный PR & Пакет Представителя',
+        d6_desc: 'Англоязычная ссылка для рассылки в агентства Дубая, Стамбула, Сеула и СМИ — переключает весь хаб на EN.',
+        d_open: 'Открыть сайт ↗',
+        d3_btn: 'Открыть Talent Hub ↗',
+        d4_btn: 'Открыть Director Portal ↗',
+        d5_btn: 'Запустить бота ↗',
+        d6_btn: 'Открыть EN-версию для мира →',
+        calc_title: '⚡ Экспресс-Калькулятор Агентства & Доли Представителя',
+        calc_sub: 'Рассчитайте оборот и прибыль связки «Москва (Глобал Плюс) → Дубай / Мир» при масштабировании ростера моделей.',
+        calc_l1: 'Активных моделей на букинге в месяц:',
+        calc_l2: 'Средняя ставка за съемочный день (USD база):',
+        calc_l3: 'Съемок на 1 модель в месяц:',
+        calc_l4: 'Ваша комиссия агентства (% от gross):',
+        calc_l5: 'Доля представителя (% от комиссии агентства):',
+        res_gross: 'Валовый оборот (GMV / мес)',
+        res_agency: 'Комиссия агентства / мес',
+        res_rep: 'Доход представителя / мес',
+        res_models: 'Выплата моделям (pool / мес)',
+        res_season: 'Потенциал сезона Дубая (7 мес)',
+        sec4_heading: 'Дорожная Карта Запуска за 90 Дней (Москва → Дубай → Мир)',
+        t1_day: 'Дни 1–7',
+        t1_step: 'Хартия и Распределение Ролей',
+        t1_desc: 'Фиксация стандарта «0 ₽ предоплат с моделей», разделение зон: Москва (скаутинг/PR/студии) и Вы (IT/ОАЭ/сделки).',
+        t2_day: 'Дни 8–21',
+        t2_step: 'Цифровой Скаутинг & Полароиды',
+        t2_desc: 'Сбор 30–50 свежих лиц через школы танцев, вузы и Telegram по стандарту 4 чистых полароида + видео проходки.',
+        t3_day: 'Дни 22–45',
+        t3_step: 'Трамплин: Стамбул & Азия',
+        t3_desc: 'Быстрые публикации и коммерческий опыт в Турции и Азии (по рабочим контрактам), пока готовятся документы в ОАЭ.',
+        t4_day: 'Дни 46–60',
+        t4_step: 'Выход в Дубай (B2B + Compliance)',
+        t4_desc: 'Рассылка пакетных бордов партнерам в ОАЭ, настройка UAE Advertiser Permits, фриланс-виз и банковских счетов ОАЭ/СНГ.',
+        t5_day: 'Дни 61–75',
+        t5_step: 'Сеть Представителей & Мировой PR',
+        t5_desc: 'Подключение партнеров в ОАЭ, Турции, Корее и Европе через EN-версию этого хаба; PR-кейсы в модных медиа.',
+        t6_day: 'Дни 76–90',
+        t6_step: 'Продакшн-Пакеты & AI Twins',
+        t6_desc: 'Запуск съемок «под ключ» для e-commerce Дубая и лицензирование цифровых двойников моделей с роялти.'
+    },
+    en: {
+        hero_pill: 'GLOBAL PLUS × UNITY MODELS 2026',
+        hero_h1: 'Expansion HQ: Moscow → Dubai <span class="cross">&times;</span> <span class="highlight">Global Action Hub</span>',
+        hero_sub: 'The operational command center for the Founder, Global Plus Moscow Representation, and International Country Representatives worldwide: scaling Russian & CIS talent into Istanbul, Asia, Dubai, and global capitals with PR playbooks, scripts, and transparent unit economics.',
+        badge_moscow: '👑 Moscow Representation: Global Plus (Глобал Плюс)',
+        badge_tech: '🤖 Platform & AI Scouting Core: Oscar AI • Global Team Partners',
+        fast_title: '⚡ Quick Launch & Core Action Modules:',
+        fast_office: '🖥️ Rep Action Terminal →',
+        fast_playbook: '🌍 Top-Agency Playbook →',
+        fast_scripts: '💬 Scripts, PR & Objections →',
+        fast_markets: '🗺️ 14-Country Matrix →',
+        fast_pager: '📄 A4 One-Pager (PDF) →',
+        fast_calc: '💰 Split & ROI Calculator →',
+        stat_1: 'Global Modeling Market',
+        stat_2_val: 'Oct–Apr',
+        stat_2: 'Dubai Peak Season (+ Ramadan)',
+        stat_3: 'Dubai Commercial Day Rate',
+        stat_4_val: '$0 / 0 ₽',
+        stat_4: 'Zero Upfront Model Fee Charter',
+        stat_5: 'Mother Agency Standard Cut',
+        stat_6_val: '4 Stages',
+        stat_6: 'RU → TR/Asia → Dubai → Global',
+        sec1_heading: 'Strategic Action Modules for Moscow & Global Representatives',
+        c1_title: 'Representative Terminal & Tasks',
+        c1_badge: 'WORKSPACE',
+        c1_desc: 'Clear division of ownership: what You execute (tech, Dubai deals, licensing), what the Global Plus Moscow Representative owns (scouting, dance schools, studio partners, local PR), and how International Country Reps expand worldwide. Persistent interactive checklists.',
+        c1_btn: 'Open Action Terminal →',
+        c2_title: 'Top-Agency Playbook: RU → Dubai → World',
+        c2_badge: '2026 CASES',
+        c2_desc: 'Lessons from IMG (#WLYG), Elite World Group, DNA, Avant Moscow, Grace & Lumpen. Why 2025–2026 Schengen limits require the Istanbul & Asia stepping-stone corridor into Dubai: UAE Advertiser Permits, freelance visas, neutral banking, and consensual AI Digital Twins.',
+        c2_btn: 'Read Expansion Playbook →',
+        c3_title: 'Outreach Scripts, PR Kits & Objections',
+        c3_badge: '1-CLICK COPY',
+        c3_desc: 'Ready-to-send bilingual outreach messages for WhatsApp, Telegram, and email: Russian talent scouting (Zero-Upfront Charter), pitching Dubai host agencies (Bareface/MMG tier), selling turnkey e-commerce lookbooks to brands, recruiting global reps, and press pitches.',
+        c3_btn: 'Open Scripts & PR Kits →',
+        c4_title: '14-Country & Representative Matrix',
+        c4_badge: 'GLOBAL PR',
+        c4_desc: 'Filterable market map covering Moscow, St. Petersburg, Dubai, Abu Dhabi, Istanbul, Shanghai/Guangzhou, Seoul, Tokyo, Bangkok, Almaty, Milan, Paris, London, and NYC — with visa realities, peak seasons, client verticals, rates, and rep recruitment priority.',
+        c4_btn: 'Explore Country Matrix →',
+        c5_title: 'Partner One-Pager (A4 / PDF Ready)',
+        c5_badge: 'PRINT / PDF',
+        c5_desc: 'Clean printable A4 executive memorandum in English or Russian for live meetings in Moscow, Dubai, or globally: Unity Models × Global Plus positioning, anti-scam charter, value prop for brands/host agencies, and country rep partnership terms.',
+        c5_btn: 'Open Printable A4 Brief →',
+        c6_title: 'Financial Model & Rep Revenue Splits',
+        c6_badge: 'ROI MODEL',
+        c6_desc: 'Detailed split calculator: Mother Agency (10–20%), Dubai/Asian host agency split, Moscow & International Country Representative revenue share, plus Swipecast Pro–style turnkey e-commerce production bundles and AI Twin residuals.',
+        c6_btn: 'Open Full Financial Model →',
+        sec2_heading: 'Live Digital Ecosystem & Portals (Unity Models)',
+        d1_title: '🇷🇺 Unity Models Website (Russian)',
+        d1_desc: 'Russian-language agency showcase featuring Oscar AI casting engine, divisions, and live Supabase casting feed.',
+        d2_title: '🇬🇧 Unity Models Website (Global EN)',
+        d2_desc: 'International brand-facing portal for Dubai, Europe, Asia, and Americas clients with live castings and bot onboarding.',
+        d3_title: '👤 Talent Hub (Model Workspace)',
+        d3_desc: 'Direct 4K portfolio uploads, live city location tracking, and weekly availability status for fast booker matching.',
+        d4_title: '🎬 Casting Director Portal',
+        d4_desc: 'Instant casting brief submission form synced directly to Supabase and live website feeds worldwide.',
+        d5_title: '🤖 Oscar AI (@unitymodelsbot)',
+        d5_desc: 'Multilingual Telegram casting assistant: extracts stats from text or photos, runs onboarding wizard, and searches events by country.',
+        d6_title: '📣 International PR & Rep Share Link',
+        d6_desc: 'Send this direct English URL (?lang=en) to agencies, brands, and country representatives in Dubai, Istanbul, Asia, or Europe.',
+        d_open: 'Open Live Site ↗',
+        d3_btn: 'Open Talent Hub ↗',
+        d4_btn: 'Open Director Portal ↗',
+        d5_btn: 'Launch Telegram Bot ↗',
+        d6_btn: 'Copy / Open Global EN Link →',
+        calc_title: '⚡ Express Agency & Representative Revenue Calculator',
+        calc_sub: 'Model monthly gross volume, agency commission, and representative payout across Moscow → Dubai → Global placements.',
+        calc_l1: 'Active Booked Models / Month:',
+        calc_l2: 'Average Shoot Day Rate (USD base):',
+        calc_l3: 'Bookings per Model / Month:',
+        calc_l4: 'Agency Commission (% of Gross):',
+        calc_l5: 'Representative Share (% of Agency Net):',
+        res_gross: 'Monthly Gross Volume (GMV)',
+        res_agency: 'Agency Commission / Mo',
+        res_rep: 'Representative Payout / Mo',
+        res_models: 'Model Net Pool / Mo',
+        res_season: 'Dubai Peak Season (7 Mo GMV)',
+        sec4_heading: '90-Day Global Launch Roadmap (Moscow → Dubai → World)',
+        t1_day: 'Days 1–7',
+        t1_step: 'Charter & Ownership Split',
+        t1_desc: 'Lock Zero-Upfront-Fee Charter, align legal/banking checklists (UAE/KZ/AM), and split roles: Moscow Rep (local) vs Founder (global/tech).',
+        t2_day: 'Days 8–21',
+        t2_step: 'Phygital Scouting & Polaroid QA',
+        t2_desc: 'Onboard 30–50 vetted Russian/CIS faces via dance schools, universities & Telegram using strict 4-polaroid + walk-video standards.',
+        t3_day: 'Days 22–45',
+        t3_step: 'Stepping Stones: Istanbul & Asia',
+        t3_desc: 'Build editorial tearsheets in Turkey and paid commercial volume in China/Seoul/Bangkok via sponsored work visas before Dubai/EU.',
+        t4_day: 'Days 46–60',
+        t4_step: 'Dubai Entry (B2B + Permits)',
+        t4_desc: 'Send curated comp packages to Dubai host agencies; align UAE Advertiser Permits, freelance visas & neutral payout rails.',
+        t5_day: 'Days 61–75',
+        t5_step: 'Global Reps & PR Blitz',
+        t5_desc: 'Recruit partner representatives in Dubai, Istanbul, Seoul & Europe using this EN hub; pitch fashion-tech PR case studies.',
+        t6_day: 'Days 76–90',
+        t6_step: 'Turnkey Studios & AI Twins',
+        t6_desc: 'Launch fixed-price Dubai e-commerce lookbook bundles and opt-in consensual Digital Twin licensing with model residuals.'
+    }
+};
+
+let currency = 'USD';
+const RATES = { USD: 1, AED: 3.67, RUB: 95 };
+const SYMBOLS = { USD: '$', AED: 'AED ', RUB: '₽' };
+
+function setCurrency(cur) {
+    currency = cur;
+    document.querySelectorAll('.cur-btn').forEach(b => b.classList.toggle('active', b.dataset.cur === cur));
+    updateExpressCalc();
+}
+
+function fmtMoney(usdVal) {
+    const converted = Math.round(usdVal * RATES[currency]);
+    const locale = HubI18n.getLang() === 'ru' ? 'ru-RU' : 'en-US';
+    if (currency === 'RUB') return converted.toLocaleString(locale) + ' ₽';
+    if (currency === 'AED') return 'AED ' + converted.toLocaleString(locale);
+    return '$' + converted.toLocaleString(locale);
+}
+
+function updateExpressCalc() {
+    const models = parseInt(document.getElementById('cModels').value, 10);
+    const rate = parseInt(document.getElementById('cRate').value, 10);
+    const bookings = parseInt(document.getElementById('cBookings').value, 10);
+    const agencyPct = parseInt(document.getElementById('cAgencyPct').value, 10);
+    const repPct = parseInt(document.getElementById('cRepPct').value, 10);
+
+    document.getElementById('cModelsVal').textContent = models;
+    document.getElementById('cRateVal').textContent = fmtMoney(rate);
+    document.getElementById('cBookingsVal').textContent = bookings;
+    document.getElementById('cAgencyPctVal').textContent = agencyPct + '%';
+    document.getElementById('cRepPctVal').textContent = repPct + '%';
+
+    const gross = models * rate * bookings;
+    const agencyNet = gross * (agencyPct / 100);
+    const repShare = agencyNet * (repPct / 100);
+    const modelPool = gross - agencyNet;
+    const season7 = gross * 7;
+
+    document.getElementById('rGross').textContent = fmtMoney(gross);
+    document.getElementById('rAgency').textContent = fmtMoney(agencyNet);
+    document.getElementById('rRep').textContent = fmtMoney(repShare);
+    document.getElementById('rModels').textContent = fmtMoney(modelPool);
+    document.getElementById('rSeason').textContent = fmtMoney(season7);
+}
+
+HubI18n.onChange(() => updateExpressCalc());
+HubI18n.init(INDEX_DICT);
+updateExpressCalc();
+</script>
+</body>
+</html>

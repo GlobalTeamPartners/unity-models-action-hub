@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Models × Global Plus | Representative Action Terminal (RU / EN)</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hub.css">
+    <style>
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+        .roadmap-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            padding: 20px;
+            border-top: 3px solid var(--gold);
+        }
+        .roadmap-card.emerald-top { border-top-color: var(--emerald); }
+        .roadmap-card.purple-top { border-top-color: var(--purple); }
+        .roadmap-phase {
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+        }
+        .roadmap-card.emerald-top .roadmap-phase { color: #6EE7B7; }
+        .roadmap-card.purple-top .roadmap-phase { color: #C4B5FD; }
+        .roadmap-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.18rem;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        .roadmap-card ul {
+            padding-left: 18px;
+            color: var(--text-dim);
+            font-size: 0.86rem;
+            line-height: 1.55;
+        }
+        .roadmap-card li { margin-bottom: 6px; }
+        .reset-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border-card);
+            color: var(--text-dim);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .reset-btn:hover {
+            border-color: var(--red);
+            color: #FCA5A5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-utility-bar">
+    <div class="top-left-nav">
+        <a href="index.html" class="top-logo-link">
+            <img src="images/logo.png" alt="Unity Models" onerror="this.onerror=null;this.src='https://unityspirit.github.io/unity-models-platform/images/logo.png'">
+            <span data-i18n="brand_name">Unity Models × Global Plus</span>
+        </a>
+        <a href="index.html" class="nav-back-pill" data-i18n="back_hub">← Главный Хаб Действий</a>
+    </div>
+    <div class="top-right-controls">
+        <a href="https://t.me/unitymodelsbot" target="_blank" class="nav-back-pill" data-i18n="bot_btn">🤖 @unitymodelsbot</a>
+        <div class="lang-switcher" aria-label="Language Switcher">
+            <button class="lang-btn active" data-lang="ru" onclick="HubI18n.setLang('ru')">🇷🇺 RU</button>
+            <button class="lang-btn" data-lang="en" onclick="HubI18n.setLang('en')">🇬🇧 EN</button>
+        </div>
+    </div>
+</div>
+
+<header class="hero-header">
+    <div class="brand-pill">
+        <span class="dot"></span>
+        <span data-i18n="hero_pill">OPERATIONAL COMMAND TERMINAL • 2026</span>
+    </div>
+    <h1 data-i18n-html="hero_h1">Терминал Представителя <span class="cross">&amp;</span> <span class="highlight">План Действий</span></h1>
+    <p class="subtitle" data-i18n="hero_sub">Ежедневные приоритеты, пошаговые чек-листы (с автосохранением в браузере) и распределение ролей между Основателем, Московским офисом Глобал Плюс и международными представителями.</p>
+</header>
+
+<div class="container">
+
+    <!-- Hot Focus Banner -->
+    <div class="hot-deal-banner">
+        <div>
+            <h3 data-i18n="hot_title">🔥 Главный фокус запуска сейчас: Коридор Москва → Стамбул/Азия → Дубай</h3>
+            <p data-i18n="hot_desc">Собираем первый элитный ростер в Москве (Хартия 0 ₽ предоплаты + 100% единые Digitals), подключаем 3–5 хост-агентств в Дубае под пиковый сезон (октябрь–апрель + коллекции Рамадана) и масштабируем PR через представителей в странах мира.</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="scripts.html" class="fast-btn gold" data-i18n="hot_btn_scripts">💬 Открыть скрипты &rarr;</a>
+            <a href="onepager.html" class="fast-btn emerald" data-i18n="hot_btn_pager">📄 Скачать 1-Pager (PDF)</a>
+        </div>
+    </div>
+
+    <!-- Role Selector Tabs -->
+    <div class="role-tabs" id="roleTabs">
+        <button class="role-tab-btn active" data-role="moscow" onclick="selectRole('moscow')" data-i18n="tab_moscow">🏢 Представитель в Москве (Глобал Плюс)</button>
+        <button class="role-tab-btn" data-role="founder" onclick="selectRole('founder')" data-i18n="tab_founder">👑 Основатель / HQ (Платформа & Дубай)</button>
+        <button class="role-tab-btn" data-role="global" onclick="selectRole('global')" data-i18n="tab_global">🌍 Представители в странах (PR & B2B)</button>
+    </div>
+
+    <!-- Role Dynamic Blueprint -->
+    <div id="roleRoadmap" class="roadmap-grid"></div>
+
+    <!-- Interactive Checklist Box -->
+    <div class="checklist-box">
+        <div class="checklist-header">
+            <div>
+                <h2 class="checklist-title" id="checklistTitle">—</h2>
+            </div>
+            <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                <span class="progress-pill" id="progressPill">0 / 0</span>
+                <button class="reset-btn" onclick="resetCurrentRole()" data-i18n="btn_reset">Сбросить прогресс</button>
+            </div>
+        </div>
+        <div class="checklist-grid" id="checklistGrid"></div>
+    </div>
+
+    <!-- Navigation Strip -->
+    <h2 class="section-heading" data-i18n="nav_heading">Быстрый переход к инструментам</h2>
+    <div class="fast-actions-bar">
+        <div class="fast-actions-title" data-i18n="nav_label">🔗 Все модули Хаба и живые платформы:</div>
+        <div class="fast-actions-links">
+            <a href="playbook.html" class="fast-btn gold" data-i18n="link_playbook">🌍 Плейбук ТОП-Агентств</a>
+            <a href="scripts.html" class="fast-btn crimson" data-i18n="link_scripts">💬 Скрипты & Возражения</a>
+            <a href="markets.html" class="fast-btn" data-i18n="link_markets">🗺️ 14 Рынков и Ставки</a>
+            <a href="calculator.html" class="fast-btn" data-i18n="link_calc">💰 Калькулятор Сплитов</a>
+            <a href="https://globalteamgroup.github.io/unity-models-platform/" target="_blank" class="fast-btn" data-i18n="live_ru">🌐 Платформа RU &nearr;</a>
+            <a href="https://unityspirit.github.io/unity-models-platform/" target="_blank" class="fast-btn" data-i18n="live_en">🌐 Platform EN &nearr;</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p data-i18n="footer_copy">© 2026 Unity Models × Глобал Плюс (Global Team Partners).</p>
+    <p style="margin-top:8px;" data-i18n="footer_sub">Глобальные коридоры экспансии: Москва • Санкт-Петербург • Стамбул • Шанхай • Сеул • Токио • Дубай • Париж • Милан.</p>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+const DICT = {
+    ru: {
+        hero_pill: 'ОПЕРАЦИОННЫЙ ТЕРМИНАЛ ЗАПУСКА • 2026',
+        hero_h1: 'Терминал Представителя <span class="cross">&amp;</span> <span class="highlight">План Действий</span>',
+        hero_sub: 'Ежедневные приоритеты, пошаговые чек-листы (с автосохранением в браузере) и чёткое разделение задач между Основателем, Московским представителем «Глобал Плюс» и международными представителями.',
+        hot_title: '🔥 Главный фокус прямо сейчас: Коридор Москва → Стамбул/Азия → Дубай',
+        hot_desc: 'В Москве формируем первый сильный ростер без предоплат с моделей и с эталонными Digitals; параллельно в Дубае закрываем прямые контракты с хост-агентствами и брендами на сезон Окт–Апр и Рамадан.',
+        hot_btn_scripts: '💬 Открыть скрипты →',
+        hot_btn_pager: '📄 Меморандум А4 (PDF)',
+        tab_moscow: '🏢 Представитель в Москве (Глобал Плюс)',
+        tab_founder: '👑 Основатель / HQ (Платформа & Дубай)',
+        tab_global: '🌍 Международные Представители (PR & Мир)',
+        btn_reset: 'Сбросить прогресс',
+        nav_heading: 'Быстрый переход к рабочим модулям',
+        nav_label: '🔗 Материалы под рукой:',
+        link_playbook: '🌍 Плейбук ТОП-Агентств',
+        link_scripts: '💬 Скрипты & Возражения',
+        link_markets: '🗺️ 14 Рынков и Ставки',
+        link_calc: '💰 Калькулятор Сплитов',
+        done_word: 'выполнено'
+    },
+    en: {
+        hero_pill: 'OPERATIONAL COMMAND TERMINAL • 2026',
+        hero_h1: 'Representative Terminal <span class="cross">&amp;</span> <span class="highlight">Action Plan</span>',
+        hero_sub: 'Daily priorities, browser-saved step-by-step checklists, and clear execution ownership between the Founder, Moscow Global Plus Representative, and International Country Partners.',
+        hot_title: '🔥 Top Priority Right Now: Moscow → Istanbul/Asia → Dubai Corridor',
+        hot_desc: 'Build a verified Zero-Upfront model roster in Moscow with uniform Digitals; simultaneously lock Dubai host agency & brand deals for Oct–Apr peak and Ramadan campaigns.',
+        hot_btn_scripts: '💬 Open Scripts →',
+        hot_btn_pager: '📄 Print A4 1-Pager (PDF)',
+        tab_moscow: '🏢 Moscow Rep (Global Plus)',
+        tab_founder: '👑 Founder / HQ (Platform & Dubai)',
+        tab_global: '🌍 Country Representatives (PR & Global)',
+        btn_reset: 'Reset Progress',
+        nav_heading: 'Quick Access to Tools',
+        nav_label: '🔗 Essential Modules:',
+        link_playbook: '🌍 Top-Agency Playbook',
+        link_scripts: '💬 Scripts & Objections',
+        link_markets: '🗺️ 14-Market Matrix',
+        link_calc: '💰 Commission Calculator',
+        done_word: 'completed'
+    }
+};
+
+const ROLE_DATA = {
+    moscow: {
+        ru: {
+            title: 'Чек-лист Московского представителя (Глобал Плюс)',
+            phases: [
+                {
+                    cls: '',
+                    phase: 'Неделя 1–2 • База и Статус',
+                    title: 'Легитимный офлайн-штаб в Москве',
+                    items: [
+                        'Утвердить с Основателем единый статус: Московское представительство Unity Models на базе Глобал Плюс.',
+                        'Принять Хартию «0 ₽ предоплаты с моделей» (никаких платных портфолио/школ) — главный козырь против серых агентств.',
+                        'Наладить 2 партнёрские студии в Москве (Белый циклорама-зал + естественный свет) для еженедельных бесплатных снэпов (Digitals).'
+                    ]
+                },
+                {
+                    cls: 'emerald-top',
+                    phase: 'Неделя 3–4 • Скаутинг и Поток',
+                    title: 'Сбор первых 25–30 сильных лиц',
+                    items: [
+                        'Проводить живые и онлайн опен-коллы каждые 2 недели (ориентир: стандарты Avant / Grace / Lumpen).',
+                        'Подключить топ-скаутов и преподавателей дефиле/фотопозирования в Москве и СПб через реферальный сплит 10–20%.',
+                        'Снять каждой модели единый стандарт: 4 Digitals, проходка (runway walk), видео-визитка EN + замер параметров в бот.'
+                    ]
+                },
+                {
+                    cls: 'purple-top',
+                    phase: 'Месяц 2+ • Экспорт и Командировки',
+                    title: 'Трамплины и отправка в Дубай',
+                    items: [
+                        'Формировать «готовые книги» (tearsheets + e-com брендов уровня ЦУМ/Lime/12Storeez) до подачи за рубеж.',
+                        'Запускать новичков через Стамбул и Азию (Шанхай/Сеул/Бангкок) на 60–90 дней для опыта без визовых барьеров ЕС.',
+                        'Координировать визы, перелёты и безопасный депозитный учёт (mother agency 10%) для выхода сильных лиц на рынок Дубая.'
+                    ]
+                }
+            ],
+            checklist: [
+                'Подписать внутренний протокол взаимодействия «Глобал Плюс ↔ Unity Models HQ» и закрепить территорию (Москва/РФ).',
+                'Опубликовать анонс официального представительства в Telegram-каналах и бизнес-сети Глобал Плюс.',
+                'Подготовить переговорное пространство в Москве или слот на фотостудии для еженедельных Digitals-сессий.',
+                'Провести аудит текущих 10+ российских модельных школ/фотографов и отправить оффер о партнёрстве (скрипт №2).',
+                'Зарегистрировать первых 15–20 новых лиц через @unitymodelsbot с полными замерами и чистыми снэпами без макияжа.',
+                'Отснять всем кандидатам 30-секундные видео-визитки на английском (по образцу IMG #WLYG).',
+                'Сформировать пул из 3–5 коммерческих клиентов в РФ (маркетплейсы, локальный люкс) для быстрых первых гонораров в Москве.',
+                'Раз в неделю синхронизироваться с Основателем по отобранным лицам для отправки пакета в хост-агентства Стамбула и Дубая.'
+            ]
+        },
+        en: {
+            title: 'Moscow Representative Checklist (Global Plus)',
+            phases: [
+                {
+                    cls: '',
+                    phase: 'Weeks 1–2 • Foundation & Trust',
+                    title: 'Official Moscow Offline Desk',
+                    items: [
+                        'Align mandate with HQ: Official Moscow representation powered by Global Plus.',
+                        'Adopt Zero-Upfront Charter ($0/0 RUB upfront from talent) — instant differentiation from pay-to-play scammers.',
+                        'Secure 2 daylight studio slots in Moscow for standardized weekly clean Digitals (Polas).'
+                    ]
+                },
+                {
+                    cls: 'emerald-top',
+                    phase: 'Weeks 3–4 • Scouting Engine',
+                    title: 'Onboard First 25–30 Export-Ready Faces',
+                    items: [
+                        'Host bi-weekly open calls in Moscow + St. Petersburg inspired by Avant / Grace / Lumpen casting bars.',
+                        'Partner with independent scouts, runway coaches, and e-com photographers via referral split.',
+                        'Ensure every profile has 4 clean Polas, walk video, EN intro clip, and verified measurements in @unitymodelsbot.'
+                    ]
+                },
+                {
+                    cls: 'purple-top',
+                    phase: 'Month 2+ • Stepping Stones & UAE',
+                    title: 'Book-Building & Placement Exports',
+                    items: [
+                        'Build real Russian e-com & editorial tearsheets first so models do not arrive abroad as raw novices.',
+                        'Route new faces through zero-visa/fast-visa Asia & Istanbul 60–90 day placements (due to 2025–2026 Schengen multi-visa limits).',
+                        'Manage advance ledger transparency, clean banking rails, and 10% Mother Agency overrides on Dubai contracts.'
+                    ]
+                }
+            ],
+            checklist: [
+                'Finalize Moscow coordination mandate & territory terms between Global Plus and Unity Models HQ.',
+                'Announce official Moscow representation across Global Plus executive & Telegram network.',
+                'Book recurring Moscow studio hours for standardized natural-light Digitals and walk videos.',
+                'Reach out to 10+ photographers, stylists & model coaches in Moscow/SPb using Script #2.',
+                'Onboard first 15–20 vetted models into @unitymodelsbot & Supabase with complete metrics.',
+                'Record 30-second English slates/self-tapes for every export candidate.',
+                'Close 3–5 Moscow commercial/lookbook shoots so the local desk generates immediate cashflow.',
+                'Hold weekly roster review sync with HQ to nominate top faces for Istanbul, Asia & Dubai boards.'
+            ]
+        }
+    },
+    founder: {
+        ru: {
+            title: 'Чек-лист Основателя / HQ (Технологии, Дубай и Legal)',
+            phases: [
+                {
+                    cls: '',
+                    phase: 'Неделя 1–2 • Техстек и Матчинг',
+                    title: 'Апгрейд Платформы и Бота',
+                    items: [
+                        'Довести @unitymodelsbot и web-платформу (RU + EN) до стабильной работы без 429 квот — кешировать открытые кастинги в Supabase.',
+                        'Расширить матчинг по полям top-агентств: Бюст/Талия/Бёдра, цвет глаз/волос, размер обуви, портфолио, города/визы.',
+                        'Сгенерировать единые Share-композитки (Comp Cards) в PDF/веб-ссылке для мгновенной отправки клиентам в WhatsApp и Email.'
+                    ]
+                },
+                {
+                    cls: 'emerald-top',
+                    phase: 'Неделя 3–4 • Дубай и Юр. структура',
+                    title: 'Хост-агентства и Комплаенс ОАЭ',
+                    items: [
+                        'Установить прямые Mother-Agency контакты с Bareface, MMG Models и Diva Dubai под сезон Окт–Апр и Рамадан.',
+                        'Внедрить строгий комплаенс ОАЭ: Visitor Advertiser Permit (3 мес через агентство) или UAE Media Council Permit / GoFreelance (~AED 7,500–10,000+).',
+                        'Настроить нейтральные финансовые рельсы (ОАЭ/Казахстан/Грузия/Армения) для приёма B2B-оплат с циклом 60–90 дней.'
+                    ]
+                },
+                {
+                    cls: 'purple-top',
+                    phase: 'Месяц 2+ • Digital Twins и Пиар',
+                    title: 'Лидерство и Глобальная Сеть',
+                    items: [
+                        'Запустить добровольный модуль «AI Digital Twin» (по стандарту H&M x Uncut): модель владеет лицензией и получает роялти за каждый ИИ-лукбук бренда.',
+                        'Нанять и подключить Country Reps (Дубай, Стамбул, Шанхай, Алматы, Лондон/Милан) через единую шкалу комиссий.',
+                        'Предоставлять брендам в Дубае «продакшн под ключ» (Модель + ИИ-подбор + Продюсирование) через синергию с Глобал Плюс.'
+                    ]
+                }
+            ],
+            checklist: [
+                'Настроить ежедневный парсинг/кэширование кастингов в Supabase + 24h TTL, чтобы убрать 429 ошибки поиска в @unitymodelsbot.',
+                'Добавить в профиль модели расширенные метрики (chest/waist/hips, shoe, languages, passport/visa) и авто-генератор Comp Card.',
+                'Подписать стандартный двуязычный (EN/RU) Mother Agency Split Agreement (стандарт 10% MA + 20% Booking/Host).',
+                'Провести переговоры минимум с 3 лицензированными агентствами в Дубае (Bareface / MMG / Diva / локальные бутики) на приём русских лиц.',
+                'Зафиксировать юридическую схему ОАЭ по разрешениям UAE Media Council / Visitor Advertiser Permit — ноль рисков штрафов от AED 5,000+.',
+                'Развернуть платёжные и эскроу-решения для B2B (UAE/KZ/GE/AM) и учесть 60–90-дневный кэш-гэп на выплатах моделям.',
+                'Запустить пилот «Licensed Digital Twin» для 3 первых брендов в Дубае с роялти моделям 50/50 или 70/30.',
+                'Подключить дашборд аналитики для Московского офиса (Глобал Плюс) и первых 5 зарубежных представителей.'
+            ]
+        },
+        en: {
+            title: 'Founder / HQ Checklist (Tech, Dubai Hub & Compliance)',
+            phases: [
+                {
+                    cls: '',
+                    phase: 'Weeks 1–2 • Platform & AI Core',
+                    title: 'Bot Stability & Agency Comp Cards',
+                    items: [
+                        'Eliminate 429 search limits in @unitymodelsbot by caching live castings daily in Supabase + Multi-key fallback.',
+                        'Upgrade Supabase model schema: Bust/Waist/Hips, Eyes/Hair, Shoe Size, Languages, Visa Status & Walk Video.',
+                        'Auto-generate instant sharable Comp Card URLs from bot profiles for one-click WhatsApp/Email client pitches.'
+                    ]
+                },
+                {
+                    cls: 'emerald-top',
+                    phase: 'Weeks 3–4 • Dubai Hub & Legal',
+                    title: 'Host Agencies & UAE Permits',
+                    items: [
+                        'Establish Mother Agency placement agreements with top Dubai agencies (Bareface, MMG, Diva) ahead of Oct–Apr + Ramadan peak.',
+                        'Enforce UAE compliance: 3-month Visitor Advertiser Permit via licensed agency or GoFreelance/Meydan + UAE Media Council permit.',
+                        'Set up compliant international invoicing & settlement rails (UAE/KZ/GE/AM) accommodating standard 60–90 day brand payouts.'
+                    ]
+                },
+                {
+                    cls: 'purple-top',
+                    phase: 'Month 2+ • Digital Twins & PR Scale',
+                    title: 'Ethical AI + Global Rep Rollout',
+                    items: [
+                        'Launch consensual AI Digital Twin licensing (modeled on H&M x Uncut): talent retains likeness rights + earns usage royalties.',
+                        'Onboard Country Representatives across Istanbul, Dubai, Almaty, Asia & EU with unified payout splits.',
+                        'Sell turnkey e-com & social lookbook packages (Talent + AI casting + Production) backed by Global Plus IT infrastructure.'
+                    ]
+                }
+            ],
+            checklist: [
+                'Fix 429 fallback permanently via scheduled Supabase casting sync + instant internal search.',
+                'Extend bot/web intake to full industry measurements (chest/waist/hips, shoe, languages, visas) & Digital Polas.',
+                'Publish bilingual Mother Agency Agreement (10% MA override + clear 60–90 day payout ledger).',
+                'Open active placement talks with 3+ licensed Dubai agencies (Bareface, MMG, Diva, Boutique E-com houses).',
+                'Document mandatory UAE Media Council Advertiser Permit & Visitor Permit workflow to avoid AED 5,000+ fines.',
+                'Verify neutral international settlement accounts (UAE/KZ/GE/AM) for cross-border payouts.',
+                'Draft pilot "Consent-First AI Twin License" for e-commerce brands.',
+                'Activate weekly KPI sync with Moscow Rep (Global Plus) and newly appointed International Reps.'
+            ]
+        }
+    },
+    global: {
+        ru: {
+            title: 'Чек-лист Международных Представителей (PR, Рынки, Клиенты)',
+            phases: [
+                {
+                    cls: '',
+                    phase: 'Неделя 1–2 • Авторитет в стране',
+                    title: 'Локализация и Связи',
+                    items: [
+                        'Использовать Меморандум А4 (onepager.html) на английском для встреч с местными брендами, шоурумами и кастинг-директорами.',
+                        'Составить список из 30 целевых клиентов в своём городе (модные дома, маркетплейсы, ювелирка, недвижимость, IT/ивенты).',
+                        'Разместить локальные открытые кастинги своей страны в систему Unity Models (приток локальных талантов и брендов).'
+                    ]
+                },
+                {
+                    cls: 'emerald-top',
+                    phase: 'Неделя 3–4 • PR и Коллаборации',
+                    title: 'Видимость на Неделях Моды и в Медиа',
+                    items: [
+                        'Посещать локальные шоурумы, выставки, Fashion Weeks и питчить «новое поколение славянских и интернациональных лиц без визовых срывов».',
+                        'Собирать PR-публикации, бэкстейджи и кейсы в локальной прессе/соцсетях со ссылкой на платформу и бота.',
+                        'Координировать совместные съёмки (Editorial Pulls) для наполнения портфолио моделей и взаимного пиара.'
+                    ]
+                },
+                {
+                    cls: 'purple-top',
+                    phase: 'Месяц 2+ • Монетизация',
+                    title: 'Повторяющийся доход представителя',
+                    items: [
+                        'Закрывать прямые коммерческие букинги (до 20% агентская комиссия + 20% клиентский сбор в зависимости от сплита в Калькуляторе).',
+                        'Подключать региональные хост-агентства в Стамбуле, Сеуле, Шанхае, Бангкоке, Европе и США для двустороннего обмена моделями.',
+                        'Питчить B2B-клиентам комплексные решения от Global Plus (сайты, AI-автоматизация, боты) в связке с продакшеном.'
+                    ]
+                }
+            ],
+            checklist: [
+                'Изучить 14-страновую матрицу ставок и визовых ограничений (markets.html) для своего региона.',
+                'Сохранить PDF Меморандум А4 (EN) на телефон/планшет для быстрой отправки клиентам в WhatsApp и LinkedIn.',
+                'Составить CRM-список из 30 брендов, кастинг-директоров и продюсеров своего города.',
+                'Отправить первые 15 персональных офферов местным брендам и шоурумам по Скрипту №4 и №5.',
+                'Договориться о 2+ локальных коллаборациях / editorial-съёмках или партнёрствах с фотостудиями.',
+                'Передать в HQ минимум 3 верифицированных брифа/кастинга от местных клиентов для мгновенного мэтчинга моделей из Москвы и мира.',
+                'Выпустить 1+ PR-анонс / кейс в локальных профильных каналах или модных медиа с упоминанием Unity Models × Global Plus.',
+                'Проверить условия выплаты комиссионных (USD/AED/EUR/USDT-комплаент) в связке с финансовым отделом HQ.'
+            ]
+        },
+        en: {
+            title: 'International Country Representative Checklist (PR & B2B)',
+            phases: [
+                {
+                    cls: '',
+                    phase: 'Weeks 1–2 • Local Presence',
+                    title: 'Territory Positioning & Prospect List',
+                    items: [
+                        'Arm yourself with the printable A4 Partner Brief (onepager.html) in English for instant sharing.',
+                        'Build a focused list of 30 target buyers in your city: fashion brands, e-com retailers, luxury hospitality, and production houses.',
+                        'Feed verified local open castings in your country directly into Unity Models to attract regional models and buyers.'
+                    ]
+                },
+                {
+                    cls: 'emerald-top',
+                    phase: 'Weeks 3–4 • PR & Industry Access',
+                    title: 'Showrooms, Fashion Weeks & Press',
+                    items: [
+                        'Attend local Fashion Week showrooms, trade fairs, and agency mixers pitching curated, reliable Moscow & global faces.',
+                        'Secure local PR mentions, editorial features, and backstage reels linking back to Unity Models Platform.',
+                        'Co-produce test shoots and brand lookbooks that upgrade model books and generate regional brand trust.'
+                    ]
+                },
+                {
+                    cls: 'purple-top',
+                    phase: 'Month 2+ • Recurring Revenue',
+                    title: 'Direct Bookings & Cross-Selling',
+                    items: [
+                        'Close commercial day-rate shoots and seasonal contracts (earning transparent rep commission via our Split Calculator).',
+                        'Establish two-way placement links with host agencies in Istanbul, Dubai, Seoul, Shanghai, Milan, London & NY.',
+                        'Upsell Global Plus digital production & AI automation (websites, custom bots, e-com engines) alongside talent.'
+                    ]
+                }
+            ],
+            checklist: [
+                'Review the 14-Market Intelligence Matrix (markets.html) for visa rules & benchmark day rates in your territory.',
+                'Download the EN A4 Partner 1-Pager (onepager.html) to your phone for instant WhatsApp/LinkedIn outreach.',
+                'Compile a 30-lead CRM list of local fashion brands, e-commerce studios, and casting directors.',
+                'Send 15 tailored outreach pitches using Scripts #4 (Dubai/Global Brands) and #5 (PR & Partner Recruit).',
+                'Secure 2+ local studio / editorial collaborations or boutique showroom partnerships.',
+                'Submit at least 3 qualified client briefs/castings to HQ for rapid matching via Oscar AI & Moscow roster.',
+                'Publish 1 local PR feature, press note, or creator interview highlighting Unity Models × Global Plus.',
+                'Confirm your international payout rail and commission tier using calculator.html with HQ.'
+            ]
+        }
+    }
+};
+
+let activeRole = 'moscow';
+const STORAGE_PREFIX = 'unity_office_chk_';
+
+function loadChecks(role) {
+    try {
+        return JSON.parse(localStorage.getItem(STORAGE_PREFIX + role) || '{}');
+    } catch (e) {
+        return {};
+    }
+}
+
+function saveChecks(role, data) {
+    localStorage.setItem(STORAGE_PREFIX + role, JSON.stringify(data));
+}
+
+function selectRole(role) {
+    activeRole = role;
+    document.querySelectorAll('.role-tab-btn').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.role === role);
+    });
+    renderRole();
+}
+
+function toggleCheck(role, idx) {
+    const state = loadChecks(role);
+    state[idx] = !state[idx];
+    saveChecks(role, state);
+    renderRole();
+}
+
+function resetCurrentRole() {
+    localStorage.removeItem(STORAGE_PREFIX + activeRole);
+    renderRole();
+}
+
+function renderRole() {
+    const lang = HubI18n.getLang();
+    const roleContent = ROLE_DATA[activeRole][lang];
+    const roadmapEl = document.getElementById('roleRoadmap');
+    const checklistEl = document.getElementById('checklistGrid');
+    const titleEl = document.getElementById('checklistTitle');
+    const pillEl = document.getElementById('progressPill');
+
+    roadmapEl.innerHTML = roleContent.phases.map((p) => `
+        <div class="roadmap-card ${p.cls}">
+            <div class="roadmap-phase">${p.phase}</div>
+            <h4>${p.title}</h4>
+            <ul>${p.items.map((it) => `<li>${it}</li>`).join('')}</ul>
+        </div>
+    `).join('');
+
+    titleEl.textContent = roleContent.title;
+    const checks = loadChecks(activeRole);
+    let doneCount = 0;
+
+    checklistEl.innerHTML = roleContent.checklist.map((text, idx) => {
+        const isDone = !!checks[idx];
+        if (isDone) doneCount++;
+        return `
+            <div class="check-item ${isDone ? 'done' : ''}" onclick="toggleCheck('${activeRole}', ${idx})">
+                <div class="check-box-icon">${isDone ? '✓' : ''}</div>
+                <div>${text}</div>
+            </div>
+        `;
+    }).join('');
+
+    const total = roleContent.checklist.length;
+    pillEl.textContent = `${doneCount} / ${total} ${HubI18n.t('done_word')}`;
+}
+
+HubI18n.onChange(() => renderRole());
+HubI18n.init(DICT);
+</script>
+</body>
+</html>

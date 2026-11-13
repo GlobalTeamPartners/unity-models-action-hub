@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Models × Global Plus | Agency Commission & Split Calculator (RU / EN)</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hub.css">
+    <style>
+        .preset-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .preset-btn {
+            background: rgba(197, 160, 89, 0.1);
+            border: 1px solid rgba(197, 160, 89, 0.35);
+            color: var(--gold-light);
+            padding: 9px 15px;
+            border-radius: 10px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .preset-btn:hover, .preset-btn.active {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+        }
+        .split-note {
+            margin-top: 22px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+        .split-note strong { color: #6EE7B7; }
+    </style>
+</head>
+<body>
+
+<div class="top-utility-bar">
+    <div class="top-left-nav">
+        <a href="index.html" class="top-logo-link">
+            <img src="images/logo.png" alt="Unity Models" onerror="this.onerror=null;this.src='https://unityspirit.github.io/unity-models-platform/images/logo.png'">
+            <span data-i18n="brand_name">Unity Models × Global Plus</span>
+        </a>
+        <a href="index.html" class="nav-back-pill" data-i18n="back_hub">← Главный Хаб Действий</a>
+    </div>
+    <div class="top-right-controls">
+        <a href="https://t.me/unitymodelsbot" target="_blank" class="nav-back-pill" data-i18n="bot_btn">🤖 @unitymodelsbot</a>
+        <div class="lang-switcher" aria-label="Language Switcher">
+            <button class="lang-btn active" data-lang="ru" onclick="HubI18n.setLang('ru')">🇷🇺 RU</button>
+            <button class="lang-btn" data-lang="en" onclick="HubI18n.setLang('en')">🇬🇧 EN</button>
+        </div>
+    </div>
+</div>
+
+<header class="hero-header">
+    <div class="brand-pill">
+        <span class="dot"></span>
+        <span data-i18n="hero_pill">TRANSPARENT BOOKING ECONOMICS • USD / AED / RUB</span>
+    </div>
+    <h1 data-i18n-html="hero_h1">Калькулятор <span class="highlight">Сплитов</span> и Дохода</h1>
+    <p class="subtitle" data-i18n="hero_sub">Рассчитайте валовой оборот букингов, чистую выплату моделям (Хартия 0 ₽ предоплат), доход представителя в Москве или Country Rep за рубежом и прибыль штаба.</p>
+</header>
+
+<div class="container">
+    <div class="calc-box">
+        <div class="calc-header">
+            <div>
+                <h3 data-i18n="calc_title">Симулятор экономики агентства и представителей</h3>
+                <p data-i18n="calc_desc">Выберите готовый рыночный сценарий или подвигайте ползунки под ваш город.</p>
+            </div>
+            <div class="currency-switch">
+                <button class="cur-btn active" data-cur="USD" onclick="setCur('USD')">USD $</button>
+                <button class="cur-btn" data-cur="AED" onclick="setCur('AED')">AED</button>
+                <button class="cur-btn" data-cur="RUB" onclick="setCur('RUB')">RUB ₽</button>
+            </div>
+        </div>
+
+        <div class="preset-row">
+            <button class="preset-btn active" onclick="applyPreset(12, 450, 20, 20, 50, this)" data-i18n="p1">🌱 Старт в Москве (12 съёмок / $450)</button>
+            <button class="preset-btn" onclick="applyPreset(25, 750, 20, 20, 45, this)" data-i18n="p2">🇦🇪 Дубай Пик (25 съёмок / AED 2,750+)</button>
+            <button class="preset-btn" onclick="applyPreset(45, 1100, 20, 20, 40, this)" data-i18n="p3">🌍 Глобальная сеть Reps (45 съёмок / $1,100)</button>
+        </div>
+
+        <div class="calc-controls">
+            <div class="calc-input-group">
+                <label for="sBookings" data-i18n="lbl_bookings">Съёмочных дней / букингов в месяц</label>
+                <input type="range" id="sBookings" class="calc-slider" min="2" max="100" value="12" oninput="calcUpdate()">
+                <div class="calc-val-display" id="vBookings">12</div>
+            </div>
+            <div class="calc-input-group">
+                <label for="sRate" data-i18n="lbl_rate">Средний чек дня модели (база USD)</label>
+                <input type="range" id="sRate" class="calc-slider" min="200" max="4000" step="50" value="450" oninput="calcUpdate()">
+                <div class="calc-val-display" id="vRate">$450</div>
+            </div>
+            <div class="calc-input-group">
+                <label for="sFee" data-i18n="lbl_fee">Сбор с клиента (+%) + комиссия с модели (%)</label>
+                <input type="range" id="sFee" class="calc-slider" min="15" max="45" step="5" value="40" oninput="calcUpdate()">
+                <div class="calc-val-display" id="vFee">40% (20%+20%)</div>
+            </div>
+            <div class="calc-input-group">
+                <label for="sRepSplit" data-i18n="lbl_rep">Доля Представителя от прибыли агентства (%)</label>
+                <input type="range" id="sRepSplit" class="calc-slider" min="15" max="65" step="5" value="50" oninput="calcUpdate()">
+                <div class="calc-val-display" id="vRepSplit">50%</div>
+            </div>
+        </div>
+
+        <div class="calc-results">
+            <div>
+                <div class="res-item-title" data-i18n="res_gmv">Оборот (Client Billing / мес)</div>
+                <div class="res-item-val" id="outGmv">$0</div>
+            </div>
+            <div>
+                <div class="res-item-title" data-i18n="res_models">Чистыми моделям / мес</div>
+                <div class="res-item-val" id="outModels" style="color:#6EE7B7;">$0</div>
+            </div>
+            <div>
+                <div class="res-item-title" data-i18n="res_agency">Доход агентства / мес</div>
+                <div class="res-item-val gold" id="outAgency">$0</div>
+            </div>
+            <div>
+                <div class="res-item-title" data-i18n="res_rep">Доля Представителя / мес</div>
+                <div class="res-item-val" id="outRep" style="color:var(--gold-light);">$0</div>
+            </div>
+            <div>
+                <div class="res-item-title" data-i18n="res_annual">Годовой доход Представителя</div>
+                <div class="res-item-val" id="outAnnual" style="color:#C4B5FD;">$0</div>
+            </div>
+        </div>
+
+        <div class="split-note" data-i18n-html="split_note">
+            <strong>Промышленный стандарт расчётов (Mother Agency &amp; Host Booking):</strong> При стандартной модели Дубая/Европы клиент платит базовую ставку + 20% Agency Service Fee, а с гонорара модели удерживается 20% агентской комиссии (итого ~40% маржинальный пул на букинге). При передаче модели через принимающее агентство в Дубае Mother Agency получает стандартные <strong>10% override</strong>. Включённые B2B-продажи IT-услуг <strong>Глобал Плюс</strong> (сайты, боты, автоматизация) дают отдельный дополнительный чек сверх модельных букингов.
+        </div>
+    </div>
+
+    <div class="playbook-panel">
+        <h2 data-i18n="tbl_title">Примерные ориентиры для разных ролей</h2>
+        <div class="table-wrap">
+            <table class="data-table" id="splitTable"></table>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p data-i18n="footer_copy">© 2026 Unity Models × Глобал Плюс (Global Team Partners).</p>
+    <p style="margin-top:8px;" data-i18n="footer_sub">Глобальные коридоры экспансии: Москва • Санкт-Петербург • Стамбул • Шанхай • Сеул • Токио • Дубай • Париж • Милан.</p>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+const DICT = {
+    ru: {
+        hero_pill: 'ПРОЗРАЧНАЯ ЭКОНОМИКА • USD / AED / RUB',
+        hero_h1: 'Калькулятор <span class="highlight">Сплитов</span> и Дохода',
+        hero_sub: 'Моделирование выручки агентства, выплат моделям (0 ₽ предоплат), комиссии Московского офиса Глобал Плюс и международных Country Reps.',
+        calc_title: 'Симулятор букинга и комиссионных сплитов',
+        calc_desc: 'Выбирайте готовый рыночный профиль или настраивайте ползунки под свой город.',
+        p1: '🌱 Москва Старт (12 съёмок / $450)',
+        p2: '🇦🇪 Дубай Сезон (25 съёмок / AED 2,750+)',
+        p3: '🌍 Глобальные Reps (45 съёмок / $1,100)',
+        lbl_bookings: 'Букингов (съёмочных дней) / мес',
+        lbl_rate: 'Ставка дня модели (база)',
+        lbl_fee: 'Суммарный пул комиссии (%)',
+        lbl_rep: 'Доля Представителя от прибыли (%)',
+        res_gmv: 'Валовый оборот (Клиенты / мес)',
+        res_models: 'Выплата моделям (Нетто / мес)',
+        res_agency: 'Валовая маржа агентства / мес',
+        res_rep: 'Доход Представителя / мес',
+        res_annual: 'Доход Представителя / год',
+        split_note: '<strong>Промышленный стандарт расчётов (Mother Agency &amp; Host Booking):</strong> Классическая структура рынка — клиентский сбор (+15–20%) + комиссия с модели (15–20%). При отправке модели из Москвы к хост-агентству в Дубай/Азию действует стандартный Mother Agency override (10%). Дополнительные контракты на разработку сайтов, ботов и AI от <strong>Глобал Плюс</strong> увеличивают средний чек клиента ещё сильнее.',
+        tbl_title: 'Сравнение ролей и источников дохода'
+    },
+    en: {
+        hero_pill: 'TRANSPARENT AGENCY ECONOMICS • USD / AED / RUB',
+        hero_h1: 'Commission &amp; <span class="highlight">Revenue Split</span> Calculator',
+        hero_sub: 'Simulate gross brand billing, model net payouts (Zero-Upfront Charter), Moscow Global Plus earnings, and International Country Representative splits.',
+        calc_title: 'Agency & Country Rep Financial Simulator',
+        calc_desc: 'Click a benchmark preset or drag sliders for your territory.',
+        p1: '🌱 Moscow Start (12 days / $450)',
+        p2: '🇦🇪 Dubai Commercial Peak (25 days / AED 2,750+)',
+        p3: '🌍 Global Scale (45 days / $1,100)',
+        lbl_bookings: 'Booked Shoot Days / Month',
+        lbl_rate: 'Model Base Day Rate',
+        lbl_fee: 'Combined Agency Commission Pool (%)',
+        lbl_rep: 'Representative Share of Net Pool (%)',
+        res_gmv: 'Gross Brand Billing / Mo',
+        res_models: 'Net Paid to Models / Mo',
+        res_agency: 'Total Agency Pool / Mo',
+        res_rep: 'Representative Earnings / Mo',
+        res_annual: 'Representative Annualized',
+        split_note: '<strong>Standard Modeling Accounting (Mother Agency &amp; Host Booking):</strong> Industry norm combines client service fee (+15–20%) with talent commission (15–20%). When placing vetted Moscow faces with Dubai/Asian host agencies, the Mother Agency retains a standard <strong>10% override</strong>. Global Plus enterprise digital upsells (websites, bots, AI automation) layer high-margin recurring revenue atop talent bookings.',
+        tbl_title: 'Role & Commission Architecture Reference'
+    }
+};
+
+const FX = {
+    USD: { symbol: '$', rate: 1 },
+    AED: { symbol: 'AED ', rate: 3.67 },
+    RUB: { symbol: '₽', rate: 95 }
+};
+let cur = 'USD';
+
+function fmt(usdAmount) {
+    const f = FX[cur];
+    const val = Math.round(usdAmount * f.rate);
+    const formatted = val.toLocaleString('en-US');
+    return cur === 'RUB' ? `${formatted} ₽` : `${f.symbol}${formatted}`;
+}
+
+function setCur(c) {
+    cur = c;
+    document.querySelectorAll('.cur-btn').forEach((b) => b.classList.toggle('active', b.dataset.cur === c));
+    calcUpdate();
+}
+
+function applyPreset(bookings, rateUsd, clientFee, modelFee, repPct, btn) {
+    document.getElementById('sBookings').value = bookings;
+    document.getElementById('sRate').value = rateUsd;
+    document.getElementById('sFee').value = clientFee + modelFee;
+    document.getElementById('sRepSplit').value = repPct;
+    document.querySelectorAll('.preset-btn').forEach((b) => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    calcUpdate();
+}
+
+function calcUpdate() {
+    const bookings = Number(document.getElementById('sBookings').value);
+    const baseRateUsd = Number(document.getElementById('sRate').value);
+    const poolPct = Number(document.getElementById('sFee').value);
+    const repPct = Number(document.getElementById('sRepSplit').value);
+
+    const clientFeePct = poolPct / 2;
+    const modelCommPct = poolPct / 2;
+
+    const grossBase = bookings * baseRateUsd;
+    const clientTotal = grossBase * (1 + clientFeePct / 100);
+    const netModels = grossBase * (1 - modelCommPct / 100);
+    const agencyPool = clientTotal - netModels;
+    const repIncome = agencyPool * (repPct / 100);
+    const annualRep = repIncome * 12;
+
+    document.getElementById('vBookings').textContent = bookings;
+    document.getElementById('vRate').textContent = fmt(baseRateUsd);
+    document.getElementById('vFee').textContent = `${poolPct}% (${clientFeePct}%+${modelCommPct}%)`;
+    document.getElementById('vRepSplit').textContent = `${repPct}%`;
+
+    document.getElementById('outGmv').textContent = fmt(clientTotal);
+    document.getElementById('outModels').textContent = fmt(netModels);
+    document.getElementById('outAgency').textContent = fmt(agencyPool);
+    document.getElementById('outRep').textContent = fmt(repIncome);
+    document.getElementById('outAnnual').textContent = fmt(annualRep);
+}
+
+function renderTable(lang) {
+    const tbl = document.getElementById('splitTable');
+    if (lang === 'ru') {
+        tbl.innerHTML = `
+            <thead>
+                <tr>
+                    <th>Поток дохода</th>
+                    <th>Как формируется</th>
+                    <th>Кто исполняет</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Прямой коммерческий букинг</strong></td>
+                    <td>Клиентский сбор +20% и комиссия модели 20%</td>
+                    <td>Московский офис Глобал Плюс / Country Rep / HQ</td>
+                </tr>
+                <tr>
+                    <td><strong>Mother Agency Placement (Дубай / Азия)</strong></td>
+                    <td>Стандарт 10% Mother Agency Override от контракта за рубежом</td>
+                    <td>Москва (поставщик талантов) + HQ (координация хоста)</td>
+                </tr>
+                <tr>
+                    <td><strong>Ethical AI Digital Twin (Роялти)</strong></td>
+                    <td>Лицензионное отчисление брендов за вариации луков с согласия модели</td>
+                    <td>HQ Платформа + Модель + Инициатор сделки</td>
+                </tr>
+                <tr>
+                    <td><strong>Global Plus B2B IT Upsell</strong></td>
+                    <td>Сайты брендов, ИИ-боты, автоматизация и омниканал под ключ</td>
+                    <td>Команда Глобал Плюс + комиссия представителю за лид</td>
+                </tr>
+            </tbody>
+        `;
+    } else {
+        tbl.innerHTML = `
+            <thead>
+                <tr>
+                    <th>Revenue Stream</th>
+                    <th>Standard Structure</th>
+                    <th>Owner / Split</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Direct Commercial Booking</strong></td>
+                    <td>+20% Client Service Fee &amp; 20% Model Commission</td>
+                    <td>Global Plus Moscow Desk / Country Rep / HQ</td>
+                </tr>
+                <tr>
+                    <td><strong>Mother Agency Placement (Dubai / Asia)</strong></td>
+                    <td>Industry-standard 10% Mother Agency Override</td>
+                    <td>Moscow Scouting Desk + HQ Host Coordination</td>
+                </tr>
+                <tr>
+                    <td><strong>Consent-First AI Digital Twin</strong></td>
+                    <td>Recurring licensing fee for approved brand e-com variations</td>
+                    <td>Talent Royalty + HQ Platform + Deal Originator</td>
+                </tr>
+                <tr>
+                    <td><strong>Global Plus B2B Tech Upsell</strong></td>
+                    <td>Custom brand websites, AI automation, smart bots &amp; DevSecOps</td>
+                    <td>Global Plus Engineering + Origination Fee for Rep</td>
+                </tr>
+            </tbody>
+        `;
+    }
+}
+
+HubI18n.onChange((lang) => {
+    renderTable(lang);
+    calcUpdate();
+});
+HubI18n.init(DICT);
+</script>
+</body>
+</html>

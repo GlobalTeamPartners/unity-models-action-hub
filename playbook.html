@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Models × Global Plus | Top-Agency Global Playbook (RU / EN)</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hub.css">
+    <style>
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        .pillar-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(197, 160, 89, 0.14);
+            border: 1px solid rgba(197, 160, 89, 0.4);
+            color: var(--gold-light);
+            margin-bottom: 10px;
+        }
+        .pillar-badge.emerald {
+            background: rgba(16, 185, 129, 0.14);
+            border-color: rgba(16, 185, 129, 0.4);
+            color: #6EE7B7;
+        }
+        .law-alert {
+            background: rgba(245, 158, 11, 0.08);
+            border-left: 4px solid var(--amber);
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin: 18px 0;
+        }
+        .law-alert strong { color: #FCD34D; }
+    </style>
+</head>
+<body>
+
+<div class="top-utility-bar">
+    <div class="top-left-nav">
+        <a href="index.html" class="top-logo-link">
+            <img src="images/logo.png" alt="Unity Models" onerror="this.onerror=null;this.src='https://unityspirit.github.io/unity-models-platform/images/logo.png'">
+            <span data-i18n="brand_name">Unity Models × Global Plus</span>
+        </a>
+        <a href="index.html" class="nav-back-pill" data-i18n="back_hub">← Главный Хаб Действий</a>
+    </div>
+    <div class="top-right-controls">
+        <a href="https://t.me/unitymodelsbot" target="_blank" class="nav-back-pill" data-i18n="bot_btn">🤖 @unitymodelsbot</a>
+        <div class="lang-switcher" aria-label="Language Switcher">
+            <button class="lang-btn active" data-lang="ru" onclick="HubI18n.setLang('ru')">🇷🇺 RU</button>
+            <button class="lang-btn" data-lang="en" onclick="HubI18n.setLang('en')">🇬🇧 EN</button>
+        </div>
+    </div>
+</div>
+
+<header class="hero-header">
+    <div class="brand-pill">
+        <span class="dot"></span>
+        <span data-i18n="hero_pill">GLOBAL AGENCY INTELLIGENCE • 2025–2026</span>
+    </div>
+    <h1 data-i18n-html="hero_h1">Плейбук <span class="highlight">ТОП-Агентств</span> Мира</h1>
+    <p class="subtitle" data-i18n="hero_sub">Разбор практик мировых лидеров (IMG, DNA, Next, Storm), лучших российских Mother Agencies (Avant, Grace, Lumpen, Nagorny, Tann), хабов Дубая (Bareface, MMG, Diva), комплаенса ОАЭ и этичного AI.</p>
+</header>
+
+<div class="container" id="playbookContent"></div>
+
+<footer>
+    <p data-i18n="footer_copy">© 2026 Unity Models × Глобал Плюс (Global Team Partners).</p>
+    <p style="margin-top:8px;" data-i18n="footer_sub">Глобальные коридоры экспансии: Москва • Санкт-Петербург • Стамбул • Шанхай • Сеул • Токио • Дубай • Париж • Милан.</p>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+const DICT = {
+    ru: {
+        hero_pill: 'СТРАТЕГИЯ ЛИДЕРОВ ИНДУСТРИИ • 2025–2026',
+        hero_h1: 'Плейбук <span class="highlight">ТОП-Агентств</span> Мира',
+        hero_sub: 'Практическая база знаний для Москвы, Дубая и международных представителей: стандарты IMG, Avant, Bareface/MMG/Diva, маршрут РФ → Стамбул/Азия → Дубай, визы/разрешения ОАЭ и этичные AI Digital Twins.'
+    },
+    en: {
+        hero_pill: 'GLOBAL AGENCY INTELLIGENCE • 2025–2026',
+        hero_h1: 'Top Modeling <span class="highlight">Agency Playbook</span>',
+        hero_sub: 'Actionable industry intelligence for HQ, Moscow Global Plus & Country Reps: IMG/DNA/Next/Storm benchmarks, Avant/Grace/Lumpen mother-agency craft, Dubai hubs (Bareface/MMG/Diva), UAE legal compliance & consensual AI Digital Twins.'
+    }
+};
+
+function renderPlaybook(lang) {
+    const el = document.getElementById('playbookContent');
+    if (lang === 'ru') {
+        el.innerHTML = `
+        <div class="playbook-panel">
+            <span class="pillar-badge">Столп 1 • Мировые и Российские Эталоны</span>
+            <h2>Как работают лидеры мира и почему модели доверяют Mother Agency</h2>
+            <p>Ведущие мировые агентства (<strong>IMG Models</strong> с глобальным соц-скаутингом <strong>#WLYG</strong>, <strong>EWG</strong>, <strong>DNA</strong>, <strong>Next</strong>, <strong>Storm</strong>) и сильные российские материнские агентства (<strong>Avant Moscow</strong> — основана Юлией Шавыриной в 2004 г., <strong>Grace Models</strong>, <strong>Lumpen</strong>, <strong>Nagorny</strong>, <strong>Tann</strong>) строят капитализацию не на разовых съёмках, а на долгосрочном развитии карьеры модели.</p>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Эталон индустрии</th>
+                            <th>Ключевая механика успеха</th>
+                            <th>Что внедряем в Unity Models × Глобал Плюс</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>IMG (#WLYG)</strong></td>
+                            <td>Глобальный социальный скаутинг, открытые стандарты чистых снэпов, инклюзивность и прямой видео-питч личности.</td>
+                            <td>Воронка <strong>@unitymodelsbot</strong> + обязательная 30-сек видео-визитка EN + стандартные естественные Digitals без ретуши.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Avant Moscow / Grace / Lumpen / Nagorny / Tann</strong></td>
+                            <td>Жёсткий отбор, «воспитание книги» внутри РФ/Азии до отправки на Запад, персональное ведение без поборов с моделей.</td>
+                            <td><strong>Хартия «0 ₽ предоплаты»</strong> в Москве + 2 бесплатные студийные сессии Digitals + реальный e-com портфель в Москве до экспорта.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Syngency / Mediaslide vs Swipecast / Ubooker</strong></td>
+                            <td>B2B ERP-букинг (Mediaslide/Syngency) даёт контроль агентствам; маркетплейсы (Swipecast/Ubooker) ускоряют прямой мэтч с брендами.</td>
+                            <td>Гибрид: <strong>Oscar AI + Supabase</strong> для скорости маркетплейса + чёткое агентское сопровождение от Глобал Плюс и Country Reps.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="playbook-panel">
+            <span class="pillar-badge emerald">Столп 2 • Коридор 2025–2026</span>
+            <h2>Маршрут экспансии: Москва → Стамбул / Азия → Дубай → Мир</h2>
+            <p>Из-за ужесточения выдачи мультивиз в Шенген в 2025–2026 гг. прямая отправка молодых российских моделей сразу в Милан или Париж сопряжена с высокими отказами и потерей бюджета. Новые мировые чемпионы используют <strong>ступенчатую лестницу карьеры</strong>:</p>
+            <ul>
+                <li><strong>Этап 1 — Москва и Санкт-Петербург (Месяц 1–2):</strong> Отбор в штабе Глобал Плюс, формирование профессиональной базы параметров, первые коммерческие заказы на локальном рынке (одежда, маркетплейсы, шоурумы) для «живого портфолио» (tearsheets).</li>
+                <li><strong>Этап 2 — Стамбул и Азия (Месяц 2–4):</strong> Командировки на 60–90 дней в Стамбул, Шанхай/Гуанчжоу, Сеул, Токио и Бангкок. Быстрые визовые рельсы, высокий объём каталожных и кампейн-съёмок — модель возвращается с мощной книгой и уверенным английским.</li>
+                <li><strong>Этап 3 — Хаб в Дубае (Пик Окт–Апр + Рамадан):</strong> Размещение лучших лиц в топ-агентствах ОАЭ (ориентиры рынка: <strong>Bareface</strong>, <strong>MMG</strong>, <strong>Diva</strong>) и прямые контракты с локальным e-commerce (уровня <strong>Ounass</strong>, <strong>Namshi</strong>), <strong>Dubai Fashion Week (DFW)</strong>, luxury hospitality и коллекциями <strong>Рамадана / Eid</strong>. Средняя дневная ставка в Дубае: от <strong>AED 2,500+</strong>.</li>
+                <li><strong>Этап 4 — Милан / Париж / Лондон / Нью-Йорк:</strong> Выход с доказанным международным портфолио и финансовой подушкой.</li>
+            </ul>
+        </div>
+
+        <div class="playbook-panel">
+            <span class="pillar-badge">Столп 3 • Право, Разрешения ОАЭ и Финансовые Рельсы</span>
+            <h2>Комплаенс в Дубае и международные расчёты без блокировок</h2>
+            <div class="law-alert">
+                <strong>Критическое правило ОАЭ (Federal Decree-Law No. 55 of 2023):</strong> Моделям и инфлюенсерам запрещена коммерческая съёмка/продвижение без действующего разрешения. Нарушения ведут к штрафам и запрету на въезд.
+            </div>
+            <div class="pillar-grid">
+                <div>
+                    <h3>1. Разрешения на работу и рекламу в ОАЭ</h3>
+                    <ul>
+                        <li><strong>Visitor Advertiser Permit:</strong> Выдаётся на 3 месяца для приезжих талантов <strong>только через лицензированное агентство-спонсора в ОАЭ</strong> — базовый путь для 60–90-дневных поездок моделей.</li>
+                        <li><strong>Резидентство и UAE Media Council Permit:</strong> Для постоянной работы в Дубае/Абу-Даби модели или менеджеры оформляют фриланс-пакеты (<strong>GoFreelance</strong>, <strong>Meydan</strong>, <strong>twofour54</strong> — ориентир расходов от <strong>~AED 7,500–10,000+</strong>) и разрешение UAE Media Council.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>2. Банкинг и 60–90-дневный цикл оплат</h3>
+                    <ul>
+                        <li>Крупные бренды и продакшены в Дубае и мире платят с отсрочкой <strong>Net 60–90 дней</strong> после съёмки.</li>
+                        <li>Для бесперебойных B2B-инвойсов и расчётов с моделями HQ использует нейтральные международные финансовые рельсы (<strong>ОАЭ / Казахстан / Грузия / Армения</strong>).</li>
+                        <li>Никогда не смешиваем предоплаты: сплит прозрачный — <strong>10% Mother Agency</strong> (РФ/представитель) + <strong>20% Booking / Host</strong> + прозрачная выписка авансов (билеты/апартаменты).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="playbook-panel">
+            <span class="pillar-badge emerald">Столп 4 • Этичный AI и Синергия с Global Plus</span>
+            <h2>AI Digital Twins (H&M x Uncut vs Mango) + B2B-продажи Глобал Плюс</h2>
+            <p>Мировой рынок разделился на две модели использования генеративного ИИ в фэшн-кампейнах:</p>
+            <ul>
+                <li><strong>Путь 1 (H&M × Uncut): Согласие и роялти.</strong> Настоящая модель даёт лицензированное согласие на создание своего Digital Twin и получает гонорар/роялти за каждое использование цифрового двойника. Именно этот этичный стандарт внедряет Unity Models для защиты репутации наших моделей и премиум-брендов.</li>
+                <li><strong>Путь 2 (Mango — чисто синтетические модели):</strong> Вызывает сильное отторжение у агентств класса «А» и профсоюзов индустрии. Мы НЕ подменяем моделей бесплатными фейками.</li>
+                <li><strong>Преимущество «Глобал Плюс»:</strong> Пока классические модельные агентства продают только людей, команда <strong>Unity Models × Global Plus</strong> может закрывать брендам в Дубае и РФ полный цифровой цикл: живые модели + AI-матчинг <strong>Oscar AI</strong> + разработка сайтов/лендингов кампейнов, Telegram-ботов, CRM-автоматизации и омниканальной поддержки.</li>
+            </ul>
+        </div>`;
+    } else {
+        el.innerHTML = `
+        <div class="playbook-panel">
+            <span class="pillar-badge">Pillar 1 • Global & Russian Benchmarks</span>
+            <h2>How Top-Tier Agencies Operate & Build Long-Term Roster Value</h2>
+            <p>Tier-1 international agencies (<strong>IMG Models</strong> with <strong>#WLYG</strong>, <strong>EWG</strong>, <strong>DNA</strong>, <strong>Next</strong>, <strong>Storm</strong>) and elite Russian Mother Agencies (<strong>Avant Moscow</strong> — founded by Yulia Shavyrina in 2004, <strong>Grace Models</strong>, <strong>Lumpen</strong>, <strong>Nagorny</strong>, <strong>Tann</strong>) compound asset value by curating and developing faces rather than selling paid courses or one-off shoots.</p>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Industry Benchmark</th>
+                            <th>Core Competitive Edge</th>
+                            <th>Unity Models × Global Plus Standard</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>IMG (#WLYG)</strong></td>
+                            <td>Open digital scouting funnel, natural unretouched Digitals, instant personality check via short intro clip.</td>
+                            <td><strong>@unitymodelsbot</strong> digital funnel + mandatory 30-sec EN video slate + clean daylight Polaroid standards.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Avant Moscow / Grace / Lumpen / Nagorny / Tann</strong></td>
+                            <td>Selective curation, book-building in domestic & Asian markets first, transparent career management without upfront fees.</td>
+                            <td><strong>Zero-Upfront Charter ($0 / 0 RUB upfront)</strong> + 2 free Moscow studio Digital sessions + pre-export e-com tearsheets.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Syngency / Mediaslide vs Swipecast / Ubooker</strong></td>
+                            <td>ERP booking suites anchor top agencies; digital marketplaces speed up direct commercial matching & discovery.</td>
+                            <td>Hybrid OS: <strong>Oscar AI + Supabase</strong> fast discovery paired with full white-glove representation via Global Plus & Country Reps.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="playbook-panel">
+            <span class="pillar-badge emerald">Pillar 2 • 2025–2026 Placement Ladder</span>
+            <h2>Global Expansion Route: Moscow → Istanbul / Asia → Dubai → World</h2>
+            <p>With tightened 2025–2026 Schengen multi-entry visa issuance, sending unproven faces directly to Milan or Paris creates unnecessary rejection risk. Elite Eastern European & Russian talent follow a proven <strong>4-stage career ladder</strong>:</p>
+            <ul>
+                <li><strong>Stage 1 — Moscow & St. Petersburg (Months 1–2):</strong> Vetting at the Global Plus Moscow desk, standardized Digitals & walk clips, first paid Russian e-com/showroom bookings for a clean, real book.</li>
+                <li><strong>Stage 2 — Istanbul & Asia Stepping Stones (Months 2–4):</strong> 60–90 day placements across Istanbul, Shanghai/Guangzhou, Seoul, Tokyo & Bangkok. Fast visa onboarding, high daily catalog volume, and rapid runway/camera maturity.</li>
+                <li><strong>Stage 3 — Dubai Commercial Hub (Oct–Apr Peak + Ramadan):</strong> Direct board placements with licensed UAE agencies (market leaders: <strong>Bareface</strong>, <strong>MMG</strong>, <strong>Diva</strong>) targeting regional luxury e-com (e.g. <strong>Ounass</strong>, <strong>Namshi</strong>), <strong>Dubai Fashion Week (DFW)</strong>, luxury real estate & Ramadan/Eid capsules. Commercial Dubai day rates benchmark at <strong>AED 2,500+</strong>.</li>
+                <li><strong>Stage 4 — Milan / Paris / London / New York:</strong> Entering top fashion capitals backed by proven campaign tearsheets and financial stability.</li>
+            </ul>
+        </div>
+
+        <div class="playbook-panel">
+            <span class="pillar-badge">Pillar 3 • UAE Legal Permits & Cross-Border Banking</span>
+            <h2>UAE Compliance & Cross-Border Financial Rails</h2>
+            <div class="law-alert">
+                <strong>Mandatory UAE Compliance (Federal Decree-Law No. 55 of 2023):</strong> Commercial shoots & promotional modeling in the UAE require valid advertiser/media authorization. Operating on bare tourist status risks severe fines.
+            </div>
+            <div class="pillar-grid">
+                <div>
+                    <h3>1. UAE Advertiser & Work Permits</h3>
+                    <ul>
+                        <li><strong>Visitor Advertiser Permit:</strong> Valid for 3 months for visiting international models — <strong>must be sponsored through a licensed UAE host agency</strong>.</li>
+                        <li><strong>Resident & Freelance Permits:</strong> Long-term UAE stays utilize <strong>GoFreelance</strong>, <strong>Meydan</strong>, or <strong>twofour54</strong> packages (benchmark ~<strong>AED 7,500–10,000+</strong>) combined with a <strong>UAE Media Council Advertiser Permit</strong>.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>2. Banking Rails & Net 60–90 Cycles</h3>
+                    <ul>
+                        <li>Dubai commercial clients & e-com houses operate on standard <strong>60–90 day payment cycles</strong> post-shoot.</li>
+                        <li>HQ clears international brand invoices & model splits via neutral compliant rails (<strong>UAE / Kazakhstan / Georgia / Armenia</strong>).</li>
+                        <li>Transparent commission waterfall: <strong>10% Mother Agency override</strong> + <strong>20% Host Booking Fee</strong> with clear advance recoupment logs.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="playbook-panel">
+            <span class="pillar-badge emerald">Pillar 4 • Consent-First AI & Global Plus Tech Edge</span>
+            <h2>Ethical Digital Twins (H&M × Uncut Model) + Global Plus Full-Stack Upsell</h2>
+            <p>Brands are experimenting rapidly with AI lookbooks — how we position Unity Models determines whether Tier-1 talent trusts us:</p>
+            <ul>
+                <li><strong>We follow H&M × Uncut (Consent + Royalty):</strong> Verified models retain full likeness rights and earn licensing royalties whenever a brand deploys their Digital Twin for regional variations.</li>
+                <li><strong>We reject unconsented pure-synthetic replacement (Mango backlash):</strong> Luxury agencies and credible buyers value authentic human talent enhanced by smart AI workflow — never disposable synthetic clones.</li>
+                <li><strong>Global Plus Enterprise Synergies:</strong> Unlike traditional booking desks, Country Reps & Global Plus can bundle talent + <strong>Oscar AI matching</strong> with bespoke web builds, AI automation, smart Telegram/WhatsApp bots, and omnichannel support for brand clients.</li>
+            </ul>
+        </div>`;
+    }
+}
+
+HubI18n.onChange((lang) => renderPlaybook(lang));
+HubI18n.init(DICT);
+</script>
+</body>
+</html>

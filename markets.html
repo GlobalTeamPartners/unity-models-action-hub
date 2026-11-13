@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Models × Global Plus | 14-Market Intelligence Matrix (RU / EN)</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hub.css">
+    <style>
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        .status-pill {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+        .status-active {
+            background: rgba(16, 185, 129, 0.16);
+            border: 1px solid rgba(16, 185, 129, 0.45);
+            color: #6EE7B7;
+        }
+        .status-priority {
+            background: rgba(197, 160, 89, 0.16);
+            border: 1px solid rgba(197, 160, 89, 0.45);
+            color: var(--gold-light);
+        }
+        .status-open {
+            background: rgba(139, 92, 246, 0.16);
+            border: 1px solid rgba(139, 92, 246, 0.45);
+            color: #DDD6FE;
+        }
+        .filter-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-card);
+            color: var(--text-dim);
+            padding: 9px 14px;
+            border-radius: 10px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-utility-bar">
+    <div class="top-left-nav">
+        <a href="index.html" class="top-logo-link">
+            <img src="images/logo.png" alt="Unity Models" onerror="this.onerror=null;this.src='https://unityspirit.github.io/unity-models-platform/images/logo.png'">
+            <span data-i18n="brand_name">Unity Models × Global Plus</span>
+        </a>
+        <a href="index.html" class="nav-back-pill" data-i18n="back_hub">← Главный Хаб Действий</a>
+    </div>
+    <div class="top-right-controls">
+        <a href="https://t.me/unitymodelsbot" target="_blank" class="nav-back-pill" data-i18n="bot_btn">🤖 @unitymodelsbot</a>
+        <div class="lang-switcher" aria-label="Language Switcher">
+            <button class="lang-btn active" data-lang="ru" onclick="HubI18n.setLang('ru')">🇷🇺 RU</button>
+            <button class="lang-btn" data-lang="en" onclick="HubI18n.setLang('en')">🇬🇧 EN</button>
+        </div>
+    </div>
+</div>
+
+<header class="hero-header">
+    <div class="brand-pill">
+        <span class="dot"></span>
+        <span data-i18n="hero_pill">GLOBAL TERRITORY MATRIX • 14 HUBS</span>
+    </div>
+    <h1 data-i18n-html="hero_h1">Матрица <span class="highlight">14 Рынков</span> и Представительств</h1>
+    <p class="subtitle" data-i18n="hero_sub">Визовые коридоры для моделей РФ/СНГ в 2026 году, пиковые сезоны, отраслевые вертикали брендов и открытые вакансии Country Representatives по всему миру.</p>
+</header>
+
+<div class="container">
+    <div class="filter-bar">
+        <input type="text" id="marketSearch" class="search-input" data-i18n-placeholder="search_ph" placeholder="Поиск по городу, стране, визе или нише..." oninput="renderMarkets()">
+        <button class="filter-btn active" data-cat="all" onclick="setCat('all')" data-i18n="cat_all">Все 14</button>
+        <button class="filter-btn" data-cat="cis" onclick="setCat('cis')" data-i18n="cat_cis">🇷🇺 РФ и СНГ</button>
+        <button class="filter-btn" data-cat="step" onclick="setCat('step')" data-i18n="cat_step">🌏 Стамбул / Азия</button>
+        <button class="filter-btn" data-cat="uae" onclick="setCat('uae')" data-i18n="cat_uae">🇦🇪 ОАЭ / Дубай</button>
+        <button class="filter-btn" data-cat="capitals" onclick="setCat('capitals')" data-i18n="cat_cap">🏛️ Столицы моды</button>
+    </div>
+
+    <div id="marketCount" style="margin-bottom:16px; color:var(--text-dim); font-size:0.88rem;"></div>
+    <div id="marketsGrid" class="market-grid"></div>
+</div>
+
+<footer>
+    <p data-i18n="footer_copy">© 2026 Unity Models × Глобал Плюс (Global Team Partners).</p>
+    <p style="margin-top:8px;" data-i18n="footer_sub">Глобальные коридоры экспансии: Москва • Санкт-Петербург • Стамбул • Шанхай • Сеул • Токио • Дубай • Париж • Милан.</p>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+const DICT = {
+    ru: {
+        hero_pill: 'КАРТА ГЛОБАЛЬНЫХ РЫНКОВ • 14 ХАБОВ',
+        hero_h1: 'Матрица <span class="highlight">14 Рынков</span> и Представительств',
+        hero_sub: 'Маршруты виз, пики сезонов, коммерческие вертикали и статус найма представителей в каждой ключевой стране (для Москвы, Дубая и международных партнёров).',
+        search_ph: 'Поиск: Дубай, Стамбул, виза, e-com, Рамадан...',
+        cat_all: 'Все 14',
+        cat_cis: '🇷🇺 РФ и СНГ',
+        cat_step: '🌏 Стамбул и Азия',
+        cat_uae: '🇦🇪 ОАЭ / Дубай',
+        cat_cap: '🏛️ Мировые столицы',
+        found_prefix: 'Показано рынков:',
+        lbl_visa: 'Виза / Право:',
+        lbl_season: 'Сезонность:',
+        lbl_clients: 'Клиенты и Вертикали:',
+        lbl_role: 'Задача / Условия:'
+    },
+    en: {
+        hero_pill: 'GLOBAL TERRITORY MATRIX • 14 HUBS',
+        hero_h1: '14-City <span class="highlight">Global Expansion</span> Matrix',
+        hero_sub: 'Visa realities for 2025–2026, seasonal peaks, client buyer verticals, and Country Representative status across every strategic market.',
+        search_ph: 'Search Dubai, Istanbul, visa, e-com, Ramadan...',
+        cat_all: 'All 14 Hubs',
+        cat_cis: '🇷🇺 Russia & CIS',
+        cat_step: '🌏 Istanbul & Asia',
+        cat_uae: '🇦🇪 UAE / Dubai',
+        cat_cap: '🏛️ Fashion Capitals',
+        found_prefix: 'Showing markets:',
+        lbl_visa: 'Visa / Compliance:',
+        lbl_season: 'Peak Season:',
+        lbl_clients: 'Client Verticals:',
+        lbl_role: 'Strategy / Economics:'
+    }
+};
+
+const MARKETS = [
+    {
+        cat: 'cis', statusCls: 'status-active',
+        ru: { city: '🇷🇺 Москва', status: 'Штаб Глобал Плюс Активен', visa: 'Внутренний рынок РФ (без виз)', season: 'Круглый год (пики: Сен–Дек, Фев–Май)', clients: 'Российский люкс, маркетплейсы, e-com, шоурумы, тесты портфолио', role: 'Mother Agency штаб: скаутинг, Digitals 0 ₽, сбор первых tearsheets (ориентир Avant/Grace/Lumpen).' },
+        en: { city: '🇷🇺 Moscow', status: 'Active Global Plus HQ', visa: 'Domestic Market', season: 'Year-round (Peaks: Sep–Dec, Feb–May)', clients: 'Russian luxury designers, major e-com marketplaces, lookbook studios', role: 'Mother Agency scouting hub, $0-upfront Digitals sessions, pre-export tearsheet building.' }
+    },
+    {
+        cat: 'cis', statusCls: 'status-priority',
+        ru: { city: '🇷🇺 Санкт-Петербург', status: 'Приоритетный скаутинг', visa: 'Внутренний рынок РФ', season: 'Круглый год', clients: 'Авторские бренды, editorial-съёмки, независимые фотографы', role: 'Донор сильных editorial-лиц и коллабораций с московским офисом (ориентир стандартов Nagorny/Tann).' },
+        en: { city: '🇷🇺 St. Petersburg', status: 'Priority Scouting Desk', visa: 'Domestic Market', season: 'Year-round', clients: 'Boutique fashion houses, high-editorial magazines, studios', role: 'Editorial talent pipeline feeding the Moscow Global Plus export board.' }
+    },
+    {
+        cat: 'uae', statusCls: 'status-priority',
+        ru: { city: '🇦🇪 Дубай (ОАЭ)', status: 'Хаб №1 • Ищем B2B Rep', visa: 'Visitor Advertiser Permit (3 мес через хост-агентство) или GoFreelance/Meydan + UAE Media Council Permit', season: 'Окт–Апр (главный пик), Dubai Fashion Week, Рамадан/Eid капсулы', clients: 'E-com гиганты (уровня Ounass, Namshi), luxury бренды, ювелирка, ивенты, недвижимость', role: 'Дневные ставки AED 2,500+; хосты рынка Bareface/MMG/Diva; цикл оплаты Net 60–90 дн.' },
+        en: { city: '🇦🇪 Dubai (UAE)', status: 'Hub #1 • Rep Priority', visa: 'Agency-Sponsored Visitor Advertiser Permit (3 mo) or GoFreelance/Meydan + UAE Media Council Permit', season: 'Oct–Apr peak + Dubai Fashion Week (DFW) + Ramadan/Eid modestwear', clients: 'Luxury e-com (Ounass/Namshi tier), beauty, jewelry, real estate, hospitality', role: 'Benchmark day rates AED 2,500+; Bareface/MMG/Diva ecosystem; Net 60–90 corporate payout terms.' }
+    },
+    {
+        cat: 'uae', statusCls: 'status-open',
+        ru: { city: '🇦🇪 Абу-Даби (ОАЭ)', status: 'Открыт набор Rep', visa: 'UAE Media Council Permit + культурно-деловая зона (twofour54)', season: 'Окт–Апр, Гран-при, выставки', clients: 'Гос-ивенты, культурные проекты, отели, luxury кампании', role: 'Дополнение к букингам в Дубае через партнёрские продакшены и VIP-ивенты.' },
+        en: { city: '🇦🇪 Abu Dhabi (UAE)', status: 'Rep Open', visa: 'UAE Media Council Permit / twofour54 media zone alignment', season: 'Oct–Apr, major exhibitions & luxury hospitality', clients: 'Cultural institutions, luxury resorts, corporate summits, modesty retail', role: 'Adjacent UAE corporate & high-hospitality campaigns paired with Dubai desk.' }
+    },
+    {
+        cat: 'step', statusCls: 'status-priority',
+        ru: { city: '🇹🇷 Стамбул (Турция)', status: 'Трамплин №1 • Нужен Rep', visa: 'Быстрый въезд для РФ/СНГ + локальные контракты через турецкое агентство', season: 'Весна/Осень + постоянный пошив и оптовый e-com', clients: 'Тысячи турецких брендов одежды, кожи, меха, экспортный текстиль', role: 'Первый международный трамплин на 60–90 дней: быстрый опыт каталога и видео до подачи в Дубай.' },
+        en: { city: '🇹🇷 Istanbul (Turkey)', status: 'Stepping Stone #1 • Rep Needed', visa: 'Easy access for RU/CIS; commercial placement via licensed Turkish partners', season: 'Year-round heavy apparel/e-com cycles', clients: 'Textiles, modest fashion exporters, leather, wholesale showrooms', role: 'Fast 60–90 day book-builder & daily shooting endurance prior to Dubai deployment.' }
+    },
+    {
+        cat: 'step', statusCls: 'status-open',
+        ru: { city: '🇨🇳 Шанхай / Гуанчжоу (Китай)', status: 'Открыт набор Rep', visa: 'Рабочие/контрактные визовые приглашения через принимающие агентства КНР', season: 'Весна и Осень + 11.11 e-commerce пики', clients: 'Огромный e-com и лайфстайл-бренды, кампейны для Taobao/Tmall и мировых OEM', role: 'Высокий объём съёмок для обкатки новых лиц из РФ и заработка первой валютной подушки.' },
+        en: { city: '🇨🇳 Shanghai / Guangzhou (China)', status: 'Rep Open', visa: 'Contract agency sponsorship work visas', season: 'Spring/Autumn & mega e-commerce cycles', clients: 'High-volume e-commerce retailers, sportswear, consumer lifestyle brands', role: 'Proven volume stepping stone to refine on-camera movement & build cash reserves.' }
+    },
+    {
+        cat: 'step', statusCls: 'status-open',
+        ru: { city: '🇰🇷 Сеул (Южная Корея)', status: 'Открыт набор Rep', visa: 'Визовые спонсорства модельных агентств Южной Кореи (E-6 и др. через хоста)', season: 'Круглый год (K-Fashion / K-Beauty)', clients: 'K-Beauty косметика, уличная мода, дизайнерский масс-маркет', role: 'Мощный PR-эффект и трендовое бьюти-портфолио для моделей коммерческого и high-fashion типажа.' },
+        en: { city: '🇰🇷 Seoul (South Korea)', status: 'Rep Open', visa: 'Host-agency sponsored entertainment/model permits', season: 'Year-round K-Beauty & lookbook drops', clients: 'Global K-Beauty skincare brands, streetwear, editorial lookbooks', role: 'High-aesthetic beauty tearsheets elevating model value for Dubai & EU buyers.' }
+    },
+    {
+        cat: 'step', statusCls: 'status-open',
+        ru: { city: '🇯🇵 Токио (Япония)', status: 'Открыт набор Rep', visa: 'Строгое визовое спонсорство через аккредитованное японское агентство', season: 'Март–Май, Сен–Ноя', clients: 'Глобальные бьюти-бренды, концептуальная мода, коммерческая ТВ-реклама', role: 'Престижные азиатские кампейны для моделей с проверенным опытом после Москвы/Стамбула.' },
+        en: { city: '🇯🇵 Tokyo (Japan)', status: 'Rep Open', visa: 'Strict Japanese host agency visa sponsorship', season: 'Spring & Autumn peaks', clients: 'Heritage Japanese cosmetics, global fashion, TV commercials', role: 'Tier-1 Asian credibility boost for refined editorial & beauty models.' }
+    },
+    {
+        cat: 'step', statusCls: 'status-open',
+        ru: { city: '🇹🇭 Бангкок (Таиланд)', status: 'Открыт набор Rep', visa: 'Локальные рабочие разрешения через продакшн/агентство ЮВА', season: 'Ноябрь–Апрель (рекламные съёмки)', clients: 'Международные рекламные продакшены, курорты, пляжные/лайфстайл бренды', role: 'Тёплый хаб коммерческих съёмок и совместного выхода на рынки ОАЭ и Сингапура.' },
+        en: { city: '🇹🇭 Bangkok (Thailand)', status: 'Rep Open', visa: 'Production/agency compliant work permits', season: 'Nov–Apr regional commercial filming window', clients: 'Global TVC productions, swimwear/resortwear, SEA e-commerce', role: 'High-sunlight commercial lifestyle portfolio hub bridging Asia & UAE.' }
+    },
+    {
+        cat: 'cis', statusCls: 'status-active',
+        ru: { city: '🇰🇿 Алматы / Астана (Казахстан)', status: 'Финансовый и СНГ-Хаб', visa: 'Свободное передвижение ЕАЭС + международный банкинг', season: 'Круглый год', clients: 'Локальные шоурумы, центральноазиатский люкс, ивенты, банковский мост', role: 'Двойная роль: источник уникальных типажей Центральной Азии + нейтральный платёжный коридор.' },
+        en: { city: '🇰🇿 Almaty / Astana (Kazakhstan)', status: 'CIS + Banking Hub', visa: 'Free EAEU mobility; international banking rail', season: 'Year-round', clients: 'Central Asian luxury retail, regional TVCs, corporate events', role: 'Source diverse editorial faces + operate compliant neutral banking/billing rails.' }
+    },
+    {
+        cat: 'capitals', statusCls: 'status-open',
+        ru: { city: '🇮🇹 Милан (Италия)', status: 'Stage 4 • Ищем PR Rep', visa: 'Осложнённый Шенген в 2025–2026: только модели с сильным досье и гарантией от итальянского агентства', season: 'Янв–Фев и Сен (Milan Fashion Week)', clients: 'Высокая мода, шоурумы, европейские журналы', role: 'Этап 4 карьеры: направляем только после наработки опыта и финансов в Дубае/Азии.' },
+        en: { city: '🇮🇹 Milan (Italy)', status: 'Stage 4 • Rep Open', visa: 'Tightened 2025–2026 Schengen issuance; strong sponsor dossier required', season: 'Jan–Feb & Sep Fashion Weeks + showroom seasons', clients: 'Runway houses, luxury showrooms, international editorials', role: 'Stage 4 apex market reached after Asia/Dubai book maturity.' }
+    },
+    {
+        cat: 'capitals', statusCls: 'status-open',
+        ru: { city: '🇫🇷 Париж (Франция)', status: 'Stage 4 • Ищем PR Rep', visa: 'Строгие долгосрочные рабочие визы через французские агентства', season: 'Янв, Март, Июнь–Июль (Haute Couture), Сен', clients: 'Кутюр, элитный бьюти-рынок, мировые модные дома', role: 'Вершина престижа: PR-присутствие и партнерские показы для лучших лиц ростера.' },
+        en: { city: '🇫🇷 Paris (France)', status: 'Stage 4 • Rep Open', visa: 'Strict long-stay/artist talent authorizations via French agencies', season: 'RTW & Haute Couture calendar peaks', clients: 'Luxury maisons, haute couture, prestige beauty campaigns', role: 'Global prestige pinnacle for top editorial placements.' }
+    },
+    {
+        cat: 'capitals', statusCls: 'status-open',
+        ru: { city: '🇬🇧 Лондон (Великобритания)', status: 'Открыт набор Rep', visa: 'Творческая/спонсорская виза UK при контракте с лицензированным агентством', season: 'Февраль, Сентябрь (LFW) + круглогодичный e-com', clients: 'Мировые интернет-ритейлеры, премиальные креативные агентства', role: 'Сильнейший коммерческий e-commerce Европы и PR на англоязычном рынке (ориентир Storm).' },
+        en: { city: '🇬🇧 London (UK)', status: 'Rep Open', visa: 'UK creative/sponsor certificate via licensed British host', season: 'LFW Feb/Sep + year-round high e-commerce', clients: 'Global online luxury retailers, creative studios, Storm-benchmark tier', role: 'High-converting UK commercial placement & English-language press exposure.' }
+    },
+    {
+        cat: 'capitals', statusCls: 'status-open',
+        ru: { city: '🇺🇸 Нью-Йорк (США)', status: 'Открыт набор Rep', visa: 'Рабочая виза O-1 через доказанное международное портфолио и прессу', season: 'Февраль, Сентябрь (NYFW) + коммерческие кампейны', clients: 'Крупнейшие мировые бренды (ориентиры IMG/DNA/Next/EWG)', role: 'Долгосрочная цель для топ-талантов с международными публикациями (те самые PR-кейсы из Дубая/Европы!).' },
+        en: { city: '🇺🇸 New York (USA)', status: 'Rep Open', visa: 'O-1 Extraordinary Ability Visa (built on Dubai/EU press & tearsheets!)', season: 'NYFW Feb/Sep + major global commercials', clients: 'Global flagship brands (IMG/DNA/Next/EWG ecosystem)', role: 'Top-level career target: PR & publications built in Moscow/Dubai feed O-1 approvals.' }
+    }
+];
+
+let activeCat = 'all';
+
+function setCat(cat) {
+    activeCat = cat;
+    document.querySelectorAll('.filter-btn').forEach((b) => {
+        b.classList.toggle('active', b.dataset.cat === cat);
+    });
+    renderMarkets();
+}
+
+function renderMarkets() {
+    const lang = HubI18n.getLang();
+    const q = (document.getElementById('marketSearch').value || '').trim().toLowerCase();
+    const grid = document.getElementById('marketsGrid');
+    const countEl = document.getElementById('marketCount');
+
+    const filtered = MARKETS.filter((m) => {
+        if (activeCat !== 'all' && m.cat !== activeCat) return false;
+        if (!q) return true;
+        const d = m[lang];
+        const blob = `${d.city} ${d.status} ${d.visa} ${d.season} ${d.clients} ${d.role}`.toLowerCase();
+        return blob.includes(q);
+    });
+
+    countEl.textContent = `${HubI18n.t('found_prefix')} ${filtered.length} / ${MARKETS.length}`;
+
+    grid.innerHTML = filtered.map((m) => {
+        const d = m[lang];
+        return `
+            <div class="market-card">
+                <div class="market-top">
+                    <div class="market-name">${d.city}</div>
+                    <span class="status-pill ${m.statusCls}">${d.status}</span>
+                </div>
+                <div class="market-meta"><strong>${HubI18n.t('lbl_visa')}</strong> ${d.visa}</div>
+                <div class="market-meta"><strong>${HubI18n.t('lbl_season')}</strong> ${d.season}</div>
+                <div class="market-meta"><strong>${HubI18n.t('lbl_clients')}</strong> ${d.clients}</div>
+                <div class="market-meta"><strong>${HubI18n.t('lbl_role')}</strong> ${d.role}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+HubI18n.onChange(() => renderMarkets());
+HubI18n.init(DICT);
+</script>
+</body>
+</html>

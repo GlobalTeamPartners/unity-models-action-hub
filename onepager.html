@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Models × Global Plus | Executive A4 Partner One-Pager (RU / EN)</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hub.css">
+    <style>
+        .print-toolbar {
+            max-width: 860px;
+            margin: 28px auto 0;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .a4-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            border-bottom: 2px solid #C5A059;
+            padding-bottom: 18px;
+            margin-bottom: 22px;
+        }
+        .a4-logo-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .a4-logo-row img {
+            height: 44px;
+            width: auto;
+            border-radius: 8px;
+            background: #0B0E14;
+            padding: 4px;
+        }
+        .a4-kicker {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            color: #9A742E;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .a4-sheet h1 {
+            font-size: 1.75rem !important;
+            line-height: 1.2 !important;
+            margin-bottom: 4px !important;
+            text-align: left !important;
+        }
+        .a4-meta-box {
+            text-align: right;
+            font-size: 0.8rem;
+            color: #475569;
+        }
+        .a4-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 18px 0;
+        }
+        .a4-box {
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 14px 16px;
+            background: #F8FAFC;
+        }
+        .a4-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            color: #0F172A;
+            border-left: 3px solid #C5A059;
+            padding-left: 8px;
+        }
+        .a4-box ul { padding-left: 18px; font-size: 0.85rem; line-height: 1.5; }
+        .a4-box li { margin-bottom: 5px; }
+        .a4-kpi-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 18px 0;
+        }
+        .a4-kpi {
+            background: #0B0E14;
+            color: #F8FAFC;
+            padding: 12px 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .a4-kpi strong {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: #E0C07A;
+        }
+        .a4-kpi span { font-size: 0.72rem; color: #CBD5E1; }
+        .a4-footer {
+            border-top: 1px solid #CBD5E1;
+            padding-top: 14px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #475569;
+        }
+        .a4-footer a { color: #9A742E; font-weight: 600; text-decoration: none; }
+        @media (max-width: 720px) {
+            .a4-grid, .a4-kpi-row { grid-template-columns: 1fr; }
+            .a4-header { flex-direction: column; }
+            .a4-meta-box { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-utility-bar no-print">
+    <div class="top-left-nav">
+        <a href="index.html" class="top-logo-link">
+            <img src="images/logo.png" alt="Unity Models" onerror="this.onerror=null;this.src='https://unityspirit.github.io/unity-models-platform/images/logo.png'">
+            <span data-i18n="brand_name">Unity Models × Global Plus</span>
+        </a>
+        <a href="index.html" class="nav-back-pill" data-i18n="back_hub">← Главный Хаб Действий</a>
+    </div>
+    <div class="top-right-controls">
+        <a href="https://t.me/unitymodelsbot" target="_blank" class="nav-back-pill" data-i18n="bot_btn">🤖 @unitymodelsbot</a>
+        <div class="lang-switcher" aria-label="Language Switcher">
+            <button class="lang-btn active" data-lang="ru" onclick="HubI18n.setLang('ru')">🇷🇺 RU</button>
+            <button class="lang-btn" data-lang="en" onclick="HubI18n.setLang('en')">🇬🇧 EN</button>
+        </div>
+    </div>
+</div>
+
+<div class="print-toolbar no-print">
+    <div style="color:var(--text-dim); font-size:0.9rem;" data-i18n="print_note">Готовый лист формата А4 для партнёров, агентств Дубая, брендов и представителей.</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="fast-btn gold" onclick="window.print()" data-i18n="btn_print">🖨️ Печать / Сохранить в PDF</button>
+        <a href="scripts.html" class="fast-btn emerald" data-i18n="btn_scripts">💬 Тексты к письму</a>
+    </div>
+</div>
+
+<div class="a4-sheet" id="sheetContainer"></div>
+
+<footer class="no-print">
+    <p data-i18n="footer_copy">© 2026 Unity Models × Глобал Плюс (Global Team Partners).</p>
+    <p style="margin-top:8px;" data-i18n="footer_sub">Глобальные коридоры экспансии: Москва • Санкт-Петербург • Стамбул • Шанхай • Сеул • Токио • Дубай • Париж • Милан.</p>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+const DICT = {
+    ru: {
+        print_note: 'Готовый презентационный лист A4 (переключите язык сверху для RU или EN PDF-версии).',
+        btn_print: '🖨️ Печать / Сохранить PDF',
+        btn_scripts: '💬 Взять сопроводительный текст'
+    },
+    en: {
+        print_note: 'Print-ready A4 Executive Sheet (toggle RU/EN above before exporting PDF).',
+        btn_print: '🖨️ Print / Save as PDF',
+        btn_scripts: '💬 Copy Cover Email'
+    }
+};
+
+function renderSheet(lang) {
+    const el = document.getElementById('sheetContainer');
+    if (lang === 'ru') {
+        el.innerHTML = `
+            <div class="a4-header">
+                <div class="a4-logo-row">
+                    <img src="images/logo.png" alt="Unity Models Logo" onerror="this.onerror=null;this.src='https://unityspirit.github.io/unity-models-platform/images/logo.png'">
+                    <div>
+                        <div class="a4-kicker">МЕМОРАНДУМ ПАРТНЁРСТВА И ЭКСПАНСИИ • 2026</div>
+                        <h1>Unity Models &times; Глобал Плюс</h1>
+                    </div>
+                </div>
+                <div class="a4-meta-box">
+                    <strong>Штаб-квартира РФ:</strong> Москва (Глобал Плюс)<br>
+                    <strong>Глобальный фокус:</strong> Стамбул • Азия • Дубай • Мир<br>
+                    <strong>Контакт:</strong> talent@unitymodels.ai
+                </div>
+            </div>
+
+            <p style="font-size:0.93rem; line-height:1.55; margin-bottom:14px;">
+                <strong>Unity Models</strong> — технологичная международная модельная платформа с AI-скаутингом и матчингом (<strong>Oscar AI</strong> + <strong>@unitymodelsbot</strong>), объединённая с представительством и IT-инфраструктурой <strong>Глобал Плюс (Global Team Partners)</strong> в Москве. Мы строим прозрачный мост между лучшими новыми лицами из РФ/СНГ и коммерческими рынками Дубая, Азии и мира.
+            </p>
+
+            <div class="a4-kpi-row">
+                <div class="a4-kpi"><strong>0 ₽ / $0</strong><span>Предоплаты с моделей (Хартия)</span></div>
+                <div class="a4-kpi"><strong>AED 2,500+</strong><span>Ставка день в Дубае (Окт–Апр)</span></div>
+                <div class="a4-kpi"><strong>10% + 20%</strong><span>Сплит: Mother Agency + Букинг</span></div>
+                <div class="a4-kpi"><strong>4 этапа</strong><span>Москва → Стамбул/Азия → ОАЭ → Мир</span></div>
+            </div>
+
+            <div class="a4-grid">
+                <div class="a4-box">
+                    <h3>Что получает партнер / бренд / хост-агентство</h3>
+                    <ul>
+                        <li>Верифицированные лица из Москвы и СПб (стандарты Digitals, видео-визитка EN, реальные коммерческие tearsheets).</li>
+                        <li>Мгновенный AI-подбор параметров через <strong>Oscar AI</strong> и автоматизированный запрос кастинга в 24 часа.</li>
+                        <li>Полный юридический комплаенс в ОАЭ (<strong>Visitor Advertiser Permit</strong> через агентство-спонсора / UAE Media Council).</li>
+                        <li>Опция полного IT-продакшена от <strong>Глобал Плюс</strong>: лендинги кампейнов, боты, автоматизация лидов.</li>
+                    </ul>
+                </div>
+                <div class="a4-box">
+                    <h3>Как мы строим этику и лидерство</h3>
+                    <ul>
+                        <li><strong>Хартия 0 ₽:</strong> Никаких платных «курсов» и поборов с моделей — только честный процент от букингов.</li>
+                        <li><strong>Ступенчатая карьера:</strong> Обход визовых задержек ЕС через коммерческий рост в Стамбуле, Азии и Дубае.</li>
+                        <li><strong>Нейтральный биллинг:</strong> Чистые международные расчёты (ОАЭ/Казахстан/Грузия/Армения) при цикле Net 60–90.</li>
+                        <li><strong>Этичные AI Digital Twins:</strong> Модель сама владеет правами на двойник и получает роялти (эталон H&M × Uncut).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="a4-box" style="margin-top:10px; background:#FFFBEB; border-color:#FDE68A;">
+                <h3>Предложение для Московских партнёров и Представителей по миру (Country Reps)</h3>
+                <p style="font-size:0.86rem; line-height:1.5;">
+                    Ищем сильных региональных представителей (Дубай, Стамбул, Шанхай, Сеул, Алматы, Лондон, Милан, Нью-Йорк) и московских партнёров (фотостудии, скауты, шоурумы). Вы приводите бренды, хост-агентства или таланты — платформа обеспечивает AI-инфраструктуру, ростер и прозрачную выплату вашей доли комиссии с каждого букинга.
+                </p>
+            </div>
+
+            <div class="a4-footer">
+                <div><strong>Платформа RU:</strong> <a href="https://globalteamgroup.github.io/unity-models-platform/" target="_blank">globalteamgroup.github.io/unity-models-platform</a></div>
+                <div><strong>Platform EN:</strong> <a href="https://unityspirit.github.io/unity-models-platform/" target="_blank">unityspirit.github.io/unity-models-platform</a></div>
+                <div><strong>AI Бот:</strong> <a href="https://t.me/unitymodelsbot" target="_blank">t.me/unitymodelsbot</a></div>
+            </div>
+        `;
+    } else {
+        el.innerHTML = `
+            <div class="a4-header">
+                <div class="a4-logo-row">
+                    <img src="images/logo.png" alt="Unity Models Logo" onerror="this.onerror=null;this.src='https://unityspirit.github.io/unity-models-platform/images/logo.png'">
+                    <div>
+                        <div class="a4-kicker">EXECUTIVE PARTNER &amp; EXPANSION BRIEF • 2026</div>
+                        <h1>Unity Models &times; Global Plus</h1>
+                    </div>
+                </div>
+                <div class="a4-meta-box">
+                    <strong>Moscow Desk:</strong> Global Plus (Official Rep)<br>
+                    <strong>Corridors:</strong> Istanbul • Asia • Dubai • Global<br>
+                    <strong>Direct Email:</strong> talent@unitymodels.ai
+                </div>
+            </div>
+
+            <p style="font-size:0.93rem; line-height:1.55; margin-bottom:14px;">
+                <strong>Unity Models</strong> is an AI-enabled international modeling &amp; talent platform (powered by <strong>Oscar AI</strong> and <strong>@unitymodelsbot</strong>) operating in strategic alliance with <strong>Global Plus (Global Team Partners)</strong> in Moscow. We connect vetted Russian, CIS, and global commercial/fashion faces directly with Dubai host agencies, luxury e-commerce houses, and international production teams.
+            </p>
+
+            <div class="a4-kpi-row">
+                <div class="a4-kpi"><strong>$0 / 0 ₽</strong><span>Zero-Upfront Model Charter</span></div>
+                <div class="a4-kpi"><strong>AED 2,500+</strong><span>Dubai Benchmark Day Rate</span></div>
+                <div class="a4-kpi"><strong>10% + 20%</strong><span>Mother Agency + Booking Split</span></div>
+                <div class="a4-kpi"><strong>4-Stage</strong><span>Moscow → TR/Asia → UAE → World</span></div>
+            </div>
+
+            <div class="a4-grid">
+                <div class="a4-box">
+                    <h3>Value for Host Agencies, Brands &amp; Buyers</h3>
+                    <ul>
+                        <li>Export-ready talent vetted in Moscow/SPb with unretouched Polas, EN intro slates, and real commercial tearsheets.</li>
+                        <li>24-hour curated shortlists matched by <strong>Oscar AI</strong> across height, measurements, languages, and active visas.</li>
+                        <li>Full UAE regulatory compliance (Agency-Sponsored 3-mo <strong>Visitor Advertiser Permit</strong> &amp; UAE Media Council rules).</li>
+                        <li>Optional turnkey campaign digital stack via <strong>Global Plus</strong> (websites, AI automation, smart Telegram/WhatsApp bots).</li>
+                    </ul>
+                </div>
+                <div class="a4-box">
+                    <h3>Why Top Talent &amp; Global Reps Choose Us</h3>
+                    <ul>
+                        <li><strong>Zero-Upfront Charter:</strong> Models pay zero entry or studio fees — revenue comes strictly from booked jobs.</li>
+                        <li><strong>Smart Visa Routing:</strong> Navigating 2025–2026 visa shifts via rapid Istanbul, Asia &amp; Dubai commercial seasons.</li>
+                        <li><strong>Neutral Settlement Rails:</strong> Clean international invoicing across UAE/KZ/GE/AM managing Net 60–90 cycles.</li>
+                        <li><strong>Consent-First AI Twins:</strong> Models retain likeness ownership and collect licensing royalties (H&M × Uncut model).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="a4-box" style="margin-top:10px; background:#FFFBEB; border-color:#FDE68A;">
+                <h3>International Country Representative &amp; PR Partner Mandate</h3>
+                <p style="font-size:0.86rem; line-height:1.5;">
+                    We are appointing Country Representatives in Dubai, Istanbul, Shanghai, Seoul, Bangkok, Almaty, Milan, London &amp; NYC. Bring brand demand, showroom PR, or host agency introductions — Unity Models × Global Plus provides the vetted roster, AI matching tech, legal playbook, and high recurring commissions on every closed campaign.
+                </p>
+            </div>
+
+            <div class="a4-footer">
+                <div><strong>Platform EN:</strong> <a href="https://unityspirit.github.io/unity-models-platform/" target="_blank">unityspirit.github.io/unity-models-platform</a></div>
+                <div><strong>Platform RU:</strong> <a href="https://globalteamgroup.github.io/unity-models-platform/" target="_blank">globalteamgroup.github.io/unity-models-platform</a></div>
+                <div><strong>Telegram Bot:</strong> <a href="https://t.me/unitymodelsbot" target="_blank">t.me/unitymodelsbot</a></div>
+            </div>
+        `;
+    }
+}
+
+HubI18n.onChange((lang) => renderSheet(lang));
+HubI18n.init(DICT);
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Models × Global Plus | Outreach Scripts, PR & Objections (RU / EN)</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hub.css">
+    <style>
+        .script-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        @media (max-width: 768px) {
+            .script-grid { grid-template-columns: 1fr; }
+        }
+        .faq-icon {
+            color: var(--gold-light);
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: transform 0.2s;
+        }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+    </style>
+</head>
+<body>
+
+<div class="top-utility-bar">
+    <div class="top-left-nav">
+        <a href="index.html" class="top-logo-link">
+            <img src="images/logo.png" alt="Unity Models" onerror="this.onerror=null;this.src='https://unityspirit.github.io/unity-models-platform/images/logo.png'">
+            <span data-i18n="brand_name">Unity Models × Global Plus</span>
+        </a>
+        <a href="index.html" class="nav-back-pill" data-i18n="back_hub">← Главный Хаб Действий</a>
+    </div>
+    <div class="top-right-controls">
+        <a href="https://t.me/unitymodelsbot" target="_blank" class="nav-back-pill" data-i18n="bot_btn">🤖 @unitymodelsbot</a>
+        <div class="lang-switcher" aria-label="Language Switcher">
+            <button class="lang-btn active" data-lang="ru" onclick="HubI18n.setLang('ru')">🇷🇺 RU</button>
+            <button class="lang-btn" data-lang="en" onclick="HubI18n.setLang('en')">🇬🇧 EN</button>
+        </div>
+    </div>
+</div>
+
+<header class="hero-header">
+    <div class="brand-pill">
+        <span class="dot"></span>
+        <span data-i18n="hero_pill">OUTREACH, PR &amp; OBJECTION PLAYBOOK</span>
+    </div>
+    <h1 data-i18n-html="hero_h1">Скрипты, <span class="highlight">PR-Питчи</span> &amp; Возражения</h1>
+    <p class="subtitle" data-i18n="hero_sub">Готовые сообщения в 1 клик для скаутинга в Москве, переговоров с хост-агентствами Дубая, привлечения международных представителей, брендов и СМИ.</p>
+</header>
+
+<div class="container">
+    <h2 class="section-heading" data-i18n="sec_scripts">Готовые скрипты (1-клик копирование)</h2>
+    <div id="scriptsContainer" class="script-grid"></div>
+
+    <h2 class="section-heading" data-i18n="sec_faq">Матрица отработки возражений (FAQ для представителей)</h2>
+    <div id="faqContainer"></div>
+</div>
+
+<footer>
+    <p data-i18n="footer_copy">© 2026 Unity Models × Глобал Плюс (Global Team Partners).</p>
+    <p style="margin-top:8px;" data-i18n="footer_sub">Глобальные коридоры экспансии: Москва • Санкт-Петербург • Стамбул • Шанхай • Сеул • Токио • Дубай • Париж • Милан.</p>
+</footer>
+
+<script src="i18n.js"></script>
+<script>
+const DICT = {
+    ru: {
+        hero_pill: 'СКРИПТЫ ПРОДАЖ, PR И ПЕРЕГОВОРОВ • 2026',
+        hero_h1: 'Скрипты, <span class="highlight">PR-Питчи</span> &amp; Возражения',
+        hero_sub: 'Скопируйте любой текст в Telegram, WhatsApp, Email или LinkedIn на русском или английском — сразу адаптировано под роль Москвы, Дубая и Country Reps.',
+        sec_scripts: '6 базовых скриптов (выберите язык сверху)',
+        sec_faq: '8 частых возражений моделей, агентств и брендов'
+    },
+    en: {
+        hero_pill: 'OUTREACH, PR & OBJECTION PLAYBOOK • 2026',
+        hero_h1: 'Outreach Scripts, <span class="highlight">PR Pitches</span> &amp; Objections',
+        hero_sub: 'One-click copy templates for Telegram, WhatsApp, Email & LinkedIn covering Moscow scouting, Dubai host agencies, global Country Reps & Fashion Week PR.',
+        sec_scripts: '6 Battle-Tested Scripts (1-Click Copy)',
+        sec_faq: '8 Core Industry & Legal Objections Handled'
+    }
+};
+
+const SCRIPTS = {
+    ru: [
+        {
+            id: 'scr1',
+            tag: 'Скрипт 1 • Скаутинг РФ',
+            title: 'Приглашение модели в Москве (Хартия 0 ₽)',
+            text: `Привет, [Имя]! Меня зовут [Ваше Имя], я представляю московский офис Unity Models на базе Глобал Плюс.\n\nМы формируем новый международный ростер моделей с выходом на коммерческие и подиумные контракты в Москве, Стамбуле, Азии и Дубае (пик сезона Окт–Апр и коллекции Рамадана).\n\nРаботаем строго по Хартии «0 ₽ предоплат»: никаких платных школ или навязанных портфолио — агентство зарабатывает только процент от реальных букингов.\n\nЕсли тебе интересен международный рост, заполни анкету и загрузи 4 базовых снэпа в нашего AI-бота за 2 минуты: https://t.me/unitymodelsbot — и давай назначим короткий офлайн/онлайн Digitals-каст в Москве на этой неделе!`,
+            tip: '💡 Совет: Всегда подчеркивайте «без предоплат с модели» — это сразу отстраивает от 90% серых агентств в РФ.'
+        },
+        {
+            id: 'scr2',
+            tag: 'Скрипт 2 • Москва B2B',
+            title: 'Партнёрство со студиями, фотографами и педагогами',
+            text: `[Имя], добрый день! Это [Ваше Имя], представитель международного проекта Unity Models (при поддержке Глобал Плюс, Москва).\n\nМы еженедельно отбираем новые перспективные лица в Москве под контракты в Стамбуле, Азии и ОАЭ (Дубай) и сейчас расширяем пул партнёрских студий и скаутов.\n\nЧто предлагаем:\n1. Постоянный поток новых моделей и съёмок для коммерческого портфеля (tearsheets & Digitals).\n2. Прозрачный реферальный сплит с международных контрактов, если вы рекомендуете нам сильные лица.\n3. Приоритет на клиентские кампейны брендов через нашу платформу и Oscar AI.\n\nДавайте созвонимся на 10 минут на этой неделе и обсудим формат совместной работы в Москве.`,
+            tip: '💡 Совет: Предложите студии бартерное окно 2 часа в будни утром в обмен на промо и клиентские съёмки.'
+        },
+        {
+            id: 'scr3',
+            tag: 'Скрипт 3 • Дубай B2B',
+            title: 'Питч в хост-агентства Дубая (EN/RU)',
+            text: `Hello [Booking Director Name],\n\nI represent Unity Models × Global Plus (Moscow & Global Talent Placement Desk).\n\nAhead of the upcoming Dubai peak commercial & Ramadan seasons, we have a curated board of vetted Russian/CIS fashion & commercial models — complete with standardized unretouched Digitals, walk videos, and proven e-com tearsheets from Moscow/Istanbul.\n\nAll visiting talent strictly follow UAE compliance via Agency-Sponsored Visitor Advertiser Permits and clean international settlement rails.\n\nWould you be open to reviewing a private capsule package of 6–8 ready-to-fly faces this week?`,
+            tip: '💡 Совет: Пишите директорам по букингу в Дубае в воскресенье–среду утром с PDF-композитками 6–8 лучших лиц.'
+        },
+        {
+            id: 'scr4',
+            tag: 'Скрипт 4 • Бренды и E-Com',
+            title: 'Оффер брендам Дубая и мира (Модели + Global Plus)',
+            text: `Hi [Brand / Producer Name],\n\nPreparing your upcoming lookbook or e-commerce drop?\n\nThrough Unity Models × Global Plus, you get direct access to:\n• Hand-picked international & Russian commercial talent matched fast via Oscar AI;\n• Full UAE-compliant booking & billing (with standard Net terms);\n• Optional Digital Twin licensing (consent-first, royalty-backed) & turnkey campaign web/bot production by Global Plus.\n\nReply with your shoot dates and moodboard — we will send a tailored 6-model shortlist within 24 hours: https://unityspirit.github.io/unity-models-platform/`,
+            tip: '💡 Совет: Для e-com в Дубае предлагайте пакетную съёмку сразу на несколько дней со скидкой 10–15%.'
+        },
+        {
+            id: 'scr5',
+            tag: 'Скрипт 5 • Country Reps',
+            title: 'Вербовка международного представителя (PR & Рынки)',
+            text: `Hi [Name],\n\nWe are expanding Unity Models × Global Plus across key fashion and commercial hubs (Dubai, Istanbul, Shanghai, Seoul, Milan, London, NYC) and looking for an ambitious Country Representative in [City/Country].\n\nWhat you bring: local brand/showroom access, PR instincts, and eye for commercial/fashion talent.\nWhat we give you: an active AI-powered booking platform, vetted Russian & international model roster, live casting feeds (@unitymodelsbot), bilingual Sales/PR Hub, and high recurring commissions on every booking & brand partnership you originate.\n\nHere is our 1-page partner memo — let’s schedule a 15-minute intro call this week.`,
+            tip: '💡 Совет: Прикрепляйте ссылку на страницу onepager.html?lang=en (или распечатанный PDF) к этому сообщению.'
+        },
+        {
+            id: 'scr6',
+            tag: 'Скрипт 6 • PR и СМИ',
+            title: 'PR-питч для модных медиа и Fashion Week шоурумов',
+            text: `Тема: Новая волна: как российско-дубайская связка Unity Models × Global Plus автоматизирует скаутинг без визовых барьеров\n\nДобрый день, [Имя редактора]!\n\nВ 2025–2026 годах международный моделинг кардинально перестроился: вместо классического шенгенского маршрута ведущие российские таланты выходят на мир через Стамбул, Азию и Дубай (сезон AED 2,500+/день, коллекции Рамадана и DFW), а скаутинг ускоряется за счёт AI-подбора (Oscar AI) и этичных Digital Twins с защитой прав моделей.\n\nПредставительство Global Plus в Москве и основатель Unity Models готовы дать эксклюзивный комментарий или организовать совместный editorial/backstage для вашего издания.\n\nБудем рады сотрудничеству!`,
+            tip: '💡 Совет: Отправляйте PR-питч за 3–4 недели до локальных недель моды или отраслевых форумов.'
+        }
+    ],
+    en: [
+        {
+            id: 'scr1',
+            tag: 'Script 1 • Talent Scouting',
+            title: 'Moscow / Global Model Outreach (Zero-Upfront Charter)',
+            text: `Hi [Name]! I'm [Your Name] representing the Moscow & Global Expansion Desk of Unity Models × Global Plus.\n\nWe are curating our next international board for commercial & runway placements across Moscow, Istanbul, Asia, and Dubai (Oct–Apr peak & Ramadan drops).\n\nWe strictly uphold a Zero-Upfront Charter ($0 / 0 RUB upfront fees from models — we only earn when you book real paid work).\n\nIf you’re open to a serious career path, submit 4 clean Digitals in 2 minutes via our bot https://t.me/unitymodelsbot — and let’s book a quick daylight casting review this week.`,
+            tip: '💡 Tip: Leading with the Zero-Upfront Charter immediately separates you from pay-to-shoot agencies.'
+        },
+        {
+            id: 'scr2',
+            tag: 'Script 2 • Studio Partners',
+            title: 'Photographer, Studio & Runway Coach Partnership',
+            text: `Hi [Name], I represent the Moscow office of Unity Models backed by Global Plus.\n\nWe review new export-ready talent weekly ahead of Istanbul, Asian & Dubai seasonal contracts, and we are onboarding 2–3 core studio/photographer partners.\n\nWhy partner:\n1. Steady volume of commercial book tests & standardized Digital sessions.\n2. Transparent referral commission on international placements for talent you discover.\n3. Priority access when our B2B brand clients book local campaign production.\n\nCan we hop on a 10-minute call this week to align on studio slots?`,
+            tip: '💡 Tip: Negotiate off-peak morning studio blocks in exchange for agency promo & production referrals.'
+        },
+        {
+            id: 'scr3',
+            tag: 'Script 3 • Dubai Host Agencies',
+            title: 'Dubai Host Agency Placement Pitch',
+            text: `Hello [Booker / Director Name],\n\nI’m writing from Unity Models × Global Plus (Mother Agency & Global Placement Desk).\n\nAhead of the upcoming Dubai peak commercial season and Ramadan capsules, we have 8 vetted Eastern European & international faces ready for direct-on-stay or On-Request bookings — all featuring clean unretouched Polas, walk clips, and proven e-com tearsheets.\n\nEvery model strictly respects UAE regulations via Agency-Sponsored Visitor Advertiser Permits and operates on clean international banking rails.\n\nWould you like me to share our private capsule link this week?`,
+            tip: '💡 Tip: Send Dubai host pitches Mon–Wed morning UAE time with 6–8 standout faces.'
+        },
+        {
+            id: 'scr4',
+            tag: 'Script 4 • Brand Buyers',
+            title: 'Turnkey Brand & E-Commerce Campaign Pitch',
+            text: `Hi [Brand / Creative Director],\n\nLocking talent for your upcoming e-commerce catalog, Ramadan edit, or Dubai campaign?\n\nWith Unity Models × Global Plus you get:\n• Instant Oscar AI + curated human shortlists tailored to your measurements & aesthetic;\n• Fully UAE-compliant advertiser permits & corporate Net invoicing;\n• Optional Consent-First AI Digital Twins (for regional SKU variations) + turnkey campaign microsites/bots built by Global Plus.\n\nReply with your shoot window & brief — we’ll deliver a custom shortlist in under 24 hours: https://unityspirit.github.io/unity-models-platform/`,
+            tip: '💡 Tip: Pitch multi-day lookbook bundles to e-commerce brands for higher booking value.'
+        },
+        {
+            id: 'scr5',
+            tag: 'Script 5 • Global Reps',
+            title: 'Country Representative Recruitment Pitch (Worldwide)',
+            text: `Hi [Name],\n\nWe’re scaling Unity Models × Global Plus across top fashion & commercial cities (Dubai, Istanbul, Shanghai, Seoul, Milan, London, NYC) and appointing an exclusive/lead Country Representative for [City/Region].\n\nYour role: connect local brands, showrooms & press while sourcing standout regional talent.\nOur infrastructure: live @unitymodelsbot funnel, Oscar AI matching, vetted Russian & international boards, dual-language Action Hub & high recurring revenue splits on every booking.\n\nI’ve attached our 1-Page Executive Brief — open to a 15-minute chat this week?`,
+            tip: '💡 Tip: Pair this outreach with a PDF export from onepager.html?lang=en.'
+        },
+        {
+            id: 'scr6',
+            tag: 'Script 6 • Press & Media',
+            title: 'PR & Fashion Week Editorial Pitch',
+            text: `Subject: Editorial Pitch: Inside the 2026 Moscow → Dubai Talent Pipeline & Ethical AI Digital Twins\n\nHi [Editor Name],\n\nWith 2025–2026 visa shifts rerouting Eastern European modeling talent through Istanbul, Asia & Dubai’s booming AED 2,500+/day commercial market, Unity Models × Global Plus has built a transparent tech-enabled Mother Agency bridge — pairing AI casting (@unitymodelsbot & Oscar AI) with strict Zero-Upfront ethics and consent-first Digital Twin licensing.\n\nWe’d love to offer an exclusive founder/rep interview or co-produce a high-fashion editorial feature for [Publication].\n\nLet us know if you’d like our press kit!`,
+            tip: '💡 Tip: Time press outreach 3–4 weeks before Dubai Fashion Week or regional trade shows.'
+        }
+    ]
+};
+
+const FAQS = {
+    ru: [
+        { q: '1. «Сколько нужно заплатить модели за вступление, тесты или школу?»', a: 'Ровно 0 ₽ / $0. Наша Хартия запрещает брать деньги с моделей за вход или обязательные платные школы. По стандарту топ-агентств (IMG, Avant, Grace) материнское агентство зарабатывает исключительно на комиссиях с реальных оплаченных букингов (10–20%).' },
+        { q: '2. «Почему Шенген сейчас не первый шаг для моделей из Москвы?»', a: 'В 2025–2026 годах резко сократилась выдача мультивиз Шенгена гражданам РФ. Чтобы модель не теряла время и деньги на отказы, мы строим доказанную международную книгу через Стамбул, Китай/Азию и Дубай, где визовые рельсы быстрые, а гонорары в сезон (от AED 2,500/день) сопоставимы с Европой.' },
+        { q: '3. «Законно ли моделям работать в Дубае по туристической визе?»', a: 'НЕТ. Согласно UAE Federal Decree-Law No. 55 of 2023, любая коммерческая/рекламная съёмка в ОАЭ требует официального разрешения. Приезжим моделям оформляется Visitor Advertiser Permit (до 3 месяцев) через лицензированное агентство-спонсора ОАЭ, либо GoFreelance/Meydan + UAE Media Council Permit.' },
+        { q: '4. «Почему выплаты из Дубая и Европы идут 60–90 дней?»', a: 'Это стандартный цикл оплаты корпоративных брендов и продюсерских домов (Net 60–90 после съёмки). Мы заранее фиксируем это в договоре модели и ведём прозрачный биллинг через нейтральные международные счета (ОАЭ/Казахстан/Грузия/Армения).' },
+        { q: '5. «Зачем бренду Unity Models × Global Plus, если можно нанять фрилансера?»', a: 'Фрилансер не даёт гарантии замены в день съёмки, юридического комплаенса ОАЭ (штрафы от AED 5,000+), единого биллинга и IT-продакшена. С нами бренд за 24 часа получает проверенный шорт-лист от Oscar AI, юридическую чистоту и, при желании, полный веб/бот-продакшн от Глобал Плюс.' },
+        { q: '6. «Не заменят ли ваши AI Digital Twins живых моделей?»', a: 'Нет. Мы принципиально следуем этичной модели (по примеру H&M × Uncut): цифровой двойник создаётся ТОЛЬКО с письменного согласия модели для рутинных e-com вариаций, а модель сохраняет права на образ и получает денежное роялти за каждый выпуск.' },
+        { q: '7. «Можно ли работать с вами представителем в другой стране неэксклюзивно?»', a: 'Да. На старте Country Rep получает комиссионную привязку к каждому приведённому клиенту и таланту в регионе. При стабильном ежемесячном объёме букингов и PR-активности HQ закрепляет за партнёром статус ведущего представителя страны/города.' },
+        { q: '8. «Бот @unitymodelsbot выдал ошибку или мало кастингов — как объяснить партнёрам?»', a: 'Это временное ограничение внешнего веб-поиска (429 лимит). Нажмите кнопку подачи/профиль — база моделей и партнёров уже работает через внутренний Supabase-реестр, а фаза кэширования открытых мировых кастингов в Supabase гарантирует мгновенный отклик без лимитов.' }
+    ],
+    en: [
+        { q: '1. "Does a model have to pay upfront to join or build Digitals?"', a: 'Zero ($0 / 0 RUB). Following the tier-1 standards of IMG, Avant, and Grace Models, Unity Models strictly operates a Zero-Upfront Charter. Agency revenue comes solely from real paid client bookings (10%–20% commissions).' },
+        { q: '2. "Why route Russian/CIS talent to Istanbul, Asia & Dubai before Europe?"', a: 'Tightened 2025–2026 Schengen multi-entry visa issuance creates high rejection risk for unestablished talent. Istanbul, Shanghai/Seoul/Bangkok, and Dubai provide rapid entry, heavy commercial tearsheet production, and strong USD/AED day rates.' },
+        { q: '3. "Can foreign models legally shoot in Dubai on a tourist visa?"', a: 'No. Under UAE Federal Decree-Law No. 55 of 2023, commercial campaigns and brand shoots require proper advertiser authorization. Visiting talent require a 3-month Visitor Advertiser Permit sponsored by a licensed UAE agency, or a resident freelance license (GoFreelance/Meydan/twofour54) + UAE Media Council Permit.' },
+        { q: '4. "Why do commercial agency payouts take 60–90 days?"', a: 'Net 60–90 day invoicing is standard across Dubai, EU, and global fashion e-commerce houses. We disclose payout windows upfront in model contracts and clear cross-border funds cleanly via UAE/KZ/GE/AM corporate accounts.' },
+        { q: '5. "Why book via Unity Models × Global Plus instead of independent freelancers?"', a: 'Brands eliminate no-show risks, AED 5,000+ UAE permit liability, and fragmented invoicing. Plus, Oscar AI delivers vetted 24-hour shortlists backed by Global Plus turnkey digital production (microsites, chatbots, CRM).' },
+        { q: '6. "Do AI Digital Twins replace real models on your roster?"', a: 'Never. Following the consent-first H&M × Uncut framework, a Digital Twin is licensed ONLY with the model’s explicit approval, preserving likeness ownership and paying ongoing royalties per brand usage.' },
+        { q: '7. "How do International Country Representatives earn and hold exclusivity?"', a: 'Reps earn verified percentage splits (modeled live in calculator.html) on every brand booking and cross-border placement they originate. Consistent quarterly volume unlocks priority city/country territory rights.' },
+        { q: '8. "What if a partner asks about the bot casting search?"', a: 'Live talent onboarding & profile matching run smoothly in Supabase via @unitymodelsbot; external web-search calls use fallback platform caching so partners can immediately review and match internal + curated global talent.' }
+    ]
+};
+
+function renderPage(lang) {
+    const scrEl = document.getElementById('scriptsContainer');
+    const faqEl = document.getElementById('faqContainer');
+    const copyLabel = HubI18n.t('copy_idle');
+
+    scrEl.innerHTML = SCRIPTS[lang].map((s) => `
+        <div class="script-card">
+            <div class="script-header">
+                <span class="script-tag">${s.tag}</span>
+                <button class="copy-btn" onclick="HubI18n.copyText('${s.id}', this)">${copyLabel}</button>
+            </div>
+            <h3 class="script-title">${s.title}</h3>
+            <div class="script-text" id="${s.id}">${s.text}</div>
+            <div class="script-tip">${s.tip}</div>
+        </div>
+    `).join('');
+
+    faqEl.innerHTML = FAQS[lang].map((f, idx) => `
+        <div class="faq-item ${idx === 0 ? 'active' : ''}">
+            <div class="faq-q" onclick="this.parentElement.classList.toggle('active')">
+                <span>${f.q}</span>
+                <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-a">${f.a}</div>
+        </div>
+    `).join('');
+}
+
+HubI18n.onChange((lang) => renderPage(lang));
+HubI18n.init(DICT);
+</script>
+</body>
+</html>
