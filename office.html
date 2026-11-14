@@ -60,6 +60,42 @@
             border-color: var(--red);
             color: #FCA5A5;
         }
+        .crm-form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .crm-input {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border-card);
+            color: var(--white);
+            padding: 9px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: inherit;
+        }
+        .crm-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        .crm-stage-btn {
+            background: rgba(197, 160, 89, 0.16);
+            border: 1px solid rgba(197, 160, 89, 0.45);
+            color: var(--gold-light);
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 0.74rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -128,6 +164,28 @@
         <div class="checklist-grid" id="checklistGrid"></div>
     </div>
 
+    <!-- Partner & Brand Pipeline Micro-CRM (LocalStorage) -->
+    <div class="checklist-box" style="margin-top: 26px;">
+        <div class="checklist-header">
+            <div>
+                <h2 class="checklist-title" data-i18n="crm_title">📒 Локальный трекер партнеров, студий и лидов (CRM в браузере)</h2>
+            </div>
+            <span class="progress-pill" id="leadCountPill">0</span>
+        </div>
+        <form id="leadForm" class="crm-form-grid">
+            <input type="text" id="leadName" class="crm-input" maxlength="80" required data-i18n-placeholder="crm_ph_name" placeholder="Название (напр., Bareface Dubai / Студия в Москве)">
+            <select id="leadType" class="crm-input">
+                <option value="Dubai Host / Client" data-i18n="crm_t1">Дубай Хост / Бренд</option>
+                <option value="Moscow Studio / Scout" data-i18n="crm_t2">Москва Студия / Скаут</option>
+                <option value="Model Prospect" data-i18n="crm_t3">Модель на отбор</option>
+                <option value="Global Country Rep" data-i18n="crm_t4">Представитель в стране</option>
+            </select>
+            <input type="text" id="leadNote" class="crm-input" maxlength="100" data-i18n-placeholder="crm_ph_note" placeholder="Контакт / Следующий шаг">
+            <button type="submit" class="fast-btn emerald" data-i18n="crm_add">+ Добавить в трекер</button>
+        </form>
+        <div id="leadList"></div>
+    </div>
+
     <!-- Navigation Strip -->
     <h2 class="section-heading" data-i18n="nav_heading">Быстрый переход к инструментам</h2>
     <div class="fast-actions-bar">
@@ -137,6 +195,7 @@
             <a href="scripts.html" class="fast-btn crimson" data-i18n="link_scripts">💬 Скрипты & Возражения</a>
             <a href="markets.html" class="fast-btn" data-i18n="link_markets">🗺️ 14 Рынков и Ставки</a>
             <a href="calculator.html" class="fast-btn" data-i18n="link_calc">💰 Калькулятор Сплитов</a>
+            <a href="https://unityspirit.github.io/unity-models-platform/package.html" target="_blank" rel="noopener noreferrer" class="fast-btn emerald" data-i18n="link_pkg">💼 Comp Cards Клиентам &nearr;</a>
             <a href="https://globalteamgroup.github.io/unity-models-platform/" target="_blank" rel="noopener noreferrer" class="fast-btn" data-i18n="live_ru">🌐 Платформа RU &nearr;</a>
             <a href="https://unityspirit.github.io/unity-models-platform/" target="_blank" rel="noopener noreferrer" class="fast-btn" data-i18n="live_en">🌐 Platform EN &nearr;</a>
         </div>
@@ -170,6 +229,15 @@ const DICT = {
         link_scripts: '💬 Скрипты & Возражения',
         link_markets: '🗺️ 14 Рынков и Ставки',
         link_calc: '💰 Калькулятор Сплитов',
+        link_pkg: '💼 Comp Cards Клиентам ↗',
+        crm_title: '📒 Локальный трекер партнеров, студий и лидов (CRM в браузере)',
+        crm_ph_name: 'Название (напр., Bareface Dubai / Студия в Москве)',
+        crm_t1: 'Дубай Хост / Бренд',
+        crm_t2: 'Москва Студия / Скаут',
+        crm_t3: 'Модель на отбор',
+        crm_t4: 'Представитель в стране',
+        crm_ph_note: 'Контакт / Следующий шаг',
+        crm_add: '+ Добавить в трекер',
         done_word: 'выполнено'
     },
     en: {
@@ -190,6 +258,15 @@ const DICT = {
         link_scripts: '💬 Scripts & Objections',
         link_markets: '🗺️ 14-Market Matrix',
         link_calc: '💰 Commission Calculator',
+        link_pkg: '💼 Client Comp Cards ↗',
+        crm_title: '📒 Partner, Studio & Brand Lead Tracker (Browser CRM)',
+        crm_ph_name: 'Name (e.g. Bareface Dubai / Moscow Studio)',
+        crm_t1: 'Dubai Host / Brand',
+        crm_t2: 'Moscow Studio / Scout',
+        crm_t3: 'Model Candidate',
+        crm_t4: 'Country Representative',
+        crm_ph_note: 'Contact / Next Step',
+        crm_add: '+ Add Lead',
         done_word: 'completed'
     }
 };
@@ -543,8 +620,118 @@ function renderRole() {
     pillEl.textContent = `${doneCount} / ${total} ${HubI18n.t('done_word')}`;
 }
 
-HubI18n.onChange(() => renderRole());
+const LEAD_KEY = 'unity_office_leads_v1';
+const LEAD_STAGES = {
+    ru: ['Новый контакт', 'В переговорах', 'Пакет отправлен', 'Сделка / Активен'],
+    en: ['Outreach', 'In Talks', 'Package Sent', 'Active Deal']
+};
+
+function loadLeads() {
+    try { return JSON.parse(localStorage.getItem(LEAD_KEY) || '[]'); }
+    catch { return []; }
+}
+
+function saveLeads(list) {
+    localStorage.setItem(LEAD_KEY, JSON.stringify(list));
+}
+
+function renderLeads() {
+    const lang = HubI18n.getLang();
+    const listEl = document.getElementById('leadList');
+    const countPill = document.getElementById('leadCountPill');
+    const leads = loadLeads();
+    if (countPill) countPill.textContent = String(leads.length);
+    if (!listEl) return;
+
+    listEl.textContent = '';
+    if (leads.length === 0) {
+        const empty = document.createElement('p');
+        empty.style.cssText = 'font-size:0.85rem; color:var(--text-dim); margin:4px 0;';
+        empty.textContent = lang === 'ru'
+            ? 'Список пока пуст — добавьте первые 5 студий Москвы или хост-агентств Дубая для контроля воронки.'
+            : 'No leads yet — add your first Dubai host agencies, brands, or studios above.';
+        listEl.appendChild(empty);
+        return;
+    }
+
+    const stages = LEAD_STAGES[lang] || LEAD_STAGES.en;
+    leads.forEach((lead, idx) => {
+        const row = document.createElement('div');
+        row.className = 'crm-row';
+
+        const left = document.createElement('div');
+        const title = document.createElement('strong');
+        title.style.color = '#fff';
+        title.textContent = lead.name;
+        left.appendChild(title);
+
+        const meta = document.createElement('div');
+        meta.style.cssText = 'font-size:0.78rem; color:var(--text-dim); margin-top:2px;';
+        meta.textContent = [lead.type, lead.note].filter(Boolean).join(' • ');
+        left.appendChild(meta);
+        row.appendChild(left);
+
+        const right = document.createElement('div');
+        right.style.cssText = 'display:flex; gap:8px; align-items:center;';
+
+        const stageBtn = document.createElement('button');
+        stageBtn.type = 'button';
+        stageBtn.className = 'crm-stage-btn';
+        const stageIdx = Number.isInteger(lead.stage) ? lead.stage % stages.length : 0;
+        stageBtn.textContent = stages[stageIdx];
+        stageBtn.addEventListener('click', () => {
+            const next = loadLeads();
+            if (next[idx]) {
+                next[idx].stage = ((next[idx].stage || 0) + 1) % stages.length;
+                saveLeads(next);
+                renderLeads();
+            }
+        });
+        right.appendChild(stageBtn);
+
+        const delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.className = 'reset-btn';
+        delBtn.textContent = '×';
+        delBtn.addEventListener('click', () => {
+            const next = loadLeads().filter((_, i) => i !== idx);
+            saveLeads(next);
+            renderLeads();
+        });
+        right.appendChild(delBtn);
+
+        row.appendChild(right);
+        listEl.appendChild(row);
+    });
+}
+
+document.getElementById('leadForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nameEl = document.getElementById('leadName');
+    const typeEl = document.getElementById('leadType');
+    const noteEl = document.getElementById('leadNote');
+    const name = (nameEl?.value || '').trim();
+    if (!name) return;
+
+    const leads = loadLeads();
+    leads.unshift({
+        name,
+        type: typeEl?.value || '',
+        note: (noteEl?.value || '').trim(),
+        stage: 0
+    });
+    saveLeads(leads);
+    if (nameEl) nameEl.value = '';
+    if (noteEl) noteEl.value = '';
+    renderLeads();
+});
+
+HubI18n.onChange(() => {
+    renderRole();
+    renderLeads();
+});
 HubI18n.init(DICT);
+renderLeads();
 </script>
 </body>
 </html>

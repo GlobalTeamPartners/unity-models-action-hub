@@ -55,6 +55,7 @@
             <a href="markets.html" class="fast-btn" data-i18n="fast_markets">🗺️ Матрица 14 Стран &rarr;</a>
             <a href="onepager.html" class="fast-btn" data-i18n="fast_pager">📄 Меморандум А4 (PDF) &rarr;</a>
             <a href="calculator.html" class="fast-btn" data-i18n="fast_calc">💰 Калькулятор Сплитов &rarr;</a>
+            <a href="https://unityspirit.github.io/unity-models-platform/package.html" target="_blank" rel="noopener noreferrer" class="fast-btn emerald" data-i18n="fast_pkg">💼 Пакеты Моделей (Comp Cards) &nearr;</a>
             <a href="https://globalteamgroup.github.io/unity-models-platform/" target="_blank" rel="noopener noreferrer" class="fast-btn" data-i18n="live_ru">🌐 Платформа RU &nearr;</a>
             <a href="https://unityspirit.github.io/unity-models-platform/" target="_blank" rel="noopener noreferrer" class="fast-btn" data-i18n="live_en">🌐 Platform EN &nearr;</a>
         </div>
@@ -205,10 +206,20 @@
 
         <div class="demo-card">
             <div class="demo-content">
-                <div class="demo-title" data-i18n="d3_title">👤 Talent Hub (Кабинет Модели)</div>
-                <div class="demo-subtitle" data-i18n="d3_desc">Загрузка 4K-портфолио в облако, статус доступности и текущий город модели для быстрого подбора под съемки.</div>
-                <a href="https://globalteamgroup.github.io/unity-models-platform/hub.html" target="_blank" rel="noopener noreferrer" class="demo-link emerald">
+                <div class="demo-title" data-i18n="d3_title">👤 Talent Hub (Паспорт и 4 Polaroids)</div>
+                <div class="demo-subtitle" data-i18n="d3_desc">4 стандартизированных Polaroids, видео проходки, визы и UAE Advertiser Permit статус для мгновенного мэтчинга.</div>
+                <a href="https://unityspirit.github.io/unity-models-platform/hub.html" target="_blank" rel="noopener noreferrer" class="demo-link emerald">
                     <span data-i18n="d3_btn">Открыть Talent Hub &nearr;</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="demo-card">
+            <div class="demo-content">
+                <div class="demo-title" data-i18n="d7_title">💼 Client Package Board (Comp Cards)</div>
+                <div class="demo-subtitle" data-i18n="d7_desc">Белая клиентская витрина моделей с фильтрами по росту, визам и Дубаю + экспорт PDF-пакета и скрытым Telegram ID.</div>
+                <a href="https://unityspirit.github.io/unity-models-platform/package.html" target="_blank" rel="noopener noreferrer" class="demo-link emerald">
+                    <span data-i18n="d7_btn">Открыть Comp Cards &nearr;</span>
                 </a>
             </div>
         </div>
@@ -407,19 +418,23 @@ const INDEX_DICT = {
         d1_desc: 'Русскоязычная витрина агентства с описанием Oscar AI, дивизионами и лентой живых кастингов из Supabase.',
         d2_title: '🇬🇧 Global Website Unity Models (EN)',
         d2_desc: 'Международный сайт для брендов Дубая, Европы, Азии и США с презентацией AI-платформы и контактами.',
-        d3_title: '👤 Talent Hub (Кабинет Модели)',
-        d3_desc: 'Загрузка 4K-портфолио в облако, статус доступности и текущий город модели для быстрого подбора под съемки.',
-        d4_title: '🎬 Director Portal (Для Кастинг-Директоров)',
-        d4_desc: 'Публикация кастингов из любой страны с мгновенным сохранением в базу и отображением на главной странице.',
+        d3_title: '👤 Talent Hub (Паспорт и 4 Polaroids)',
+        d3_desc: '4 стандартизированных Polaroids, видео проходки, визы и UAE Advertiser Permit статус для мгновенного мэтчинга.',
+        d4_title: '🎬 Director Portal (Брифы с Бюджетом & Правами)',
+        d4_desc: 'Публикация кастингов из любой страны (ставка, usage-права, UAE Permit) с фильтрацией по рынкам на главной.',
         d5_title: '🤖 Oscar AI (@unitymodelsbot)',
-        d5_desc: 'Telegram-бот: мультиязычный разбор параметров по тексту/фото, пошаговая анкета и подбор кастингов по странам.',
+        d5_desc: 'Telegram-бот: мультиязычный разбор параметров, поиск по странам без сбоев квоты 429 (база + каталог 2026 по коридорам).',
         d6_title: '📣 Глобальный PR & Пакет Представителя',
         d6_desc: 'Англоязычная ссылка для рассылки в агентства Дубая, Стамбула, Сеула и СМИ — переключает весь хаб на EN.',
+        d7_title: '💼 Client Package Board (Comp Cards)',
+        d7_desc: 'Белая клиентская витрина моделей с фильтрами по росту, визам и Дубаю + экспорт PDF-пакета и скрытым Telegram ID.',
         d_open: 'Открыть сайт ↗',
         d3_btn: 'Открыть Talent Hub ↗',
         d4_btn: 'Открыть Director Portal ↗',
         d5_btn: 'Запустить бота ↗',
         d6_btn: 'Открыть EN-версию для мира →',
+        d7_btn: 'Открыть Comp Cards ↗',
+        fast_pkg: '💼 Пакеты Моделей (Comp Cards) ↗',
         calc_title: '⚡ Экспресс-Калькулятор Агентства & Доли Представителя',
         calc_sub: 'Рассчитайте оборот и прибыль связки «Москва (Глобал Плюс) → Дубай / Мир» при масштабировании ростера моделей.',
         calc_l1: 'Активных моделей на букинге в месяц:',
@@ -504,19 +519,23 @@ const INDEX_DICT = {
         d1_desc: 'Russian-language agency showcase featuring Oscar AI casting engine, divisions, and live Supabase casting feed.',
         d2_title: '🇬🇧 Unity Models Website (Global EN)',
         d2_desc: 'International brand-facing portal for Dubai, Europe, Asia, and Americas clients with live castings and bot onboarding.',
-        d3_title: '👤 Talent Hub (Model Workspace)',
-        d3_desc: 'Direct 4K portfolio uploads, live city location tracking, and weekly availability status for fast booker matching.',
-        d4_title: '🎬 Casting Director Portal',
-        d4_desc: 'Instant casting brief submission form synced directly to Supabase and live website feeds worldwide.',
+        d3_title: '👤 Talent Hub (Passport & 4 Polaroids)',
+        d3_desc: 'Standardized 4-Polaroid digitals, runway walk video links, visa inventory, and UAE Advertiser Permit readiness.',
+        d4_title: '🎬 Casting Director Portal (Rates & Usage)',
+        d4_desc: 'Submit casting briefs with day rates, usage territory & UAE permit specs synced directly to website & Oscar AI.',
         d5_title: '🤖 Oscar AI (@unitymodelsbot)',
-        d5_desc: 'Multilingual Telegram casting assistant: extracts stats from text or photos, runs onboarding wizard, and searches events by country.',
+        d5_desc: 'Resilient Telegram casting assistant: country open-call directory fallback + Supabase matching even during 429 limits.',
         d6_title: '📣 International PR & Rep Share Link',
         d6_desc: 'Send this direct English URL (?lang=en) to agencies, brands, and country representatives in Dubai, Istanbul, Asia, or Europe.',
+        d7_title: '💼 Client Package Board (Comp Cards)',
+        d7_desc: 'Shareable client roster with height, division & Dubai visa filters, PDF Comp Card print export, and masked talent privacy.',
         d_open: 'Open Live Site ↗',
         d3_btn: 'Open Talent Hub ↗',
         d4_btn: 'Open Director Portal ↗',
         d5_btn: 'Launch Telegram Bot ↗',
         d6_btn: 'Copy / Open Global EN Link →',
+        d7_btn: 'Open Comp Cards ↗',
+        fast_pkg: '💼 Client Comp Cards ↗',
         calc_title: '⚡ Express Agency & Representative Revenue Calculator',
         calc_sub: 'Model monthly gross volume, agency commission, and representative payout across Moscow → Dubai → Global placements.',
         calc_l1: 'Active Booked Models / Month:',
