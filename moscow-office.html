@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Models × Глобал Плюс | Офис представителя — Москва</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hub.css">
+    <style>
+        .gate-wrap {
+            max-width: 680px;
+            margin: 36px auto 60px;
+            padding: 0 20px;
+        }
+        .gate-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 32px 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .field-group {
+            margin-bottom: 14px;
+        }
+        .field-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+        }
+        .m-input {
+            width: 100%;
+            background: rgba(11, 14, 20, 0.85);
+            border: 1px solid var(--border-card);
+            color: var(--white);
+            padding: 11px 13px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+        .m-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        .charter-agree {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 12px 14px;
+            border-radius: 10px;
+            margin: 16px 0 20px;
+            font-size: 0.84rem;
+            color: #D1FAE5;
+            cursor: pointer;
+        }
+        .charter-agree input {
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .primary-gold-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold) 0%, #9E7A38 100%);
+            color: #090C12;
+            border: none;
+            border-radius: 12px;
+            padding: 13px 20px;
+            font-size: 0.96rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.15s ease, opacity 0.2s ease;
+            font-family: inherit;
+        }
+        .primary-gold-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+        .primary-gold-btn:disabled { opacity: 0.6; cursor: wait; }
+
+        .office-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .office-tab-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-card);
+            color: var(--text-dim);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .office-tab-btn.active {
+            background: rgba(197, 160, 89, 0.16);
+            border-color: var(--gold);
+            color: var(--gold-light);
+        }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        .directions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+        .dir-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-card);
+            border-top: 3px solid var(--gold);
+            border-radius: 14px;
+            padding: 20px;
+        }
+        .dir-card.emerald { border-top-color: var(--emerald); }
+        .dir-card.blue { border-top-color: var(--blue); }
+        .dir-card.purple { border-top-color: var(--purple); }
+        .dir-num {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.9px;
+            color: var(--gold-light);
+            margin-bottom: 6px;
+        }
+        .dir-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.18rem;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+        .dir-card ul {
+            padding-left: 18px;
+            font-size: 0.86rem;
+            color: var(--text-dim);
+            line-height: 1.55;
+        }
+        .dir-card li { margin-bottom: 6px; }
+
+        .crm-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            background: rgba(11, 14, 20, 0.72);
+            border: 1px solid var(--border-card);
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        .crm-stage-btn {
+            background: rgba(197, 160, 89, 0.16);
+            border: 1px solid rgba(197, 160, 89, 0.45);
+            color: var(--gold-light);
+            border-radius: 999px;
+            padding: 5px 12px;
+            font-size: 0.76rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .small-danger-btn {
+            background: rgba(211, 47, 47, 0.12);
+            border: 1px solid rgba(211, 47, 47, 0.35);
+            color: #FCA5A5;
+            border-radius: 8px;
+            padding: 5px 10px;
+            font-size: 0.78rem;
+            cursor: pointer;
+        }
+        .script-body {
+            background: rgba(11, 14, 20, 0.75);
+            border: 1px solid var(--border-card);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 0.86rem;
+            color: #E2E8F0;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+        .status-line {
+            margin-top: 12px;
+            font-size: 0.86rem;
+            text-align: center;
+        }
+        .status-line.ok { color: #6EE7B7; }
+        .status-line.err { color: #FCA5A5; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body id="top">
+
+<!-- Clean Moscow-Scoped Top Bar (No links to HQ pages) -->
+<div class="top-utility-bar">
+    <div class="top-left-nav">
+        <a href="#top" class="top-logo-link">
+            <img src="images/logo.png" alt="Unity Models" onerror="this.onerror=null;this.src='https://unityspirit.github.io/unity-models-platform/images/logo.png'">
+            <span>Unity Models × Глобал Плюс • Москва</span>
+        </a>
+    </div>
+    <div class="top-right-controls">
+        <span id="navLockedBadge" class="nav-back-pill" style="cursor:default;">🔒 Требуется регистрация</span>
+        <div id="navAuthedControls" class="hidden" style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <span id="repHeaderName" class="nav-back-pill" style="cursor:default; background:rgba(16,185,129,0.14); border-color:rgba(16,185,129,0.4); color:#6EE7B7;"></span>
+            <a href="https://t.me/unitymodelsbot" target="_blank" rel="noopener noreferrer" class="nav-back-pill">🤖 @unitymodelsbot</a>
+            <button type="button" id="btnLogout" class="small-danger-btn">Выйти / Профиль</button>
+        </div>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="hero-header">
+    <div class="brand-pill">
+        <span class="dot"></span>
+        <span>МОСКОВСКОЕ ПРЕДСТАВИТЕЛЬСТВО • UNITY MODELS × ГЛОБАЛ ПЛЮС</span>
+    </div>
+    <h1>Рабочий Офис: <span class="highlight">Москва</span></h1>
+    <p class="subtitle" id="heroSubtitle">Персональный кабинет представителя в Москве: регистрация открывает ваши совместные направления, пошаговый план развития модельного бизнеса в Москве и инструменты работы с моделями, студиями и клиентами.</p>
+</header>
+
+<!-- 1. REGISTRATION GATE (Shown BEFORE registration) -->
+<section id="registrationGate" class="gate-wrap">
+    <div class="gate-card">
+        <h2 style="font-family:'Playfair Display', serif; font-size:1.75rem; color:var(--gold-light); margin-bottom:8px;">Регистрация представителя в Москве</h2>
+        <p style="font-size:0.9rem; color:var(--text-dim); margin-bottom:22px;">После регистрации вам сразу откроются рабочие направления по Москве, пошаговый план действий, скрипты для фотостудий/брендов и CRM-офис.</p>
+
+        <form id="regForm">
+            <div class="form-grid">
+                <div>
+                    <label class="field-label" for="regName">Имя и Фамилия *</label>
+                    <input id="regName" class="m-input" type="text" required maxlength="80" placeholder="Напр., Алексей Смирнов">
+                </div>
+                <div>
+                    <label class="field-label" for="regCompany">Представительство *</label>
+                    <input id="regCompany" class="m-input" type="text" required maxlength="80" value="Глобал Плюс — Москва">
+                </div>
+            </div>
+
+            <div class="form-grid">
+                <div>
+                    <label class="field-label" for="regTelegram">Telegram (@username) *</label>
+                    <input id="regTelegram" class="m-input" type="text" required maxlength="64" placeholder="@username">
+                </div>
+                <div>
+                    <label class="field-label" for="regPhone">Телефон / WhatsApp *</label>
+                    <input id="regPhone" class="m-input" type="tel" required maxlength="40" placeholder="+7 (9__) ___-__-__">
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label" for="regDistrict">Основная зона встреч и студий в Москве</label>
+                <select id="regDistrict" class="m-input">
+                    <option value="ЦАО / Москва-Сити / Центр">ЦАО / Москва-Сити / Центр</option>
+                    <option value="Вся Москва и Московская область">Вся Москва и Московская область</option>
+                    <option value="САО / СЗАО (Дизайн-кластеры и студии)">САО / СЗАО (Дизайн-кластеры и студии)</option>
+                    <option value="ЮАО / ЮЗАО">ЮАО / ЮЗАО</option>
+                </select>
+            </div>
+
+            <label class="charter-agree">
+                <input type="checkbox" id="regCharter" required>
+                <span>Принимаю стандарт представительства в Москве: <strong>«0 ₽ предоплаты с моделей»</strong> (никаких платных школ и платных тестов при входе), аккуратное ведение базы кандидатов и публикация кастингов только от реальных заказчиков.</span>
+            </label>
+
+            <button type="submit" class="primary-gold-btn">Зарегистрироваться и открыть Московский офис &rarr;</button>
+            <div id="regError" class="status-line err hidden"></div>
+        </form>
+    </div>
+</section>
+
+<!-- 2. MOSCOW OFFICE WORKSPACE (Unlocked ONLY AFTER Registration) -->
+<main id="officeWorkspace" class="container hidden">
+
+    <!-- Onboarding Sync Banner -->
+    <div class="hot-deal-banner">
+        <div>
+            <h3>✅ Офис активирован: <span id="passportSummary"></span></h3>
+            <p>Отправьте подтверждение регистрации партнеру в Telegram — после этого можно сразу переходить к первым шагам по Москве.</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" id="btnCopyPassport" class="fast-btn emerald">📋 Скопировать паспорт регистрации</button>
+        </div>
+    </div>
+
+    <!-- Moscow-Only Live KPI Strip -->
+    <div class="stats-bar">
+        <div class="stat-card">
+            <div class="stat-num" id="kpiChecklist">0 / 12</div>
+            <div class="stat-label">Шаги запуска в Москве</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num" id="kpiModels">0</div>
+            <div class="stat-label">Моделей в воронке Москвы</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num" id="kpiStudios">0</div>
+            <div class="stat-label">Студий и скаутов Москвы</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num" id="kpiBrands">0</div>
+            <div class="stat-label">Брендов / Селлеров в работе</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num">0 ₽</div>
+            <div class="stat-label">Хартия «Без предоплат с моделей»</div>
+        </div>
+    </div>
+
+    <!-- Office Navigation Tabs (Moscow Work Only) -->
+    <div class="office-tabs">
+        <button type="button" class="office-tab-btn active" data-tab="directions">📌 Направления и План по Москве</button>
+        <button type="button" class="office-tab-btn" data-tab="scripts">💬 Скрипты для Москвы</button>
+        <button type="button" class="office-tab-btn" data-tab="crm">📒 CRM Москвы (Лиды и Студии)</button>
+        <button type="button" class="office-tab-btn" data-tab="tools">🧰 Функции офиса и Отчет</button>
+    </div>
+
+    <!-- TAB 1: Directions & Moscow Actions -->
+    <section id="tab-directions" class="tab-panel active">
+        <h2 class="section-heading" style="margin-top:0;">Ваши 4 совместных направления в Москве</h2>
+        <div class="directions-grid">
+            <div class="dir-card">
+                <div class="dir-num">Направление 01 • Таланты</div>
+                <h3>Скаутинг и сбор базы новых лиц в Москве</h3>
+                <ul>
+                    <li>Поиск перспективных девушек и парней (16–30 лет, а также коммерческих типажей) в Москве и МО: танцевальные студии, фитнес-клубы, вузы, актерские курсы, соцсети.</li>
+                    <li>Отбор под ключевые дивизионы: <strong>Подиум / Высокая мода</strong>, <strong>Коммерция / Каталоги</strong>, <strong>Спорт и фитнес</strong>, <strong>UGC-криэйторы</strong>.</li>
+                    <li>Обязательная фиксация каждой модели через <strong>@unitymodelsbot</strong> (рост, параметры, город Москва).</li>
+                </ul>
+            </div>
+
+            <div class="dir-card emerald">
+                <div class="dir-num" style="color:#6EE7B7;">Направление 02 • Качество бука</div>
+                <h3>Организация снэпов (4 Polaroids) и проходки</h3>
+                <ul>
+                    <li>Подключение 2–3 фотостудий в Москве с дневным светом / белой циклорамой (слот 2 часа в неделю по бартеру или реферальному сплиту).</li>
+                    <li>Съемка бесплатного эталонного пакета каждому новому лицу: <strong>4 Polaroids без макияжа</strong> (портрет, профиль, полный рост, по пояс) + <strong>видео-проходка 15 сек</strong>.</li>
+                    <li>Контроль загрузки фото моделями в <strong>Талант Хаб</strong> для попадания в клиентскую витрину.</li>
+                </ul>
+            </div>
+
+            <div class="dir-card blue">
+                <div class="dir-num" style="color:#93C5FD;">Направление 03 • Клиенты в Москве</div>
+                <h3>Продажа съемок брендам и селлерам Москвы</h3>
+                <ul>
+                    <li>Прямой выход на российские бренды одежды, шоурумы, косметические бренды и крупных селлеров Wildberries / Ozon / Lamoda в Москве.</li>
+                    <li>Предложение: готовый подбор проверенных моделей под ключ за 24 часа или пакетная каталожная съемка в партнерской студии.</li>
+                    <li>Прием клиентских брифов (дата, ставка в ₽, требования) и мгновенный запуск подбора в разделе «Функции офиса».</li>
+                </ul>
+            </div>
+
+            <div class="dir-card purple">
+                <div class="dir-num" style="color:#C4B5FD;">Направление 04 • Живое присутствие</div>
+                <h3>Встречи, очные кастинги и PR в Москве</h3>
+                <ul>
+                    <li>Проведение живых мини-кастингов и знакомств 1 раз в 2 недели от имени <strong>Unity Models × Глобал Плюс</strong> на базе офиса или партнерской студии.</li>
+                    <li>Построение партнерской сети со стилистами, визажистами, модельными школами (как источник лиц, без взимания денег с моделей!) и фотографами Москвы.</li>
+                    <li>Посещение московских модных мероприятий и шоурумов для живых контактов с заказчиками и бэкстейдж-контента.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-heading">Что конкретно делать по Москве (Дорожная карта)</h2>
+        <div class="directions-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+            <div class="dir-card">
+                <div class="dir-num">Недели 1–2 • Старт</div>
+                <h3>Площадка, студии и первые лица</h3>
+                <ul>
+                    <li>Утвердить 2 партнерские студии Москвы под бесплатные еженедельные снэпы.</li>
+                    <li>Составить базу 20 московских танцевальных школ, вузовских активов и скаутов.</li>
+                    <li>Завести первых 10–15 кандидатов в бота и проверить их загранпаспорта / параметры.</li>
+                </ul>
+            </div>
+            <div class="dir-card emerald">
+                <div class="dir-num" style="color:#6EE7B7;">Недели 3–4 • Первые съемки</div>
+                <h3>Ростер 30+ и продажи по Москве</h3>
+                <ul>
+                    <li>Довести московскую базу с готовыми 4 Polaroids до 25–30 человек.</li>
+                    <li>Отправить 20+ персональных предложений шоурумам и брендам Москвы / маркетплейсов.</li>
+                    <li>Провести первый живой опен-колл Unity Models × Глобал Плюс в Москве и закрыть первые 3–5 смен.</li>
+                </ul>
+            </div>
+            <div class="dir-card purple">
+                <div class="dir-num" style="color:#C4B5FD;">Месяц 2+ • Системный рост</div>
+                <h3>Постоянный поток заказов в Москве</h3>
+                <ul>
+                    <li>Заключить 3–5 регулярных контрактов с продакшенами и селлерами на ежемесячные лукбуки.</li>
+                    <li>Запустить реферальную программу для московских фотографов и педагогов по дефиле.</li>
+                    <li>Еженедельно передавать лучшие готовые карточки моделей Москвы для усиления общих продаж.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="checklist-box">
+            <div class="checklist-header">
+                <h2 class="checklist-title">Интерактивный чек-лист действий по Москве (12 шагов)</h2>
+                <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                    <span class="progress-pill" id="checklistProgress">0 / 12 выполнено</span>
+                    <button type="button" id="btnResetChecklist" class="small-danger-btn">Сбросить</button>
+                </div>
+            </div>
+            <div class="checklist-grid" id="moscowChecklistGrid"></div>
+        </div>
+    </section>
+
+    <!-- TAB 2: Moscow Scripts -->
+    <section id="tab-scripts" class="tab-panel">
+        <h2 class="section-heading" style="margin-top:0;">Готовые скрипты сообщений для Москвы (1 клик)</h2>
+        <p style="color:var(--text-dim); margin-bottom:20px; font-size:0.9rem;">Ваши имя, компания и Telegram подставляются в тексты автоматически.</p>
+        <div id="scriptsContainer"></div>
+    </section>
+
+    <!-- TAB 3: Moscow CRM Tracker -->
+    <section id="tab-crm" class="tab-panel">
+        <div class="checklist-box">
+            <div class="checklist-header">
+                <h2 class="checklist-title">📒 CRM Московского офиса (локальное хранение)</h2>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <select id="crmFilterType" class="m-input" style="width:auto; padding:6px 12px; font-size:0.82rem;">
+                        <option value="all">Все категории</option>
+                        <option value="Модель на отбор (Москва)">Модели на отбор</option>
+                        <option value="Фотостудия / Фотограф (Москва)">Студии и фотографы</option>
+                        <option value="Бренд / Селлер (Москва)">Бренды и селлеры</option>
+                        <option value="Скаут / Школа (Москва)">Скауты и школы</option>
+                    </select>
+                </div>
+            </div>
+
+            <form id="crmForm" class="form-grid" style="grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-bottom: 16px;">
+                <input type="text" id="crmName" class="m-input" maxlength="80" required placeholder="Имя / Название (напр., Фотостудия White)">
+                <select id="crmType" class="m-input">
+                    <option value="Модель на отбор (Москва)">Модель на отбор (Москва)</option>
+                    <option value="Фотостудия / Фотограф (Москва)">Фотостудия / Фотограф (Москва)</option>
+                    <option value="Бренд / Селлер (Москва)">Бренд / Селлер (Москва)</option>
+                    <option value="Скаут / Школа (Москва)">Скаут / Школа (Москва)</option>
+                </select>
+                <input type="text" id="crmContact" class="m-input" maxlength="90" placeholder="Telegram / Телефон / Заметка">
+                <button type="submit" class="fast-btn emerald" style="justify-content:center;">+ Добавить в CRM</button>
+            </form>
+
+            <div id="crmList"></div>
+        </div>
+    </section>
+
+    <!-- TAB 4: Moscow Office Functions & Sync Report -->
+    <section id="tab-tools" class="tab-panel">
+        <div class="directions-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+            <!-- Moscow Casting Brief Publisher -->
+            <div class="checklist-box" style="margin-bottom:0;">
+                <h2 class="checklist-title" style="margin-bottom:8px;">🎬 Опубликовать Московский кастинг-бриф</h2>
+                <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:16px;">Нашли клиента или съемку в Москве? Заполните бриф — он сохранится на платформу для мгновенного отклика моделей Москвы и МО.</p>
+
+                <form id="moscowBriefForm">
+                    <div class="field-group">
+                        <label class="field-label">Название бренда / проекта *</label>
+                        <input id="briefTitle" class="m-input" type="text" required maxlength="120" placeholder="Напр., Осенний лукбук шоурума (Москва)">
+                    </div>
+                    <div class="form-grid">
+                        <div>
+                            <label class="field-label">Студия / Район Москвы *</label>
+                            <input id="briefLocation" class="m-input" type="text" required maxlength="100" placeholder="Напр., Флакон / Москва-Сити">
+                        </div>
+                        <div>
+                            <label class="field-label">Дата съемки *</label>
+                            <input id="briefDate" class="m-input" type="text" required maxlength="80" placeholder="Напр., 22 Ноября 2026">
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div>
+                            <label class="field-label">Гонорар / Ставка (₽)</label>
+                            <input id="briefBudget" class="m-input" type="text" maxlength="80" placeholder="Напр., 25 000 ₽ / смена">
+                        </div>
+                        <div>
+                            <label class="field-label">Пол / Рост (опционально)</label>
+                            <select id="briefGender" class="m-input">
+                                <option value="any">Любой</option>
+                                <option value="female">Женский</option>
+                                <option value="male">Мужской</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label class="field-label">Требования к моделям и детали *</label>
+                        <textarea id="briefDesc" class="m-input" rows="3" required maxlength="1800" placeholder="Рост, размер, задачи, сколько образов, условия по питанию/договору..."></textarea>
+                    </div>
+                    <button type="submit" id="btnPublishBrief" class="primary-gold-btn">Опубликовать кастинг в Москве</button>
+                    <div id="briefStatus" class="status-line"></div>
+                </form>
+            </div>
+
+            <!-- Moscow Operational Shortcuts & Report Generator -->
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div class="checklist-box" style="margin-bottom:0;">
+                    <h2 class="checklist-title" style="margin-bottom:8px;">💼 Инструменты показа клиентам и отбора</h2>
+                    <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:16px;">Быстрый доступ к карточкам моделей (без личных контактов моделей) и анкетам.</p>
+                    <div style="display:flex; flex-direction:column; gap:10px;">
+                        <a href="https://unityspirit.github.io/unity-models-platform/package.html" target="_blank" rel="noopener noreferrer" class="fast-btn emerald" style="justify-content:center;">💼 Витрина моделей (Comp Cards) для клиентов Москвы &nearr;</a>
+                        <a href="https://unityspirit.github.io/unity-models-platform/hub.html" target="_blank" rel="noopener noreferrer" class="fast-btn gold" style="justify-content:center;">📸 Кабинет загрузки 4 Polaroids (Talent Hub) &nearr;</a>
+                        <a href="https://t.me/unitymodelsbot" target="_blank" rel="noopener noreferrer" class="fast-btn" style="justify-content:center;">🤖 Telegram-бот анкетирования @unitymodelsbot &nearr;</a>
+                    </div>
+                </div>
+
+                <div class="checklist-box" style="margin-bottom:0;">
+                    <h2 class="checklist-title" style="margin-bottom:8px;">📩 Отчет по Москве для Основателя</h2>
+                    <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:14px;">Собирает ваш текущий прогресс по 12 шагам, число моделей, студий и брендов из CRM в готовый текст для отправки в Telegram.</p>
+                    <pre id="reportPreview" class="script-body" style="max-height:210px; overflow-y:auto; margin-bottom:12px;"></pre>
+                    <button type="button" id="btnCopyReport" class="fast-btn emerald" style="width:100%; justify-content:center;">📋 Скопировать отчет по Москве</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Московское представительство Unity Models × Глобал Плюс.</p>
+    <p style="margin-top:6px;">Москва и Московская область • Стандарт «0 ₽ предоплаты с моделей»</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = 'https://kveeztvdazzrfgmoewmx.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt2ZWV6dHZkYXp6cmZnbW9ld214Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI1OTgzMzAsImV4cCI6MjA5ODE3NDMzMH0.hncnqcw63eUp4VZe3zuYwmvWQVQkd6tKnzyDotGKul0';
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const KEYS = {
+    reg: 'unity_moscow_office_reg_v1',
+    chk: 'unity_moscow_office_chk_v1',
+    crm: 'unity_moscow_office_crm_v1'
+};
+
+const MOSCOW_CHECKLIST = [
+    'Зафиксировать официальный статус представительства «Unity Models × Глобал Плюс — Москва» и хартию «0 ₽ предоплаты с моделей».',
+    'Договориться с 2 фотостудиями в Москве о регулярном слоте (2 часа в неделю) под бесплатные 4 Polaroids для новых лиц.',
+    'Собрать базу из 20 танцевальных студий, фитнес-клубов, вузов и актерских школ Москвы для скаутинга.',
+    'Настроить поток кандидатов из Москвы в @unitymodelsbot и проконтролировать заполнение роста, параметров и контактов.',
+    'Отснять первые 15 перспективных моделей по стандарту 4 Polaroids (без макияжа) + 15-сек видео-проходка и загрузить в Талант Хаб.',
+    'Провести первый очный отбор / встречу с кандидатами в Москве от имени Unity Models × Глобал Плюс.',
+    'Подключить 3–5 московских фотографов и преподавателей дефиле по реферальной схеме (бонус после реальных съемок моделей).',
+    'Составить список из 30 целевых заказчиков Москвы: бренды одежды, шоурумы, селлеры Wildberries / Ozon / Lamoda, продакшены.',
+    'Отправить 20 персональных предложений брендам и шоурумам Москвы со ссылкой на витрину Comp Cards.',
+    'Принять и опубликовать через раздел «Функции офиса» первые 3+ оплачиваемых кастинг-брифа от московских заказчиков.',
+    'Закрыть первые 3–5 коммерческих съемочных смен в Москве с прозрачной отчетностью и выплатами.',
+    'Раз в неделю отправлять сводный отчет по новым лицам и клиентским заказам Москвы основателю.'
+];
+
+const CRM_STAGES = ['Новый контакт', 'В переговорах', 'Снэпы / Бриф в работе', 'Активная сделка / Съемка'];
+
+function safeReadJson(key, fallback) {
+    try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : fallback;
+    } catch {
+        return fallback;
+    }
+}
+
+function getReg() {
+    const data = safeReadJson(KEYS.reg, null);
+    return data && data.name && data.telegram ? data : null;
+}
+
+function getChecks() {
+    return safeReadJson(KEYS.chk, {});
+}
+
+function getCrm() {
+    const arr = safeReadJson(KEYS.crm, []);
+    return Array.isArray(arr) ? arr : [];
+}
+
+function copyTextWithFeedback(btnEl, text, originalLabel) {
+    navigator.clipboard.writeText(text).then(() => {
+        btnEl.textContent = '✅ Скопировано!';
+        setTimeout(() => { btnEl.textContent = originalLabel; }, 2000);
+    }).catch(() => {
+        btnEl.textContent = '❌ Разрешите доступ к буферу';
+    });
+}
+
+function buildPassportText(reg) {
+    return [
+        'РЕГИСТРАЦИЯ МОСКОВСКОГО ОФИСА — UNITY MODELS × ГЛОБАЛ ПЛЮС',
+        `Представитель: ${reg.name}`,
+        `Подразделение: ${reg.company}`,
+        `Telegram: ${reg.telegram}`,
+        `Телефон / WhatsApp: ${reg.phone}`,
+        `Зона в Москве: ${reg.district}`,
+        `Статус: Принята Хартия «0 ₽ предоплаты с моделей»`,
+        `Дата активации: ${reg.registeredAt}`
+    ].join('\n');
+}
+
+function renderStats() {
+    const checks = getChecks();
+    const doneCount = MOSCOW_CHECKLIST.filter((_, i) => Boolean(checks[i])).length;
+    document.getElementById('kpiChecklist').textContent = `${doneCount} / ${MOSCOW_CHECKLIST.length}`;
+
+    const leads = getCrm();
+    const modelsCount = leads.filter((l) => l.type.includes('Модель')).length;
+    const studiosCount = leads.filter((l) => l.type.includes('Студия') || l.type.includes('Фотостудия') || l.type.includes('Скаут')).length;
+    const brandsCount = leads.filter((l) => l.type.includes('Бренд')).length;
+
+    document.getElementById('kpiModels').textContent = String(modelsCount);
+    document.getElementById('kpiStudios').textContent = String(studiosCount);
+    document.getElementById('kpiBrands').textContent = String(brandsCount);
+
+    updateReportPreview(doneCount, modelsCount, studiosCount, brandsCount);
+}
+
+function updateReportPreview(doneCount, modelsCount, studiosCount, brandsCount) {
+    const reg = getReg();
+    const el = document.getElementById('reportPreview');
+    if (!reg || !el) return;
+
+    const leads = getCrm();
+    const activeLines = leads.slice(0, 6).map((l, i) => {
+        const st = CRM_STAGES[Number.isInteger(l.stage) ? l.stage % CRM_STAGES.length : 0];
+        return `${i + 1}. ${l.name} (${l.type}) — ${st}${l.contact ? ` | ${l.contact}` : ''}`;
+    });
+
+    el.textContent = [
+        `📊 ОТЧЕТ ПО МОСКВЕ — ${new Date().toLocaleDateString('ru-RU')}`,
+        `Офис: ${reg.company} | Представитель: ${reg.name} (${reg.telegram})`,
+        `Выполнение плана по Москве: ${doneCount} / ${MOSCOW_CHECKLIST.length} шагов`,
+        `CRM Москвы: Моделей: ${modelsCount} | Студий/Скаутов: ${studiosCount} | Брендов/Селлеров: ${brandsCount}`,
+        '',
+        activeLines.length ? 'Актуальные контакты в работе:\n' + activeLines.join('\n') : 'CRM пока пуста — добавьте первые контакты во вкладке CRM Москвы.'
+    ].join('\n');
+}
+
+function renderChecklist() {
+    const grid = document.getElementById('moscowChecklistGrid');
+    const prog = document.getElementById('checklistProgress');
+    if (!grid) return;
+
+    const state = getChecks();
+    grid.textContent = '';
+    let doneCount = 0;
+
+    MOSCOW_CHECKLIST.forEach((labelText, idx) => {
+        const isDone = Boolean(state[idx]);
+        if (isDone) doneCount++;
+
+        const card = document.createElement('div');
+        card.className = `check-item${isDone ? ' done' : ''}`;
+
+        const icon = document.createElement('div');
+        icon.className = 'check-box-icon';
+        icon.textContent = isDone ? '✓' : '';
+
+        const txt = document.createElement('div');
+        txt.textContent = `${idx + 1}. ${labelText}`;
+
+        card.appendChild(icon);
+        card.appendChild(txt);
+        card.addEventListener('click', () => {
+            const next = getChecks();
+            next[idx] = !next[idx];
+            localStorage.setItem(KEYS.chk, JSON.stringify(next));
+            renderChecklist();
+            renderStats();
+        });
+
+        grid.appendChild(card);
+    });
+
+    if (prog) {
+        prog.textContent = `${doneCount} / ${MOSCOW_CHECKLIST.length} выполнено`;
+    }
+}
+
+function renderScripts() {
+    const reg = getReg();
+    const container = document.getElementById('scriptsContainer');
+    if (!reg || !container) return;
+
+    const signature = `${reg.name} • ${reg.company}\nTelegram: ${reg.telegram} | Тел: ${reg.phone}`;
+    const scripts = [
+        {
+            tag: 'Скрипт №1 • Скаутинг моделей в Москве',
+            title: 'Приглашение кандидата на бесплатные 4 Polaroids и отбор',
+            body: `Здравствуйте! Меня зовут ${reg.name}, я представляю московский офис Unity Models × Глобал Плюс.\n\nУ нас открыт новый набор свежих лиц в Москве на коммерческие каталоги, лукбуки и съемки для брендов (в том числе по стандартам топ-агентств).\n\nКлючевое правило: у нас действует Хартия «0 ₽ предоплаты с моделей» — мы НЕ продаем платные школы и платные тесты. Перспективным кандидатам организуем бесплатные снэпы (4 Polaroids) и видео-проходку в партнерской студии в Москве, а доход идет только с реальных съемок.\n\nЕсли вам интересно, отправьте параметры (рост, возраст, город) через нашего бота @unitymodelsbot и напишите мне в Telegram: ${reg.telegram}. Пригласим на очную встречу в Москве.`
+        },
+        {
+            tag: 'Скрипт №2 • Фотостудии и фотографы Москвы',
+            title: 'Предложение московской фотостудии / фотографу о еженедельном слоте',
+            body: `Добрый день! На связи ${reg.name}, руководитель направления в Москве (Unity Models × Глобал Плюс).\n\nМы формируем сильный ростер моделей в Москве и каждую неделю делаем чистые стандартизированные снэпы (4 Polaroids при дневном свете или на белой циклораме) без макияжа.\n\nПредлагаем взаимовыгодное партнерство вашей студии в Москве:\n1) Выделяете 2-часовой «тихий» слот в неделю под съемку снэпов.\n2) Получаете статус официального партнера, живой трафик моделей, упоминания и приоритет при бронировании коммерческих съемок для наших клиентов.\n3) Также выплачиваем партнерский % за приведенных клиентов и перспективных лиц.\n\nУдобно обсудить формат на этой неделе? Мой контакт:\n${signature}`
+        },
+        {
+            tag: 'Скрипт №3 • Бренды, шоурумы и селлеры WB/Ozon/Lamoda',
+            title: 'Оффер московскому бренду / селлеру на быстрый подбор моделей',
+            body: `Здравствуйте! Меня зовут ${reg.name} (Unity Models × Глобал Плюс, Москва).\n\nПомогаем брендам одежды, шоурумам и крупным селлерам в Москве быстро закрывать съемки каталогов, лукбуков и рекламных кампаний без долгого перебора анкет.\n\nЧто делаем для вас за 24 часа:\n— Высылаем готовую подборку (Comp Cards) проверенных моделей с актуальным ростом, параметрами и свежими снэпами без ретуши.\n— Работаем официально и закрываем смену «под ключ» в Москве (возможно подключение нашей партнерской студии).\n\nПришлите коротко параметры съемки (даты в Москве, стиль, желаемый бюджет), и сегодня пришлю персональный шорт-лист!\n${signature}`
+        },
+        {
+            tag: 'Скрипт №4 • Скауты, школы танцев и педагоги Москвы',
+            title: 'Реферальное партнерство по поиску лиц в Москве',
+            body: `Добрый день! Меня зовут ${reg.name} — развиваю московский офис Unity Models × Глобал Плюс.\n\nМы ищем новые фотогеничные и харизматичные лица в Москве (рост от 170+ см для девушек, 180+ см для парней, а также коммерческие типажи). Никаких платных курсов со студентов/учеников не берем.\n\nЕсли среди ваших учеников или знакомых есть перспективные ребята, будем рады сотрудничать как с официальным скаутом в Москве: за каждую рекомендованную вами модель, которая выходит на коммерческие съемки, вы получаете прозрачное партнерское вознаграждение с букинга.\n\nБуду рад знакомству:\n${signature}`
+        }
+    ];
+
+    container.textContent = '';
+    scripts.forEach((s) => {
+        const card = document.createElement('div');
+        card.className = 'script-card';
+
+        const header = document.createElement('div');
+        header.className = 'script-header';
+
+        const leftHead = document.createElement('div');
+        const tag = document.createElement('span');
+        tag.className = 'script-tag';
+        tag.textContent = s.tag;
+        leftHead.appendChild(tag);
+
+        const h3 = document.createElement('h3');
+        h3.style.cssText = 'margin-top:8px; font-family:"Playfair Display",serif; font-size:1.22rem;';
+        h3.textContent = s.title;
+        leftHead.appendChild(h3);
+
+        const copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.className = 'copy-btn';
+        copyBtn.textContent = '📋 Скопировать';
+        copyBtn.addEventListener('click', () => copyTextWithFeedback(copyBtn, s.body, '📋 Скопировать'));
+
+        header.appendChild(leftHead);
+        header.appendChild(copyBtn);
+
+        const pre = document.createElement('div');
+        pre.className = 'script-body';
+        pre.textContent = s.body;
+
+        card.appendChild(header);
+        card.appendChild(pre);
+        container.appendChild(card);
+    });
+}
+
+function renderCrm() {
+    const listEl = document.getElementById('crmList');
+    const filterVal = document.getElementById('crmFilterType')?.value || 'all';
+    if (!listEl) return;
+
+    const leads = getCrm();
+    listEl.textContent = '';
+
+    const indexed = leads
+        .map((item, idx) => ({ item, idx }))
+        .filter(({ item }) => filterVal === 'all' || item.type === filterVal);
+
+    if (indexed.length === 0) {
+        const p = document.createElement('p');
+        p.style.cssText = 'color:var(--text-dim); font-size:0.88rem; padding:8px 2px;';
+        p.textContent = 'Записей пока нет — добавьте первые московские модели, фотостудии или бренды выше.';
+        listEl.appendChild(p);
+        return;
+    }
+
+    indexed.forEach(({ item, idx }) => {
+        const row = document.createElement('div');
+        row.className = 'crm-row';
+
+        const left = document.createElement('div');
+        const title = document.createElement('strong');
+        title.textContent = item.name;
+        left.appendChild(title);
+
+        const sub = document.createElement('div');
+        sub.style.cssText = 'font-size:0.8rem; color:var(--text-dim); margin-top:2px;';
+        sub.textContent = [item.type, item.contact].filter(Boolean).join(' • ');
+        left.appendChild(sub);
+
+        const right = document.createElement('div');
+        right.style.cssText = 'display:flex; gap:8px; align-items:center;';
+
+        const stageIdx = Number.isInteger(item.stage) ? item.stage % CRM_STAGES.length : 0;
+        const stageBtn = document.createElement('button');
+        stageBtn.type = 'button';
+        stageBtn.className = 'crm-stage-btn';
+        stageBtn.textContent = CRM_STAGES[stageIdx];
+        stageBtn.addEventListener('click', () => {
+            const all = getCrm();
+            if (all[idx]) {
+                all[idx].stage = ((all[idx].stage || 0) + 1) % CRM_STAGES.length;
+                localStorage.setItem(KEYS.crm, JSON.stringify(all));
+                renderCrm();
+                renderStats();
+            }
+        });
+
+        const delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.className = 'small-danger-btn';
+        delBtn.textContent = '×';
+        delBtn.addEventListener('click', () => {
+            const next = getCrm().filter((_, i) => i !== idx);
+            localStorage.setItem(KEYS.crm, JSON.stringify(next));
+            renderCrm();
+            renderStats();
+        });
+
+        right.appendChild(stageBtn);
+        right.appendChild(delBtn);
+
+        row.appendChild(left);
+        row.appendChild(right);
+        listEl.appendChild(row);
+    });
+}
+
+function applyAuthView() {
+    const reg = getReg();
+    const gate = document.getElementById('registrationGate');
+    const workspace = document.getElementById('officeWorkspace');
+    const lockedBadge = document.getElementById('navLockedBadge');
+    const authedControls = document.getElementById('navAuthedControls');
+    const heroSub = document.getElementById('heroSubtitle');
+
+    if (!reg) {
+        gate.classList.remove('hidden');
+        workspace.classList.add('hidden');
+        lockedBadge.classList.remove('hidden');
+        authedControls.classList.add('hidden');
+        heroSub.textContent = 'Зарегистрируйтесь ниже, чтобы получить персональный доступ к вашим направлениям работы, пошаговому плану действий и функциям Московского офиса.';
+        return;
+    }
+
+    gate.classList.add('hidden');
+    workspace.classList.remove('hidden');
+    lockedBadge.classList.add('hidden');
+    authedControls.classList.remove('hidden');
+
+    document.getElementById('repHeaderName').textContent = `👤 ${reg.name} (${reg.telegram})`;
+    document.getElementById('passportSummary').textContent = `${reg.name} • ${reg.company} • ${reg.district}`;
+    heroSub.textContent = `Добро пожаловать, ${reg.name}. Здесь собраны исключительно ваши задачи, направления и рабочие инструменты для развития модельного бизнеса в Москве.`;
+
+    renderChecklist();
+    renderScripts();
+    renderCrm();
+    renderStats();
+}
+
+// Tabs
+document.querySelectorAll('.office-tab-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        if (!tabId) return;
+        document.querySelectorAll('.office-tab-btn').forEach((b) => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach((p) => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + tabId)?.classList.add('active');
+    });
+});
+
+// Registration Submit
+document.getElementById('regForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const errEl = document.getElementById('regError');
+    const name = document.getElementById('regName').value.trim();
+    const company = document.getElementById('regCompany').value.trim();
+    let telegram = document.getElementById('regTelegram').value.trim();
+    const phone = document.getElementById('regPhone').value.trim();
+    const district = document.getElementById('regDistrict').value;
+    const agreed = document.getElementById('regCharter').checked;
+
+    if (!name || !company || !telegram || !phone || !agreed) {
+        errEl.textContent = '❌ Заполните все обязательные поля и подтвердите соблюдение хартии «0 ₽ предоплаты».';
+        errEl.classList.remove('hidden');
+        return;
+    }
+
+    if (!telegram.startsWith('@') && !telegram.startsWith('http')) {
+        telegram = '@' + telegram;
+    }
+
+    errEl.classList.add('hidden');
+    const regObj = {
+        name,
+        company,
+        telegram,
+        phone,
+        district,
+        registeredAt: new Date().toLocaleDateString('ru-RU')
+    };
+    localStorage.setItem(KEYS.reg, JSON.stringify(regObj));
+    applyAuthView();
+});
+
+// Logout / Edit Profile
+document.getElementById('btnLogout').addEventListener('click', () => {
+    const existing = getReg();
+    if (existing) {
+        document.getElementById('regName').value = existing.name || '';
+        document.getElementById('regCompany').value = existing.company || 'Глобал Плюс — Москва';
+        document.getElementById('regTelegram').value = existing.telegram || '';
+        document.getElementById('regPhone').value = existing.phone || '';
+        document.getElementById('regDistrict').value = existing.district || 'ЦАО / Москва-Сити / Центр';
+    }
+    localStorage.removeItem(KEYS.reg);
+    applyAuthView();
+});
+
+// Copy Registration Passport
+document.getElementById('btnCopyPassport').addEventListener('click', (e) => {
+    const reg = getReg();
+    if (!reg) return;
+    copyTextWithFeedback(e.currentTarget, buildPassportText(reg), '📋 Скопировать паспорт регистрации');
+});
+
+// Reset Checklist
+document.getElementById('btnResetChecklist').addEventListener('click', () => {
+    localStorage.removeItem(KEYS.chk);
+    renderChecklist();
+    renderStats();
+});
+
+// CRM Form & Filter
+document.getElementById('crmForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nameEl = document.getElementById('crmName');
+    const typeEl = document.getElementById('crmType');
+    const contactEl = document.getElementById('crmContact');
+    const name = nameEl.value.trim();
+    if (!name) return;
+
+    const list = getCrm();
+    list.unshift({
+        name,
+        type: typeEl.value,
+        contact: contactEl.value.trim(),
+        stage: 0
+    });
+    localStorage.setItem(KEYS.crm, JSON.stringify(list));
+    nameEl.value = '';
+    contactEl.value = '';
+    renderCrm();
+    renderStats();
+});
+
+document.getElementById('crmFilterType').addEventListener('change', renderCrm);
+
+// Publish Moscow Casting Brief
+document.getElementById('moscowBriefForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const reg = getReg();
+    if (!reg) return;
+
+    const statusEl = document.getElementById('briefStatus');
+    const btn = document.getElementById('btnPublishBrief');
+    const clean = (id) => (document.getElementById(id)?.value || '').trim();
+
+    const title = clean('briefTitle');
+    const location = clean('briefLocation');
+    const date = clean('briefDate');
+    const budget = clean('briefBudget');
+    const gender = clean('briefGender');
+    const description = clean('briefDesc');
+
+    statusEl.textContent = 'Публикация московского брифа...';
+    statusEl.className = 'status-line';
+    btn.disabled = true;
+
+    const fullLocation = /москва|moscow/i.test(location) ? location : `Москва, ${location}`;
+    const structuredData = {
+        title,
+        country: 'Russia',
+        location: fullLocation,
+        date,
+        budget: budget || null,
+        pay: budget || null,
+        division: 'Commercial',
+        description: `${description}\n\nКуратор офиса (Москва): ${reg.name} (${reg.telegram})`,
+        requirements: {
+            gender: gender !== 'any' ? gender : null
+        }
+    };
+
+    try {
+        const { error } = await supabase
+            .from('castings')
+            .insert({
+                raw_text: `${title} | ${fullLocation} | ${budget || ''} | ${description}`,
+                structured_data: structuredData,
+                source: `Moscow Office (${reg.company})`,
+                is_public: true
+            });
+
+        if (error) throw error;
+
+        statusEl.textContent = '✅ Московский кастинг опубликован! Модели видят его в ленте и через @unitymodelsbot.';
+        statusEl.className = 'status-line ok';
+        e.target.reset();
+    } catch (err) {
+        console.error('Moscow brief publish error:', err);
+        statusEl.textContent = '❌ Не удалось опубликовать бриф. Проверьте сеть и попробуйте еще раз.';
+        statusEl.className = 'status-line err';
+    } finally {
+        btn.disabled = false;
+    }
+});
+
+// Copy Weekly Report
+document.getElementById('btnCopyReport').addEventListener('click', (e) => {
+    const txt = document.getElementById('reportPreview')?.textContent || '';
+    if (!txt) return;
+    copyTextWithFeedback(e.currentTarget, txt, '📋 Скопировать отчет по Москве');
+});
+
+applyAuthView();
+</script>
+</body>
+</html>
